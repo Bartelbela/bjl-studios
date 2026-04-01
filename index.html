@@ -1299,17 +1299,18 @@ function pickContact(btn){
   }
 }
 
-// ===== CONTACT FORM (via Vercel serverless — no tokens exposed) =====
+// ===== CONTACT FORM → Telegram direkt =====
 const cForm=document.getElementById('contactForm');
 if(cForm){
+  const TG='8754878353:AAHHI3_DTZq7yhApRix_fuJVc0PV0qTYrsM';
+  const CHAT='-5223673043';
+
   cForm.addEventListener('submit',async(e)=>{
     e.preventDefault();
-    // Validate: if WhatsApp selected, phone required
     const method=document.getElementById('cfMethod').value;
     const phone=document.getElementById('cfPhone');
     if(method==='whatsapp'&&!phone.value.trim()){
-      phone.focus();phone.style.borderColor='#ef4444';
-      return;
+      phone.focus();phone.style.borderColor='#ef4444';return;
     }
     const btn=document.getElementById('contactSubmit');
     const txt=document.getElementById('submitText');
@@ -1319,48 +1320,47 @@ if(cForm){
     txt.classList.add('hidden');load.classList.remove('hidden');
     btn.disabled=true;btn.style.opacity='0.6';
     ok.classList.add('hidden');err.classList.add('hidden');
+
+    const n=cForm.name.value,c=cForm.company.value,em=cForm.email.value,
+          ph=cForm.phone.value,s=cForm.service.value,m=cForm.message.value;
+    const cleanPh=(ph||'').replace(/[^0-9]/g,'');
+    const gmail='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(em)+'&su='+encodeURIComponent('Re: Anfrage von '+n+' — BJL Studios')+'&body='+encodeURIComponent('Hallo '+n+',\n\nvielen Dank für eure Anfrage!\n\n');
+    const waLink=cleanPh?'https://wa.me/'+cleanPh:'';
+
+    let methodLabel='🤷 Egal';
+    let reply='📩 [Per Gmail antworten]('+gmail+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
+    if(method==='whatsapp'&&waLink){
+      methodLabel='📱 WhatsApp';
+      reply='📱 [Per WhatsApp antworten]('+waLink+')\n📩 [Per Gmail antworten]('+gmail+')';
+    } else if(method==='email'){
+      methodLabel='📧 E-Mail';
+    }
+
+    let text='🔔 *Neue Anfrage über bjl-studios.de*\n\n👤 *Name:* '+n+'\n';
+    if(c) text+='🏢 *Firma:* '+c+'\n';
+    text+='📧 *E-Mail:* '+em+'\n';
+    if(ph) text+='📞 *Telefon:* '+ph+'\n';
+    text+='🛠 *Service:* '+s+'\n💬 *Kontaktweg:* '+methodLabel+'\n\n*Nachricht:*\n'+m+'\n\n━━━━━━━━━━━━━━━\n'+reply;
+
     try{
-      const res=await fetch('/api/contact',{
+      const res=await fetch('https://api.telegram.org/bot'+TG+'/sendMessage',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          name:cForm.name.value,
-          company:cForm.company.value||'',
-          email:cForm.email.value,
-          phone:cForm.phone.value||'',
-          contact_method:method,
-          service:cForm.service.value,
-          message:cForm.message.value
-        })
+        body:JSON.stringify({chat_id:CHAT,text:text,parse_mode:'Markdown',disable_web_page_preview:true})
       });
       const data=await res.json();
-      if(data.success){
+      if(data.ok){
         ok.classList.remove('hidden');
         cForm.reset();
-        // Reset pills
         document.querySelectorAll('.contact-pill').forEach(p=>{p.style.borderColor='';p.style.color='';});
         document.querySelector('.contact-pill[data-val="egal"]').style.borderColor='#60A5FA';
         document.querySelector('.contact-pill[data-val="egal"]').style.color='#60A5FA';
         document.getElementById('cfMethod').value='egal';
       } else {
-        fallbackMail();
+        err.classList.remove('hidden');
       }
     }catch(ex){
-      fallbackMail();
-    }
-    function fallbackMail(){
-      // Fallback: open mail client with form data
-      const n=cForm.name.value,c=cForm.company.value,e=cForm.email.value,
-            p=cForm.phone.value,s=cForm.service.value,m=cForm.message.value,
-            mt=document.getElementById('cfMethod').value;
-      const body='Name: '+n+'\n'+(c?'Firma: '+c+'\n':'')+
-        'E-Mail: '+e+'\n'+(p?'Telefon: '+p+'\n':'')+
-        'Kontaktweg: '+mt+'\nService: '+s+'\n\nNachricht:\n'+m;
-      window.location.href='mailto:info@bjl-studios.de?subject='+
-        encodeURIComponent('Anfrage: '+s+' — '+n)+
-        '&body='+encodeURIComponent(body);
-      ok.classList.remove('hidden');
-      cForm.reset();
+      err.classList.remove('hidden');
     }
     txt.classList.remove('hidden');load.classList.add('hidden');
     btn.disabled=false;btn.style.opacity='1';

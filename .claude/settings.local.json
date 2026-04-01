@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config:*)",
+      "Bash(git clone:*)",
+      "Bash(test -d \"$USERPROFILE/.claude/plugins/superpowers\")",
+      "Bash(mkdir -p \"$USERPROFILE/.claude/skills\")",
+      "Read(//c/Users/Junker/Projects/BJL_Studios-Website/$USERPROFILE/.claude/plugins/superpowers/**)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Read(//c/Users/Junker/Projects/BJL_Studios-Website/$USERPROFILE/**)",
+      "Read(//c/Users/Junker/Projects/BJL_Studios-Website/$USERPROFILE/.claude/**)",
+      "Bash(start index.html)",
+      "WebSearch",
+      "WebFetch(domain:prismic.io)",
+      "WebFetch(domain:www.landingfolio.com)",
+      "WebFetch(domain:www.sliderrevolution.com)",
+      "WebFetch(domain:codemyui.com)",
+      "Bash(start impressum.html)",
+      "Bash(start datenschutz.html)",
+      "Bash(claude mcp:*)",
+      "WebFetch(domain:www.elias.studio)",
+      "WebFetch(domain:www.digitalsilk.com)",
+      "WebFetch(domain:www.awwwards.com)",
+      "WebFetch(domain:www.designrush.com)",
+      "mcp__magic__21st_magic_component_inspiration",
+      "Bash(curl -s \"https://api.telegram.org/bot8754878353:AAGIZf_Gk3t3tZCdH4BNNjTw0JDbNnS0j5M/getUpdates\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s https://api.telegram.org/bot8754878353:AAGIZf_Gk3t3tZCdH4BNNjTw0JDbNnS0j5M/getUpdates)",
+      "Bash(curl -s -X POST \"https://api.telegram.org/bot8754878353:AAGIZf_Gk3t3tZCdH4BNNjTw0JDbNnS0j5M/sendMessage\" -H \"Content-Type: application/json\" -d '{\"\"chat_id\"\":\"\"-5223673043\"\",\"\"text\"\":\"\"✅ BJL Studios Bot ist aktiv!\\\\n\\\\nAb jetzt bekommt ihr hier automatisch alle Kundenanfragen von bjl-studios.de\"\",\"\"parse_mode\"\":\"\"Markdown\"\"}')",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)",
+      "Bash(curl -s \"https://api.telegram.org/bot8754878353:AAHHI3_DTZq7yhApRix_fuJVc0PV0qTYrsM/getMe\")"
+    ]
+  }
+}
