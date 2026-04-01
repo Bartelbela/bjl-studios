@@ -140,6 +140,13 @@
     .mm.open .ml:nth-child(4){transition-delay:.34s}
     .mm.open .ml:nth-child(5){transition-delay:.42s}
 
+    /* ========== FAQ ========== */
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .5s cubic-bezier(.4,0,.2,1); }
+    [data-faq].open .faq-a { max-height:200px; }
+    [data-faq].open .faq-icon { transform:rotate(45deg); }
+    [data-faq]:hover { background:rgba(96,165,250,.03); }
+    [data-faq] { transition:background .3s ease; cursor:pointer; }
+
     /* ========== MAGNETIC ========== */
     .mag { display: inline-block; }
 
@@ -324,10 +331,10 @@
   <div class="text-center max-w-5xl mx-auto relative z-10">
     <p class="hfade text-accent text-xs tracking-widest uppercase mb-10" id="hl" style="font-size:11px;letter-spacing:5px;">Digitalagentur · Mönchengladbach</p>
     <h1 class="hero-text mb-10" id="hh">
-      <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-muted leading-none tracking-tight">
+      <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-muted tracking-tight" style="line-height:1.2;">
         <span class="word">Digital</span> <span class="word">denken.</span>
       </span>
-      <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-none tracking-tight mt-2">
+      <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight mt-2" style="line-height:1.1;">
         <span class="word">Lokal</span> <span class="word">wachsen.</span>
       </span>
     </h1>
@@ -345,6 +352,33 @@
         <span style="color:#222;font-size:12px;letter-spacing:3px;font-variant:small-caps" class="mx-4">Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 · Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 ·&nbsp;</span>
         <span style="color:#222;font-size:12px;letter-spacing:3px;font-variant:small-caps" class="mx-4">Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 · Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 ·&nbsp;</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH LOGOS MARQUEE ===== -->
+<section class="py-12 border-y border-border bg-surface overflow-hidden">
+  <p class="text-center text-xs uppercase tracking-widest mb-8" style="color:#333;letter-spacing:4px;">Tools & Technologien die wir einsetzen</p>
+  <div class="mq-wrap">
+    <div class="mq-track flex items-center whitespace-nowrap gap-16" style="animation-duration:25s;">
+      <!-- Set 1 -->
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 0"/><path d="M8.148 24c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v4.49c0 2.476-2.014 4.49-4.588 4.49zm0-7.51c-1.665 0-3.019 1.355-3.019 3.02s1.355 3.019 3.019 3.019 3.019-1.355 3.019-3.019v-3.02H8.148zm0 0"/><path d="M8.148 8.981c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981H8.148zm0-7.51c-1.665 0-3.019 1.355-3.019 3.02s1.355 3.019 3.019 3.019h3.117V1.471H8.148zm0 0"/><path d="M8.148 15.02h4.588v4.49c0 2.476-2.014 4.49-4.588 4.49-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49zm0 0M15.852 15.02c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49-4.49-2.014-4.49-4.49v-4.49h4.49zm0 1.471c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.354-3.019-3.019-3.019zm0 0"/></svg><span class="text-sm" style="color:#555;">Figma</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg><span class="text-sm" style="color:#555;">Tailwind CSS</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg><span class="text-sm" style="color:#555;">JavaScript</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-5 h-5" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg><span class="text-sm" style="color:#555;">Vercel</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span class="text-sm" style="color:#555;">Google</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M19.589 6.686a4.793 4.793 0 01-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 01-2.895 2.895 2.896 2.896 0 01-2.895-2.895 2.896 2.896 0 012.895-2.895c.298 0 .585.04.86.112V9.368a6.406 6.406 0 00-.86-.058 6.412 6.412 0 00-6.412 6.412 6.412 6.412 0 006.412 6.412 6.412 6.412 0 006.412-6.412V9.47a8.2 8.2 0 004.778 1.528V7.553a4.794 4.794 0 01-1.08-.867z"/></svg><span class="text-sm" style="color:#555;">Premiere Pro</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span class="text-sm" style="color:#555;">Instagram</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-5 h-5" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/></svg><span class="text-sm" style="color:#555;">After Effects</span></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 0"/><path d="M8.148 24c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v4.49c0 2.476-2.014 4.49-4.588 4.49zm0-7.51c-1.665 0-3.019 1.355-3.019 3.02s1.355 3.019 3.019 3.019 3.019-1.355 3.019-3.019v-3.02H8.148zm0 0"/><path d="M8.148 8.981c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981H8.148zm0-7.51c-1.665 0-3.019 1.355-3.019 3.02s1.355 3.019 3.019 3.019h3.117V1.471H8.148zm0 0"/><path d="M8.148 15.02h4.588v4.49c0 2.476-2.014 4.49-4.588 4.49-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49zm0 0M15.852 15.02c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49-4.49-2.014-4.49-4.49v-4.49h4.49zm0 1.471c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.354-3.019-3.019-3.019zm0 0"/></svg><span class="text-sm" style="color:#555;">Figma</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg><span class="text-sm" style="color:#555;">Tailwind CSS</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg><span class="text-sm" style="color:#555;">JavaScript</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-5 h-5" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg><span class="text-sm" style="color:#555;">Vercel</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span class="text-sm" style="color:#555;">Google</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M19.589 6.686a4.793 4.793 0 01-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 01-2.895 2.895 2.896 2.896 0 01-2.895-2.895 2.896 2.896 0 012.895-2.895c.298 0 .585.04.86.112V9.368a6.406 6.406 0 00-.86-.058 6.412 6.412 0 00-6.412 6.412 6.412 6.412 0 006.412 6.412 6.412 6.412 0 006.412-6.412V9.47a8.2 8.2 0 004.778 1.528V7.553a4.794 4.794 0 01-1.08-.867z"/></svg><span class="text-sm" style="color:#555;">Premiere Pro</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-6 h-6" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span class="text-sm" style="color:#555;">Instagram</span></div>
+      <div class="flex items-center gap-3 shrink-0"><svg class="w-5 h-5" style="color:#555" viewBox="0 0 24 24" fill="currentColor"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/></svg><span class="text-sm" style="color:#555;">After Effects</span></div>
     </div>
   </div>
 </section>
@@ -457,89 +491,199 @@
   </div>
 </section>
 
-<!-- ===== PRICING — Offset grid, featured card bigger ===== -->
-<section id="preise" class="px-6 bg-surface" style="padding:140px 0;">
-  <div class="max-w-7xl mx-auto">
+<!-- ===== PRICING — Clean table layout, no scammy buttons ===== -->
+<section id="preise" class="px-6 relative overflow-hidden" style="padding:140px 0;">
+  <!-- Subtle dot pattern background -->
+  <div class="absolute inset-0 pointer-events-none" style="background-image:radial-gradient(circle,rgba(255,255,255,.03) 1px,transparent 1px);background-size:24px 24px;"></div>
+
+  <div class="max-w-5xl mx-auto relative">
     <div class="text-center mb-20">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;">Preise</p>
-      <h2 class="ru text-4xl md:text-6xl font-black text-white mb-6">Faire Preise.<br><span class="font-extralight text-muted">Keine Überraschungen.</span></h2>
-      <p class="ru text-muted text-lg max-w-xl mx-auto">Alle Preise sind Startpreise. Den genauen Umfang besprechen wir persönlich — kostenlos und unverbindlich.</p>
+      <h2 class="ru text-4xl md:text-6xl font-black text-white mb-6">Was kostet's?</h2>
+      <p class="ru text-muted text-lg max-w-2xl mx-auto leading-relaxed">Alle Preise sind Startpreise und abhängig vom Umfang. Im Erstgespräch klären wir, was ihr braucht — kostenlos und unverbindlich.</p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      <!-- Left: 2 stacked cards -->
-      <div class="lg:col-span-4 space-y-6">
-        <div class="rs price-card border border-border rounded-2xl p-8 bg-dark">
-          <p class="text-accent text-xs tracking-widest uppercase mb-4" style="letter-spacing:3px;">Webdesign</p>
-          <p class="text-4xl font-black text-white mb-1">ab 1.499 €</p>
-          <p class="text-sm text-muted mb-6">Einmalig</p>
-          <ul class="space-y-2.5 text-sm text-muted">
-            <li class="flex gap-2"><span class="text-accent">—</span> Individuelles Design nach Briefing</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Responsive für alle Geräte</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> SEO-Grundoptimierung inkl.</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> SSL & Hosting-Setup</li>
-          </ul>
+    <!-- Pricing table — clean, no buttons per row -->
+    <div class="ru border border-border rounded-2xl overflow-hidden bg-surface2">
+      <!-- Header -->
+      <div class="hidden md:grid grid-cols-12 gap-0 px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+        <div class="col-span-5 text-xs uppercase tracking-widest text-muted" style="letter-spacing:3px;">Leistung</div>
+        <div class="col-span-3 text-xs uppercase tracking-widest text-muted" style="letter-spacing:3px;">Startpreis</div>
+        <div class="col-span-4 text-xs uppercase tracking-widest text-muted" style="letter-spacing:3px;">Inkl.</div>
+      </div>
+
+      <!-- Row 1: Webdesign -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-8 py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+        <div class="col-span-5">
+          <p class="text-white font-semibold text-lg">Webdesign & Entwicklung</p>
+          <p class="text-muted text-sm mt-1">Individuelle Website nach eurem Briefing</p>
         </div>
-        <div class="rs price-card border border-border rounded-2xl p-8 bg-dark">
-          <p class="text-accent text-xs tracking-widest uppercase mb-4" style="letter-spacing:3px;">Branding</p>
-          <p class="text-4xl font-black text-white mb-1">ab 699 €</p>
-          <p class="text-sm text-muted mb-6">Einmalig</p>
-          <ul class="space-y-2.5 text-sm text-muted">
-            <li class="flex gap-2"><span class="text-accent">—</span> Logo-Entwicklung</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Farbpalette & Typografie</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Brand Guidelines</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Print- & Digital-Dateien</li>
-          </ul>
+        <div class="col-span-3 flex items-center">
+          <p class="text-2xl font-black text-white">ab 1.499 €</p>
+        </div>
+        <div class="col-span-4 flex items-center">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Responsive</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">SEO-Basis</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">SSL</span>
+          </div>
         </div>
       </div>
 
-      <!-- Center: featured SEO card (taller) -->
-      <div class="lg:col-span-4">
-        <div class="rs price-card border-2 border-accent rounded-2xl p-10 bg-dark relative overflow-hidden">
-          <div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
-          <p class="text-accent text-xs tracking-widest uppercase mb-4" style="letter-spacing:3px;">SEO & Marketing</p>
-          <p class="text-5xl font-black text-white mb-1">ab 349 €</p>
-          <p class="text-sm text-muted mb-8">Pro Monat</p>
-          <ul class="space-y-3 text-sm text-muted mb-8">
-            <li class="flex gap-2"><span class="text-accent">—</span> Keyword-Recherche & Strategie</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Technische SEO-Optimierung</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Lokales SEO für eure Region</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Google Business Optimierung</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Monatliches Reporting</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Persönlicher Ansprechpartner</li>
-          </ul>
-          <a href="#kontakt" class="mag block text-center bg-accent text-white py-4 rounded-full text-sm font-semibold hover:bg-blue-500 transition-all">Angebot anfordern →</a>
+      <!-- Row 2: SEO -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-8 py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+        <div class="col-span-5">
+          <p class="text-white font-semibold text-lg">SEO & Online Marketing</p>
+          <p class="text-muted text-sm mt-1">Sichtbarkeit bei Google, lokal und überregional</p>
+        </div>
+        <div class="col-span-3 flex items-center">
+          <p class="text-2xl font-black text-white">ab 349 €<span class="text-sm font-normal text-muted">/mtl.</span></p>
+        </div>
+        <div class="col-span-4 flex items-center">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Keywords</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Lokales SEO</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Reporting</span>
+          </div>
         </div>
       </div>
 
-      <!-- Right: 2 stacked cards -->
-      <div class="lg:col-span-4 space-y-6">
-        <div class="rs price-card border border-border rounded-2xl p-8 bg-dark">
-          <p class="text-accent text-xs tracking-widest uppercase mb-4" style="letter-spacing:3px;">Social Media</p>
-          <p class="text-4xl font-black text-white mb-1">ab 249 €</p>
-          <p class="text-sm text-muted mb-6">Pro Monat</p>
-          <ul class="space-y-2.5 text-sm text-muted">
-            <li class="flex gap-2"><span class="text-accent">—</span> Content-Planung & Redaktion</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> 8+ Posts pro Monat</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Stories & Reels</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Community Management</li>
-          </ul>
+      <!-- Row 3: Social Media -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-8 py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+        <div class="col-span-5">
+          <p class="text-white font-semibold text-lg">Social Media</p>
+          <p class="text-muted text-sm mt-1">Content, Posting, Reels & Community</p>
         </div>
-        <div class="rs price-card border border-border rounded-2xl p-8 bg-dark">
-          <p class="text-accent text-xs tracking-widest uppercase mb-4" style="letter-spacing:3px;">Imagefilm</p>
-          <p class="text-4xl font-black text-white mb-1">ab 899 €</p>
-          <p class="text-sm text-muted mb-6">Einmalig</p>
-          <ul class="space-y-2.5 text-sm text-muted">
-            <li class="flex gap-2"><span class="text-accent">—</span> Konzept & Storyboard</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Professioneller Dreh</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Schnitt & Color Grading</li>
-            <li class="flex gap-2"><span class="text-accent">—</span> Musik-Lizenzierung</li>
-          </ul>
+        <div class="col-span-3 flex items-center">
+          <p class="text-2xl font-black text-white">ab 249 €<span class="text-sm font-normal text-muted">/mtl.</span></p>
+        </div>
+        <div class="col-span-4 flex items-center">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">8+ Posts</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Stories</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Reels</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: Branding -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-8 py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+        <div class="col-span-5">
+          <p class="text-white font-semibold text-lg">Logo & Branding</p>
+          <p class="text-muted text-sm mt-1">Visuelles Erscheinungsbild komplett</p>
+        </div>
+        <div class="col-span-3 flex items-center">
+          <p class="text-2xl font-black text-white">ab 699 €</p>
+        </div>
+        <div class="col-span-4 flex items-center">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Logo</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Farben</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Guidelines</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5: Video -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-8 py-6" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+        <div class="col-span-5">
+          <p class="text-white font-semibold text-lg">Imagefilm & Video</p>
+          <p class="text-muted text-sm mt-1">Konzept, Dreh, Schnitt & Postproduction</p>
+        </div>
+        <div class="col-span-3 flex items-center">
+          <p class="text-2xl font-black text-white">ab 899 €</p>
+        </div>
+        <div class="col-span-4 flex items-center">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Storyboard</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Dreh</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-border text-muted">Schnitt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Single CTA below — not scammy, just helpful -->
+    <div class="ru text-center mt-12">
+      <p class="text-muted text-sm mb-5">Ihr braucht mehrere Leistungen? Wir schnüren euch ein individuelles Paket.</p>
+      <a href="#kontakt" class="mag inline-block border border-white/15 text-white px-8 py-3 rounded-full text-sm hover:bg-white hover:text-black transition-all duration-300">Unverbindlich anfragen →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="px-6" style="padding:120px 0;">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;">Häufige Fragen</p>
+      <h2 class="ru text-4xl md:text-5xl font-black text-white">Noch Fragen? Hier sind Antworten.</h2>
+    </div>
+
+    <div class="space-y-0">
+      <div class="ru border-t border-border" data-faq>
+        <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
+          <span class="text-white text-base md:text-lg font-medium pr-4">Was kostet eine Website bei euch?</span>
+          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="text-muted text-sm leading-relaxed pb-6">Unsere Websites starten ab 1.499 €. Der genaue Preis hängt vom Umfang ab — Anzahl Seiten, Funktionen, Texte und Bilder. Im kostenlosen Erstgespräch klären wir, was ihr braucht und was es kostet.</p>
+        </div>
+      </div>
+
+      <div class="ru border-t border-border" data-faq>
+        <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
+          <span class="text-white text-base md:text-lg font-medium pr-4">Wie lange dauert es bis meine Website fertig ist?</span>
+          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="text-muted text-sm leading-relaxed pb-6">Eine einfache Website ist in 1–2 Wochen fertig. Größere Projekte mit Branding, SEO und Content dauern 3–4 Wochen. Wir geben euch im Angebot einen konkreten Zeitrahmen.</p>
+        </div>
+      </div>
+
+      <div class="ru border-t border-border" data-faq>
+        <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
+          <span class="text-white text-base md:text-lg font-medium pr-4">Brauche ich wirklich SEO?</span>
+          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="text-muted text-sm leading-relaxed pb-6">Wenn eure Kunden euch über Google suchen — ja. Lokales SEO sorgt dafür, dass ihr bei Suchanfragen wie „Friseur Mönchengladbach" oder „Handwerker in der Nähe" auftaucht. Ohne SEO ist eure Website unsichtbar.</p>
+        </div>
+      </div>
+
+      <div class="ru border-t border-border" data-faq>
+        <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
+          <span class="text-white text-base md:text-lg font-medium pr-4">Kann ich meine Website danach selbst bearbeiten?</span>
+          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="text-muted text-sm leading-relaxed pb-6">Ja. Wir bauen eure Website so, dass ihr Texte und Bilder selbst ändern könnt. Wenn ihr Hilfe braucht, sind wir natürlich weiterhin für euch da.</p>
+        </div>
+      </div>
+
+      <div class="ru border-t border-border" data-faq>
+        <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
+          <span class="text-white text-base md:text-lg font-medium pr-4">Ich habe schon eine Website — könnt ihr die verbessern?</span>
+          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="text-muted text-sm leading-relaxed pb-6">Klar. Wir schauen uns an, was funktioniert und was nicht. Manchmal reicht ein Redesign, manchmal ist ein Neuaufbau sinnvoller. Das klären wir im Erstgespräch.</p>
+        </div>
+      </div>
+
+      <div class="ru border-t border-b border-border" data-faq>
+        <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
+          <span class="text-white text-base md:text-lg font-medium pr-4">Was passiert nach dem Launch?</span>
+          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="text-muted text-sm leading-relaxed pb-6">Wir lassen euch nicht allein. Kleinere Änderungen und Support sind im ersten Monat inklusive. Danach bieten wir optionale Wartungspakete an.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="gline mx-6"></div>
 
 <!-- ===== PROCESS — Vertical timeline, totally different layout ===== -->
 <section id="prozess" class="px-6" style="padding:140px 0;">
@@ -688,6 +832,63 @@
         <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Instagram</span>
         <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Premiere Pro</span>
         <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">After Effects</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJEKT SHOWCASE ===== -->
+<section class="px-6" style="padding:120px 0;">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;">Referenz</p>
+      <h2 class="ru text-4xl md:text-5xl font-black text-white mb-4">Unser erstes Projekt?<br><span class="font-extralight text-muted">Diese Website.</span></h2>
+      <p class="ru text-muted text-base max-w-2xl mx-auto leading-relaxed">Ja, wir sind neu. Aber jede Agentur hat irgendwann angefangen. Diese Website ist der Beweis, dass wir unser Handwerk verstehen.</p>
+    </div>
+
+    <div class="ru border border-border rounded-2xl overflow-hidden bg-surface">
+      <div class="p-8 md:p-12">
+        <div class="flex flex-col md:flex-row gap-10 items-start">
+          <!-- Left: project details -->
+          <div class="md:w-1/2">
+            <p class="text-accent text-xs tracking-widest uppercase mb-3" style="letter-spacing:3px;">bjl-studios.de</p>
+            <h3 class="text-2xl font-bold text-white mb-4">Agentur-Website für BJL Studios</h3>
+            <p class="text-muted text-sm leading-relaxed mb-6">Konzept, Design und Entwicklung unserer eigenen Website — von der ersten Idee bis zum Live-Gang. Alles in-house, ohne Templates, ohne Frameworks.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs px-3 py-1.5 rounded-full border border-border text-muted">HTML5</span>
+              <span class="text-xs px-3 py-1.5 rounded-full border border-border text-muted">Tailwind CSS</span>
+              <span class="text-xs px-3 py-1.5 rounded-full border border-border text-muted">Vanilla JS</span>
+              <span class="text-xs px-3 py-1.5 rounded-full border border-border text-muted">Vercel</span>
+              <span class="text-xs px-3 py-1.5 rounded-full border border-border text-muted">SVG Animations</span>
+            </div>
+          </div>
+          <!-- Right: metrics -->
+          <div class="md:w-1/2">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="border border-border rounded-xl p-5 bg-dark">
+                <p class="text-3xl font-black text-white mb-1">&lt;1s</p>
+                <p class="text-xs text-muted">Ladezeit</p>
+              </div>
+              <div class="border border-border rounded-xl p-5 bg-dark">
+                <p class="text-3xl font-black text-white mb-1">100%</p>
+                <p class="text-xs text-muted">Responsive</p>
+              </div>
+              <div class="border border-border rounded-xl p-5 bg-dark">
+                <p class="text-3xl font-black text-white mb-1">0</p>
+                <p class="text-xs text-muted">Frameworks</p>
+              </div>
+              <div class="border border-border rounded-xl p-5 bg-dark">
+                <p class="text-3xl font-black text-white mb-1">SEO</p>
+                <p class="text-xs text-muted">Optimiert</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom CTA bar -->
+      <div class="border-t border-border px-8 md:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-4" style="background:rgba(96,165,250,0.03);">
+        <p class="text-sm text-muted">Euer Projekt könnte das nächste sein.</p>
+        <a href="#kontakt" class="mag text-sm bg-accent text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-500 transition-all">Kostenloses Erstgespräch →</a>
       </div>
     </div>
   </div>
