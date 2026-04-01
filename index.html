@@ -411,7 +411,7 @@
             </div>
           </div>
           <div class="flex items-center gap-4">
-            <span class="text-accent text-xs sm:text-sm font-medium">ab 1.499 €</span>
+            <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp1">ab 1.499 €</span>
             <span class="svc-a text-muted text-xl">↗</span>
           </div>
         </div>
@@ -430,7 +430,7 @@
             </div>
           </div>
           <div class="flex items-center gap-4">
-            <span class="text-accent text-xs sm:text-sm font-medium">ab 349 €/mtl.</span>
+            <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp2">ab 349 €/mtl.</span>
             <span class="svc-a text-muted text-xl">↗</span>
           </div>
         </div>
@@ -449,7 +449,7 @@
             </div>
           </div>
           <div class="flex items-center gap-4">
-            <span class="text-accent text-xs sm:text-sm font-medium">ab 249 €/mtl.</span>
+            <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp3">ab 249 €/mtl.</span>
             <span class="svc-a text-muted text-xl">↗</span>
           </div>
         </div>
@@ -468,7 +468,7 @@
             </div>
           </div>
           <div class="flex items-center gap-4">
-            <span class="text-accent text-xs sm:text-sm font-medium">ab 699 €</span>
+            <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp4">ab 699 €</span>
             <span class="svc-a text-muted text-xl">↗</span>
           </div>
         </div>
@@ -487,7 +487,7 @@
             </div>
           </div>
           <div class="flex items-center gap-4">
-            <span class="text-accent text-xs sm:text-sm font-medium">ab 899 €</span>
+            <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp5">ab 899 €</span>
             <span class="svc-a text-muted text-xl">↗</span>
           </div>
         </div>
@@ -527,7 +527,7 @@
           <p class="text-muted text-sm mt-1" data-i="p1-s">Individuelle Website nach eurem Briefing</p>
         </div>
         <div class="col-span-3 flex items-center">
-          <div><p class="text-2xl font-black text-white">ab 1.499 €</p><p class="text-xs text-accent mt-1" data-i="p1-host">+ Hosting ab 19 €/mtl.</p></div>
+          <div><p class="text-2xl font-black text-white" data-i="pp1">ab 1.499 €</p><p class="text-xs text-accent mt-1" data-i="p1-host">+ Hosting ab 19 €/mtl.</p></div>
         </div>
         <div class="col-span-4 flex items-center">
           <div class="flex flex-wrap gap-1.5">
@@ -546,7 +546,7 @@
           <p class="text-muted text-sm mt-1" data-i="p2-s">Sichtbarkeit bei Google, lokal und überregional</p>
         </div>
         <div class="col-span-3 flex items-center">
-          <p class="text-2xl font-black text-white">ab 349 €<span class="text-sm font-normal text-muted">/mtl.</span></p>
+          <p class="text-2xl font-black text-white" data-i="pp2">ab 349 €<span class="text-sm font-normal text-muted">/mtl.</span></p>
         </div>
         <div class="col-span-4 flex items-center">
           <div class="flex flex-wrap gap-1.5">
@@ -564,7 +564,7 @@
           <p class="text-muted text-sm mt-1" data-i="p3-s">Content, Posting, Reels & Community</p>
         </div>
         <div class="col-span-3 flex items-center">
-          <p class="text-2xl font-black text-white">ab 249 €<span class="text-sm font-normal text-muted">/mtl.</span></p>
+          <p class="text-2xl font-black text-white" data-i="pp3">ab 249 €<span class="text-sm font-normal text-muted">/mtl.</span></p>
         </div>
         <div class="col-span-4 flex items-center">
           <div class="flex flex-wrap gap-1.5">
@@ -582,7 +582,7 @@
           <p class="text-muted text-sm mt-1" data-i="p4-s">Visuelles Erscheinungsbild komplett</p>
         </div>
         <div class="col-span-3 flex items-center">
-          <p class="text-2xl font-black text-white">ab 699 €</p>
+          <p class="text-2xl font-black text-white" data-i="pp4">ab 699 €</p>
         </div>
         <div class="col-span-4 flex items-center">
           <div class="flex flex-wrap gap-1.5">
@@ -600,7 +600,7 @@
           <p class="text-muted text-sm mt-1" data-i="p5-s">Konzept, Dreh, Schnitt & Postproduction</p>
         </div>
         <div class="col-span-3 flex items-center">
-          <p class="text-2xl font-black text-white">ab 899 €</p>
+          <p class="text-2xl font-black text-white" data-i="pp5">ab 899 €</p>
         </div>
         <div class="col-span-4 flex items-center">
           <div class="flex flex-wrap gap-1.5">
@@ -1063,6 +1063,10 @@ const T={
   'pt-logo':{de:'Logo',en:'Logo'},'pt-farben':{de:'Farben',en:'Colors'},'pt-guide':{de:'Guidelines',en:'Guidelines'},
   'pt-story':{de:'Storyboard',en:'Storyboard'},'pt-dreh':{de:'Dreh',en:'Shoot'},'pt-schnitt':{de:'Schnitt',en:'Editing'},
   'p1-host':{de:'+ Hosting ab 19 €/mtl.',en:'+ Hosting from €19/mo.'},
+  // Prices (service rows)
+  'sp1':{de:'ab 1.499 €',en:'from €1,499'},'sp2':{de:'ab 349 €/mtl.',en:'from €349/mo.'},'sp3':{de:'ab 249 €/mtl.',en:'from €249/mo.'},'sp4':{de:'ab 699 €',en:'from €699'},'sp5':{de:'ab 899 €',en:'from €899'},
+  // Prices (pricing table)
+  'pp1':{de:'ab 1.499 €',en:'from €1,499'},'pp2':{de:'ab 349 €',en:'from €349'},'pp3':{de:'ab 249 €',en:'from €249'},'pp4':{de:'ab 699 €',en:'from €699'},'pp5':{de:'ab 899 €',en:'from €899'},
   // FAQ
   'faq-label':{de:'Häufige Fragen',en:'FAQ'},
   'faq-title':{de:'Noch Fragen? Hier sind Antworten.',en:'Questions? Here are answers.'},
