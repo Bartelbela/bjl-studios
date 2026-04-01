@@ -1343,10 +1343,24 @@ if(cForm){
         document.querySelector('.contact-pill[data-val="egal"]').style.color='#60A5FA';
         document.getElementById('cfMethod').value='egal';
       } else {
-        err.classList.remove('hidden');
+        fallbackMail();
       }
     }catch(ex){
-      err.classList.remove('hidden');
+      fallbackMail();
+    }
+    function fallbackMail(){
+      // Fallback: open mail client with form data
+      const n=cForm.name.value,c=cForm.company.value,e=cForm.email.value,
+            p=cForm.phone.value,s=cForm.service.value,m=cForm.message.value,
+            mt=document.getElementById('cfMethod').value;
+      const body='Name: '+n+'\n'+(c?'Firma: '+c+'\n':'')+
+        'E-Mail: '+e+'\n'+(p?'Telefon: '+p+'\n':'')+
+        'Kontaktweg: '+mt+'\nService: '+s+'\n\nNachricht:\n'+m;
+      window.location.href='mailto:info@bjl-studios.de?subject='+
+        encodeURIComponent('Anfrage: '+s+' — '+n)+
+        '&body='+encodeURIComponent(body);
+      ok.classList.remove('hidden');
+      cForm.reset();
     }
     txt.classList.remove('hidden');load.classList.add('hidden');
     btn.disabled=false;btn.style.opacity='1';
