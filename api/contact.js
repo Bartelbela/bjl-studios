@@ -1,40 +1,53 @@
 export default async function handler(req, res) {
-  // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
 
-  const { name, email, service, message } = req.body;
+  const { name, company, email, phone, contact_method, service, message } = req.body;
 
-  // Validate required fields
   if (!name || !email || !service || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Secrets from Vercel environment variables (never exposed to browser)
   const TG_TOKEN = process.env.TG_BOT_TOKEN;
   const TG_CHAT = process.env.TG_CHAT_ID;
   const W3F_KEY = process.env.WEB3FORMS_KEY;
 
   const results = { telegram: false, email: false };
 
-  // 1. Send Telegram notification
+  // 1. Telegram notification
   if (TG_TOKEN && TG_CHAT) {
     const gmailLink = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(email)}&su=${encodeURIComponent('Re: Anfrage von ' + name + ' — BJL Studios')}&body=${encodeURIComponent('Hallo ' + name + ',\n\nvielen Dank für eure Anfrage!\n\n')}`;
+    const cleanPhone = (phone || '').replace(/[^0-9+]/g, '');
+    const waLink = cleanPhone ? `https://wa.me/${cleanPhone.replace(/^\+/, '')}` : '';
 
-    const tgText =
+    // Build contact method label + reply link
+    let methodLabel = '🤷 Egal';
+    let replySection = `📩 [Per Gmail antworten](${gmailLink})\n📧 [Per E-Mail antworten](mailto:${email}?subject=Re:+Anfrage+BJL+Studios)`;
+
+    if (contact_method === 'whatsapp' && waLink) {
+      methodLabel = '📱 WhatsApp';
+      replySection = `📱 [Per WhatsApp antworten](${waLink})\n📩 [Per Gmail antworten](${gmailLink})`;
+    } else if (contact_method === 'email') {
+      methodLabel = '📧 E-Mail';
+      replySection = `📩 [Per Gmail antworten](${gmailLink})\n📧 [Per E-Mail antworten](mailto:${email}?subject=Re:+Anfrage+BJL+Studios)`;
+    }
+
+    let tgText =
       `🔔 *Neue Anfrage über bjl-studios.de*\n\n` +
-      `👤 *Name:* ${name}\n` +
-      `📧 *E-Mail:* ${email}\n` +
+      `👤 *Name:* ${name}\n`;
+    if (company) tgText += `🏢 *Firma:* ${company}\n`;
+    tgText += `📧 *E-Mail:* ${email}\n`;
+    if (phone) tgText += `📞 *Telefon:* ${phone}\n`;
+    tgText +=
       `🛠 *Service:* ${service}\n` +
-      `💬 *Nachricht:*\n${message}\n\n` +
+      `💬 *Kontaktweg:* ${methodLabel}\n\n` +
+      `*Nachricht:*\n${message}\n\n` +
       `━━━━━━━━━━━━━━━\n` +
-      `📩 [Per Gmail antworten](${gmailLink})\n` +
-      `📞 [Per E-Mail antworten](mailto:${email}?subject=Re:+Anfrage+BJL+Studios)`;
+      replySection;
 
     try {
       const tgRes = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
@@ -54,7 +67,7 @@ export default async function handler(req, res) {
     }
   }
 
-  // 2. Send email via Web3Forms
+  // 2. Email via Web3Forms
   if (W3F_KEY) {
     try {
       const w3Res = await fetch('https://api.web3forms.com/submit', {
@@ -62,10 +75,13 @@ export default async function handler(req, res) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: W3F_KEY,
-          subject: `Neue Anfrage: ${service} — ${name}`,
+          subject: `Neue Anfrage: ${service} — ${name}${company ? ' (' + company + ')' : ''}`,
           from_name: 'BJL Studios Website',
           name,
+          company: company || '-',
           email,
+          phone: phone || '-',
+          contact_method: contact_method || 'egal',
           service,
           message,
         }),
@@ -77,7 +93,6 @@ export default async function handler(req, res) {
     }
   }
 
-  // Success if at least one channel worked
   if (results.telegram || results.email) {
     return res.status(200).json({ success: true, results });
   }

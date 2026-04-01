@@ -916,13 +916,29 @@
       <!-- LEFT: Contact Form -->
       <div class="lg:w-3/5">
         <form id="contactForm" class="border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
-          <!-- Honeypot spam protection -->
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
+          <!-- Row 1: Name + Firma -->
           <div class="flex flex-col sm:flex-row gap-4 mb-4">
-            <input type="text" name="name" placeholder="Name" required class="input-flat flex-1" data-i="cf-name">
-            <input type="email" name="email" placeholder="E-Mail" required class="input-flat flex-1" data-i="cf-email">
+            <input type="text" name="name" placeholder="Name *" required class="input-flat flex-1" data-i="cf-name">
+            <input type="text" name="company" placeholder="Firma (optional)" class="input-flat flex-1" data-i="cf-company">
           </div>
+          <!-- Row 2: E-Mail + Telefon -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <input type="email" name="email" placeholder="E-Mail *" required class="input-flat flex-1" data-i="cf-email">
+            <input type="tel" name="phone" id="cfPhone" placeholder="Telefon / WhatsApp" class="input-flat flex-1" data-i="cf-phone">
+          </div>
+          <!-- Kontaktweg Pills -->
+          <div class="mb-4">
+            <p class="text-xs text-muted mb-2" data-i="cf-prefer">Wie wollt ihr kontaktiert werden?</p>
+            <div class="flex gap-2 flex-wrap">
+              <button type="button" class="contact-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="whatsapp" onclick="pickContact(this)">📱 WhatsApp</button>
+              <button type="button" class="contact-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="email" onclick="pickContact(this)">📧 E-Mail</button>
+              <button type="button" class="contact-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all active" data-val="egal" onclick="pickContact(this)" style="border-color:#60A5FA;color:#60A5FA;">🤷 Egal</button>
+            </div>
+            <input type="hidden" name="contact_method" id="cfMethod" value="egal">
+          </div>
+          <!-- Service -->
           <select name="service" required class="input-flat mb-4 w-full" style="color:#555;">
             <option value="" disabled selected data-i="cf-service">Welcher Service?</option>
             <option value="Webdesign" data-i="cf-opt1">Webdesign & Entwicklung</option>
@@ -932,21 +948,20 @@
             <option value="Video" data-i="cf-opt5">Imagefilm & Video</option>
             <option value="Komplett" data-i="cf-opt6">Komplett-Paket</option>
           </select>
+          <!-- Nachricht -->
           <textarea name="message" placeholder="Erzählt uns kurz von eurem Projekt..." required class="input-flat mb-6 w-full" rows="4" style="resize:vertical;min-height:80px;" data-i="cf-msg"></textarea>
 
           <button type="submit" id="contactSubmit" class="mag w-full bg-white text-black py-4 rounded-full font-semibold text-sm hover:bg-accent hover:text-white transition-all duration-300">
             <span id="submitText" data-i="cf-send">Anfrage absenden →</span>
-            <span id="submitLoading" class="hidden">Wird gesendet...</span>
+            <span id="submitLoading" class="hidden" data-i="cf-loading">Wird gesendet...</span>
           </button>
           <p class="text-xs text-center mt-3" style="color:#444;" data-i="cf-note">Kostenlos & unverbindlich. Keine Spam-Mails, versprochen.</p>
 
-          <!-- Success message (hidden by default) -->
           <div id="formSuccess" class="hidden mt-6 text-center p-6 border border-green-500/20 rounded-xl bg-green-500/5">
             <svg class="w-8 h-8 text-green-400 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             <p class="text-white font-semibold mb-1" data-i="cf-ok">Danke für eure Anfrage!</p>
             <p class="text-muted text-sm" data-i="cf-ok2">Wir melden uns innerhalb von 24 Stunden.</p>
           </div>
-          <!-- Error message -->
           <div id="formError" class="hidden mt-6 text-center p-4 border border-red-500/20 rounded-xl bg-red-500/5">
             <p class="text-red-400 text-sm" data-i="cf-err">Etwas ist schiefgelaufen. Schreibt uns direkt per WhatsApp oder E-Mail.</p>
           </div>
@@ -1174,7 +1189,9 @@ const T={
   'contact-hours':{de:'Mönchengladbach · Mo–Fr, 9–18 Uhr',en:'Mönchengladbach · Mon–Fri, 9am–6pm'},
   'contact-desc':{de:'Beschreibt euer Projekt — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.',en:'Describe your project — we\'ll get back to you within 24 hours with a non-binding quote.'},
   // Form fields
-  'cf-name':{de:'Name',en:'Name'},'cf-email':{de:'E-Mail',en:'Email'},
+  'cf-name':{de:'Name *',en:'Name *'},'cf-company':{de:'Firma (optional)',en:'Company (optional)'},
+  'cf-email':{de:'E-Mail *',en:'Email *'},'cf-phone':{de:'Telefon / WhatsApp',en:'Phone / WhatsApp'},
+  'cf-prefer':{de:'Wie wollt ihr kontaktiert werden?',en:'How would you like to be contacted?'},
   'cf-service':{de:'Welcher Service?',en:'Which service?'},
   'cf-opt1':{de:'Webdesign & Entwicklung',en:'Web Design & Development'},
   'cf-opt2':{de:'SEO & Online Marketing',en:'SEO & Online Marketing'},
@@ -1263,17 +1280,42 @@ function rh(){
   el.innerHTML=makeSet()+makeSet()+makeSet()+makeSet();
 })();
 
+// ===== CONTACT PILL BUTTONS =====
+function pickContact(btn){
+  document.querySelectorAll('.contact-pill').forEach(p=>{
+    p.style.borderColor='';p.style.color='';
+  });
+  btn.style.borderColor='#60A5FA';btn.style.color='#60A5FA';
+  document.getElementById('cfMethod').value=btn.dataset.val;
+  const phone=document.getElementById('cfPhone');
+  if(btn.dataset.val==='whatsapp'){
+    phone.required=true;
+    phone.style.borderColor='#60A5FA';
+    phone.placeholder=document.documentElement.lang==='en'?'Phone / WhatsApp *':'Telefon / WhatsApp *';
+  } else {
+    phone.required=false;
+    phone.style.borderColor='';
+    phone.placeholder=document.documentElement.lang==='en'?'Phone / WhatsApp':'Telefon / WhatsApp';
+  }
+}
+
 // ===== CONTACT FORM (via Vercel serverless — no tokens exposed) =====
 const cForm=document.getElementById('contactForm');
 if(cForm){
   cForm.addEventListener('submit',async(e)=>{
     e.preventDefault();
+    // Validate: if WhatsApp selected, phone required
+    const method=document.getElementById('cfMethod').value;
+    const phone=document.getElementById('cfPhone');
+    if(method==='whatsapp'&&!phone.value.trim()){
+      phone.focus();phone.style.borderColor='#ef4444';
+      return;
+    }
     const btn=document.getElementById('contactSubmit');
     const txt=document.getElementById('submitText');
     const load=document.getElementById('submitLoading');
     const ok=document.getElementById('formSuccess');
     const err=document.getElementById('formError');
-    // Show loading
     txt.classList.add('hidden');load.classList.remove('hidden');
     btn.disabled=true;btn.style.opacity='0.6';
     ok.classList.add('hidden');err.classList.add('hidden');
@@ -1283,7 +1325,10 @@ if(cForm){
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
           name:cForm.name.value,
+          company:cForm.company.value||'',
           email:cForm.email.value,
+          phone:cForm.phone.value||'',
+          contact_method:method,
           service:cForm.service.value,
           message:cForm.message.value
         })
@@ -1292,6 +1337,11 @@ if(cForm){
       if(data.success){
         ok.classList.remove('hidden');
         cForm.reset();
+        // Reset pills
+        document.querySelectorAll('.contact-pill').forEach(p=>{p.style.borderColor='';p.style.color='';});
+        document.querySelector('.contact-pill[data-val="egal"]').style.borderColor='#60A5FA';
+        document.querySelector('.contact-pill[data-val="egal"]').style.color='#60A5FA';
+        document.getElementById('cfMethod').value='egal';
       } else {
         err.classList.remove('hidden');
       }
