@@ -916,10 +916,6 @@
       <!-- LEFT: Contact Form -->
       <div class="lg:w-3/5">
         <form id="contactForm" class="border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
-          <!-- Web3Forms access key — REPLACE with your key from https://web3forms.com -->
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-          <input type="hidden" name="subject" value="Neue Anfrage über bjl-studios.de">
-          <input type="hidden" name="from_name" value="BJL Studios Website">
           <!-- Honeypot spam protection -->
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
@@ -1267,38 +1263,7 @@ function rh(){
   el.innerHTML=makeSet()+makeSet()+makeSet()+makeSet();
 })();
 
-// ===== CONTACT FORM (Web3Forms + Telegram) =====
-// SETUP: Replace these with your actual keys
-const TG_BOT_TOKEN='8754878353:AAGIZf_Gk3t3tZCdH4BNNjTw0JDbNnS0j5M';
-const TG_CHAT_ID='-5223673043';
-
-async function sendTelegram(formData){
-  if(TG_BOT_TOKEN==='YOUR_TELEGRAM_BOT_TOKEN') return; // skip if not configured
-  const name=formData.get('name')||'';
-  const email=formData.get('email')||'';
-  const service=formData.get('service')||'';
-  const msg=formData.get('message')||'';
-  // Build reply links
-  const gmailReply='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(email)+'&su='+encodeURIComponent('Re: Anfrage von '+name+' — BJL Studios')+'&body='+encodeURIComponent('Hallo '+name+',\n\nvielen Dank für eure Anfrage!\n\n');
-  const waReply='https://wa.me/'+email.replace(/[^0-9+]/g,''); // only works if email is a phone number
-  const text=
-    '🔔 *Neue Anfrage über bjl-studios.de*\n\n'+
-    '👤 *Name:* '+name+'\n'+
-    '📧 *E-Mail:* '+email+'\n'+
-    '🛠 *Service:* '+service+'\n'+
-    '💬 *Nachricht:*\n'+msg+'\n\n'+
-    '━━━━━━━━━━━━━━━\n'+
-    '📩 [Per Gmail antworten]('+gmailReply+')\n'+
-    '📞 [Per E-Mail antworten](mailto:'+email+'?subject=Re:+Anfrage+BJL+Studios)';
-  try{
-    await fetch('https://api.telegram.org/bot'+TG_BOT_TOKEN+'/sendMessage',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:TG_CHAT_ID,text:text,parse_mode:'Markdown',disable_web_page_preview:true})
-    });
-  }catch(ex){/* silent fail — email is the primary channel */}
-}
-
+// ===== CONTACT FORM (via Vercel serverless — no tokens exposed) =====
 const cForm=document.getElementById('contactForm');
 if(cForm){
   cForm.addEventListener('submit',async(e)=>{
@@ -1308,21 +1273,21 @@ if(cForm){
     const load=document.getElementById('submitLoading');
     const ok=document.getElementById('formSuccess');
     const err=document.getElementById('formError');
-    const formData=new FormData(cForm);
     // Show loading
     txt.classList.add('hidden');load.classList.remove('hidden');
     btn.disabled=true;btn.style.opacity='0.6';
     ok.classList.add('hidden');err.classList.add('hidden');
     try{
-      // Send email via Web3Forms + Telegram notification in parallel
-      const [res]=await Promise.all([
-        fetch('https://api.web3forms.com/submit',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify(Object.fromEntries(formData))
-        }),
-        sendTelegram(formData)
-      ]);
+      const res=await fetch('/api/contact',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          name:cForm.name.value,
+          email:cForm.email.value,
+          service:cForm.service.value,
+          message:cForm.message.value
+        })
+      });
       const data=await res.json();
       if(data.success){
         ok.classList.remove('hidden');
