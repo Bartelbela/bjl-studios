@@ -1323,7 +1323,12 @@ if(cForm){
 
     const n=cForm.name.value,c=cForm.company.value,em=cForm.email.value,
           ph=cForm.phone.value,s=cForm.service.value,m=cForm.message.value;
-    const cleanPh=(ph||'').replace(/[^0-9]/g,'');
+    // Normalize phone for wa.me: strip formatting, convert 0xxx→49xxx
+    let cleanPh=(ph||'').replace(/[\s\-\/\(\)\.]/g,'');
+    if(cleanPh.startsWith('+'))cleanPh=cleanPh.substring(1);
+    if(cleanPh.startsWith('00'))cleanPh=cleanPh.substring(2);
+    if(cleanPh.startsWith('0'))cleanPh='49'+cleanPh.substring(1);
+    cleanPh=cleanPh.replace(/[^0-9]/g,'');
     const gmail='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(em)+'&su='+encodeURIComponent('Re: Anfrage von '+n+' — BJL Studios')+'&body='+encodeURIComponent('Hallo '+n+',\n\nvielen Dank für eure Anfrage!\n\n');
     const waLink=cleanPh?'https://wa.me/'+cleanPh:'';
 
