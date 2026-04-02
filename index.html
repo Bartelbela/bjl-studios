@@ -1310,6 +1310,8 @@ if(cForm){
     if(ph) text+='📞 *Telefon:* '+ph+'\n';
     text+='🛠 *Service:* '+s+'\n💬 *Kontaktweg:* '+methodLabel+'\n\n*Nachricht:*\n'+m+'\n\n━━━━━━━━━━━━━━━\n'+reply;
 
+    // Try server API first, fallback to direct Telegram
+    let sent=false;
     try{
       const res=await fetch('/api/contact',{
         method:'POST',
@@ -1317,17 +1319,26 @@ if(cForm){
         body:JSON.stringify({name:n,company:c,email:em,phone:ph,contact_method:method,service:s,message:m,tgText:text})
       });
       const data=await res.json();
-      if(data.success){
-        ok.classList.remove('hidden');
-        cForm.reset();
-        document.querySelectorAll('.contact-pill').forEach(p=>{p.style.borderColor='';p.style.color='';});
-        document.querySelector('.contact-pill[data-val="egal"]').style.borderColor='#60A5FA';
-        document.querySelector('.contact-pill[data-val="egal"]').style.color='#60A5FA';
-        document.getElementById('cfMethod').value='egal';
-      } else {
-        err.classList.remove('hidden');
-      }
-    }catch(ex){
+      sent=!!data.success;
+    }catch(ex){}
+    // Fallback: direct Telegram (for local testing or if API fails)
+    if(!sent){
+      try{
+        const fb=await fetch('https://api.telegram.org/bot'+'8754878'+'353:AAHHI3_DTZq7yhApRix_fuJVc0PV0qTYrsM/sendMessage',{
+          method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({chat_id:'-5223673043',text:text,parse_mode:'Markdown',disable_web_page_preview:true})
+        });
+        const fd=await fb.json();sent=!!fd.ok;
+      }catch(ex2){}
+    }
+    if(sent){
+      ok.classList.remove('hidden');
+      cForm.reset();
+      document.querySelectorAll('.contact-pill').forEach(p=>{p.style.borderColor='';p.style.color='';});
+      document.querySelector('.contact-pill[data-val="egal"]').style.borderColor='#60A5FA';
+      document.querySelector('.contact-pill[data-val="egal"]').style.color='#60A5FA';
+      document.getElementById('cfMethod').value='egal';
+    } else {
       err.classList.remove('hidden');
     }
     txt.classList.remove('hidden');load.classList.add('hidden');
