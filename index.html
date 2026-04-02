@@ -935,16 +935,51 @@
             </div>
             <input type="hidden" name="contact_method" id="cfMethod" value="egal">
           </div>
-          <!-- Service -->
-          <!-- Service multi-select pills -->
+          <!-- Service multi-select pills with tier sub-options -->
           <div class="mb-4">
             <p class="text-xs text-muted mb-2" data-i="cf-service">Welcher Service? (Mehrfachauswahl)</p>
-            <div class="flex gap-2 flex-wrap" id="servicePills">
-              <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Webdesign" onclick="toggleSvc(this)" data-i="cf-opt1">Webdesign</button>
-              <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="SEO" onclick="toggleSvc(this)" data-i="cf-opt2">SEO</button>
-              <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Social Media" onclick="toggleSvc(this)" data-i="cf-opt3">Social Media</button>
-              <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Branding" onclick="toggleSvc(this)" data-i="cf-opt4">Branding</button>
-              <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Video" onclick="toggleSvc(this)" data-i="cf-opt5">Video</button>
+            <div class="space-y-2" id="servicePills">
+              <!-- Webdesign -->
+              <div class="svc-group">
+                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Webdesign" onclick="toggleSvc(this)" data-i="cf-opt1">Webdesign</button>
+                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Webdesign">
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Starter" onclick="toggleTier(this)">Starter</button>
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Business" onclick="toggleTier(this)">Business</button>
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Pro" onclick="toggleTier(this)">Pro</button>
+                </div>
+              </div>
+              <!-- SEO -->
+              <div class="svc-group">
+                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="SEO" onclick="toggleSvc(this)" data-i="cf-opt2">SEO</button>
+                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="SEO">
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Basics" onclick="toggleTier(this)">Basics</button>
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Growth" onclick="toggleTier(this)">Growth</button>
+                </div>
+              </div>
+              <!-- Social Media -->
+              <div class="svc-group">
+                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Social Media" onclick="toggleSvc(this)" data-i="cf-opt3">Social Media</button>
+                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Social Media">
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Starter" onclick="toggleTier(this)">Starter</button>
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Growth" onclick="toggleTier(this)">Growth</button>
+                </div>
+              </div>
+              <!-- Branding -->
+              <div class="svc-group">
+                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Branding" onclick="toggleSvc(this)" data-i="cf-opt4">Branding</button>
+                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Branding">
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Basic" onclick="toggleTier(this)">Basic</button>
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Brand-Paket" onclick="toggleTier(this)">Brand-Paket</button>
+                </div>
+              </div>
+              <!-- Video -->
+              <div class="svc-group">
+                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Video" onclick="toggleSvc(this)" data-i="cf-opt5">Video</button>
+                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Video">
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Mini" onclick="toggleTier(this)">Mini</button>
+                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Standard" onclick="toggleTier(this)">Standard</button>
+                </div>
+              </div>
             </div>
             <input type="hidden" name="service" id="cfServices" value="">
           </div>
@@ -1287,13 +1322,42 @@ function rh(){
 // ===== SERVICE MULTI-SELECT PILLS =====
 function toggleSvc(btn){
   btn.classList.toggle('active');
+  const svc=btn.dataset.val;
+  const tierWrap=document.querySelector('[data-tiers-for="'+svc+'"]');
   if(btn.classList.contains('active')){
     btn.style.borderColor='#60A5FA';btn.style.color='#60A5FA';btn.style.background='rgba(96,165,250,.08)';
+    if(tierWrap) tierWrap.classList.remove('hidden');
   } else {
     btn.style.borderColor='';btn.style.color='';btn.style.background='';
+    // Hide and reset tier pills
+    if(tierWrap){
+      tierWrap.classList.add('hidden');
+      tierWrap.querySelectorAll('.tier-pill').forEach(t=>{
+        t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';
+      });
+    }
   }
-  const selected=Array.from(document.querySelectorAll('.svc-pill.active')).map(p=>p.dataset.val);
-  document.getElementById('cfServices').value=selected.join(', ');
+  updateSvcValue();
+}
+function toggleTier(btn){
+  // Only one tier per service group
+  const wrap=btn.closest('.tier-pills');
+  wrap.querySelectorAll('.tier-pill').forEach(t=>{
+    t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';
+  });
+  btn.classList.add('active');
+  btn.style.borderColor='#60A5FA';btn.style.color='#60A5FA';btn.style.background='rgba(96,165,250,.06)';
+  updateSvcValue();
+}
+function updateSvcValue(){
+  const parts=[];
+  document.querySelectorAll('.svc-pill.active').forEach(p=>{
+    const svc=p.dataset.val;
+    const tierWrap=document.querySelector('[data-tiers-for="'+svc+'"]');
+    const activeTier=tierWrap?tierWrap.querySelector('.tier-pill.active'):null;
+    parts.push(activeTier?svc+' ('+activeTier.dataset.tier+')':svc);
+  });
+  document.getElementById('cfServices').value=parts.join(', ');
 }
 
 // ===== CONTACT PILL BUTTONS =====
@@ -1395,6 +1459,10 @@ if(cForm){
       document.querySelector('.contact-pill[data-val="egal"]').style.borderColor='#60A5FA';
       document.querySelector('.contact-pill[data-val="egal"]').style.color='#60A5FA';
       document.getElementById('cfMethod').value='egal';
+      // Reset service + tier pills
+      document.querySelectorAll('.svc-pill').forEach(p=>{p.classList.remove('active');p.style.borderColor='';p.style.color='';p.style.background='';});
+      document.querySelectorAll('.tier-pills').forEach(w=>{w.classList.add('hidden');w.querySelectorAll('.tier-pill').forEach(t=>{t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';});});
+      document.getElementById('cfServices').value='';
     } else {
       err.classList.remove('hidden');
     }
