@@ -109,6 +109,10 @@
     .rr.v { opacity:1; transform:translateX(0); }
     .rw { clip-path:inset(0 100% 0 0); transition:clip-path .6s cubic-bezier(.77,0,.175,1); }
     .rw.v { clip-path:inset(0 0% 0 0); }
+    .rb { opacity:0; filter:blur(8px); transform:translateY(16px); transition:opacity .6s ease, filter .6s ease, transform .6s cubic-bezier(.16,1,.3,1); }
+    .rb.v { opacity:1; filter:blur(0px); transform:translateY(0); }
+    .ri { opacity:0; transform:translateY(12px); transition:opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1); }
+    .ri.v { opacity:1; transform:translateY(0); }
 
     /* ========== SERVICE ROW ========== */
     .svc { transition: background .3s ease; cursor: pointer; }
@@ -370,7 +374,7 @@
     </div>
 
     <div class="space-y-0">
-      <div class="svc border-t border-border" data-expandable>
+      <div class="ri svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
             <span class="text-5xl md:text-6xl font-black text-border select-none" style="color:#1a1a1a;">01</span>
@@ -389,7 +393,7 @@
         </div>
       </div>
 
-      <div class="svc border-t border-border" data-expandable>
+      <div class="ri svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
             <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">02</span>
@@ -408,7 +412,7 @@
         </div>
       </div>
 
-      <div class="svc border-t border-border" data-expandable>
+      <div class="ri svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
             <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">03</span>
@@ -427,7 +431,7 @@
         </div>
       </div>
 
-      <div class="svc border-t border-border" data-expandable>
+      <div class="ri svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
             <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">04</span>
@@ -446,7 +450,7 @@
         </div>
       </div>
 
-      <div class="svc border-t border-b border-border" data-expandable>
+      <div class="ri svc border-t border-b border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
             <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">05</span>
@@ -490,7 +494,7 @@
       </div>
 
       <!-- Row 1: Webdesign -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+      <div class="ri grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
         <div class="col-span-5">
           <p class="text-white font-semibold text-lg" data-i="p1-t">Webdesign & Entwicklung</p>
           <p class="text-muted text-sm mt-1" data-i="p1-s">Individuelle Website nach eurem Briefing</p>
@@ -509,7 +513,7 @@
       </div>
 
       <!-- Row 2: SEO -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+      <div class="ri grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
         <div class="col-span-5">
           <p class="text-white font-semibold text-lg" data-i="p2-t">SEO & Online Marketing</p>
           <p class="text-muted text-sm mt-1" data-i="p2-s">Sichtbarkeit bei Google, lokal und überregional</p>
@@ -527,7 +531,7 @@
       </div>
 
       <!-- Row 3: Social Media -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+      <div class="ri grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
         <div class="col-span-5">
           <p class="text-white font-semibold text-lg" data-i="p3-t">Social Media</p>
           <p class="text-muted text-sm mt-1" data-i="p3-s">Content, Posting, Reels & Community</p>
@@ -545,7 +549,7 @@
       </div>
 
       <!-- Row 4: Branding -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+      <div class="ri grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
         <div class="col-span-5">
           <p class="text-white font-semibold text-lg" data-i="p4-t">Logo & Branding</p>
           <p class="text-muted text-sm mt-1" data-i="p4-s">Visuelles Erscheinungsbild komplett</p>
@@ -563,7 +567,7 @@
       </div>
 
       <!-- Row 5: Video -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+      <div class="ri grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 sm:py-6" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
         <div class="col-span-5">
           <p class="text-white font-semibold text-lg" data-i="p5-t">Imagefilm & Video</p>
           <p class="text-muted text-sm mt-1" data-i="p5-s">Konzept, Dreh, Schnitt & Postproduction</p>
@@ -598,7 +602,7 @@
     </div>
 
     <div class="space-y-0">
-      <div class="border-t border-border" data-faq>
+      <div class="ri border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq1-q">Was kostet eine Website bei euch?</span>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
@@ -608,7 +612,7 @@
         </div>
       </div>
 
-      <div class="border-t border-border" data-faq>
+      <div class="ri border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
@@ -618,7 +622,7 @@
         </div>
       </div>
 
-      <div class="border-t border-border" data-faq>
+      <div class="ri border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq3-q">Brauche ich wirklich SEO?</span>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
@@ -628,7 +632,7 @@
         </div>
       </div>
 
-      <div class="border-t border-border" data-faq>
+      <div class="ri border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
@@ -638,7 +642,7 @@
         </div>
       </div>
 
-      <div class="border-t border-border" data-faq>
+      <div class="ri border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
@@ -648,7 +652,7 @@
         </div>
       </div>
 
-      <div class="border-t border-b border-border" data-faq>
+      <div class="ri border-t border-b border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq6-q">Was passiert nach dem Launch?</span>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
@@ -676,7 +680,7 @@
       <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px"></div>
 
       <!-- Step 1 — left -->
-      <div class="relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
+      <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#111;">01</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc1-t">Kennenlernen</h3>
@@ -687,7 +691,7 @@
       </div>
 
       <!-- Step 2 — right -->
-      <div class="relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
+      <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16"></div>
         <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
@@ -698,7 +702,7 @@
       </div>
 
       <!-- Step 3 — left -->
-      <div class="relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
+      <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#111;">03</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc3-t">Umsetzung</h3>
@@ -709,7 +713,7 @@
       </div>
 
       <!-- Step 4 — right -->
-      <div class="relative flex flex-col md:flex-row items-start">
+      <div class="rb relative flex flex-col md:flex-row items-start">
         <div class="md:w-1/2 md:pr-16"></div>
         <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
@@ -801,15 +805,15 @@
     <div class="text-center">
       <p class="text-xs uppercase tracking-widest mb-4" style="color:#bbb;letter-spacing:3px;" data-i="tools-label">Unsere Tools</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Figma</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">HTML / CSS</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">JavaScript</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Tailwind CSS</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Google Ads</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">SEO Tools</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Instagram</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Premiere Pro</span>
-        <span class="text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">After Effects</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Figma</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">HTML / CSS</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">JavaScript</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Tailwind CSS</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Google Ads</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">SEO Tools</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Instagram</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Premiere Pro</span>
+        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">After Effects</span>
       </div>
     </div>
   </div>
@@ -824,7 +828,7 @@
       <p class="text-muted text-base max-w-2xl mx-auto leading-relaxed" data-i="ref-desc">Ja, wir sind neu. Aber jede Agentur hat irgendwann angefangen. Diese Website ist der Beweis, dass wir unser Handwerk verstehen.</p>
     </div>
 
-    <div class="border border-border rounded-2xl overflow-hidden bg-surface">
+    <div class="rb border border-border rounded-2xl overflow-hidden bg-surface">
       <div class="p-8 md:p-12">
         <div class="flex flex-col md:flex-row gap-10 items-start">
           <!-- Left: project details -->
@@ -843,19 +847,19 @@
           <!-- Right: metrics -->
           <div class="md:w-1/2">
             <div class="grid grid-cols-2 gap-6">
-              <div class="border border-border rounded-xl p-5 bg-dark">
+              <div class="ri border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">&lt;1s</p>
                 <p class="text-xs text-muted" data-i="ref-m1">Ladezeit</p>
               </div>
-              <div class="border border-border rounded-xl p-5 bg-dark">
+              <div class="ri border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">100%</p>
                 <p class="text-xs text-muted" data-i="ref-m2">Responsive</p>
               </div>
-              <div class="border border-border rounded-xl p-5 bg-dark">
+              <div class="ri border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">0</p>
                 <p class="text-xs text-muted" data-i="ref-m3">Frameworks</p>
               </div>
-              <div class="border border-border rounded-xl p-5 bg-dark">
+              <div class="ri border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">SEO</p>
                 <p class="text-xs text-muted" data-i="ref-m4">Optimiert</p>
               </div>
@@ -884,7 +888,7 @@
     <div class="flex flex-col lg:flex-row gap-12">
       <!-- LEFT: Contact Form -->
       <div class="lg:w-3/5">
-        <form id="contactForm" class="border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
+        <form id="contactForm" class="rb border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
           <!-- Row 1: Name + Firma -->
@@ -939,7 +943,7 @@
 
       <!-- RIGHT: Direct contact options -->
       <div class="lg:w-2/5 flex flex-col gap-4">
-        <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="ri contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </div>
@@ -948,7 +952,7 @@
             <p class="text-muted text-xs" data-i="contact-wa-s">Direkt chatten</p>
           </div>
         </a>
-        <a href="mailto:info@bjl-studios.de" class="contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="mailto:info@bjl-studios.de" class="ri contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
           </div>
@@ -957,7 +961,7 @@
             <p class="text-muted text-xs">info@bjl-studios.de</p>
           </div>
         </a>
-        <a href="tel:+4917681163100" class="contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="tel:+4917681163100" class="ri contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
           </div>
@@ -1408,12 +1412,13 @@ document.querySelectorAll('[data-expandable]').forEach(r=>{
 });
 
 // ===== SCROLL REVEAL =====
-const re=document.querySelectorAll('.ru,.rs,.rl,.rr,.rw');
+const RC=['ru','rs','rl','rr','rw','rb','ri'];
+const re=document.querySelectorAll('.'+RC.join(',.'));
 const io=new IntersectionObserver(en=>{
   en.forEach(e=>{
     if(e.isIntersecting){
       const p=e.target.parentElement;
-      const s=Array.from(p.children).filter(c=>c.classList.contains('ru')||c.classList.contains('rs')||c.classList.contains('rl')||c.classList.contains('rr')||c.classList.contains('rw'));
+      const s=Array.from(p.children).filter(c=>RC.some(r=>c.classList.contains(r)));
       const i=s.indexOf(e.target);
       setTimeout(()=>e.target.classList.add('v'),Math.max(0,i)*80);
       io.unobserve(e.target);
