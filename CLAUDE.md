@@ -40,6 +40,7 @@ When given a screenshot or design reference:
 - No heavy JS frameworks
 - After every change: confirm what was changed
 - Never start building without a design reference from Béla
+- After completing all changes: commit and push to GitHub automatically
 
 ## Agents
 - designer: Use for layout, animations and visual details

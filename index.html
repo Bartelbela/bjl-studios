@@ -338,7 +338,8 @@
         <span class="word" data-i="hero-w3">Lokal</span> <span class="word" data-i="hero-w4">wachsen.</span>
       </span>
     </h1>
-    <p class="hfade text-lg md:text-xl mb-14 max-w-2xl mx-auto leading-relaxed" id="hs" style="color:#555;" data-i="hero-sub">Webdesign, SEO, Social Media, Branding & Video — alles aus einer Hand, direkt aus Mönchengladbach.</p>
+    <p class="hfade text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed" id="hs" style="color:#555;" data-i="hero-sub">Webdesign, SEO, Social Media, Branding & Video — alles aus einer Hand, direkt aus Mönchengladbach.</p>
+    <p class="hfade text-xs tracking-widest uppercase mb-14" id="hslogan" style="color:#444;letter-spacing:4px;" data-i="hero-slogan">Branding. Journey. Logic. — Wir denken digitales zu Ende.</p>
     <div class="hfade flex flex-col sm:flex-row gap-4 justify-center" id="hc">
       <a href="#kontakt" class="mag bg-white text-black px-10 py-4 rounded-full font-semibold hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-sm" data-i="hero-cta1">Kostenloses Erstgespräch</a>
       <a href="#leistungen" class="mag border border-white/20 text-white/70 px-10 py-4 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 text-sm" data-i="hero-cta2">Was wir machen ↓</a>
@@ -883,10 +884,14 @@
         <form id="contactForm" class="rb border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
-          <!-- Row 1: Name + Firma -->
+          <!-- Row 1: Vorname + Nachname -->
           <div class="flex flex-col sm:flex-row gap-4 mb-4">
-            <input type="text" name="name" placeholder="Name *" required class="input-flat flex-1" data-i="cf-name">
-            <input type="text" name="company" placeholder="Firma (optional)" class="input-flat flex-1" data-i="cf-company">
+            <input type="text" name="vorname" placeholder="Vorname *" required class="input-flat flex-1" data-i="cf-vorname">
+            <input type="text" name="nachname" placeholder="Nachname *" required class="input-flat flex-1" data-i="cf-nachname">
+          </div>
+          <!-- Row 2: Firma -->
+          <div class="mb-4">
+            <input type="text" name="company" placeholder="Firma (optional)" class="input-flat" data-i="cf-company">
           </div>
           <!-- Row 2: E-Mail + Telefon -->
           <div class="flex flex-col sm:flex-row gap-4 mb-4">
@@ -1042,6 +1047,7 @@ const T={
   'hero-w3':{de:'Lokal',en:'Grow'},
   'hero-w4':{de:'wachsen.',en:'local.'},
   'hero-sub':{de:'Webdesign, SEO, Social Media, Branding & Video — alles aus einer Hand, direkt aus Mönchengladbach.',en:'Web design, SEO, social media, branding & video — all from one source, straight from Mönchengladbach.'},
+  'hero-slogan':{de:'Branding. Journey. Logic. — Wir denken digitales zu Ende.',en:'Branding. Journey. Logic. — We think digital to the end.'},
   'hero-cta1':{de:'Kostenloses Erstgespräch',en:'Free Consultation'},
   'hero-cta2':{de:'Was wir machen ↓',en:'What we do ↓'},
   // Tech marquee
@@ -1156,7 +1162,7 @@ const T={
   'contact-hours':{de:'Mönchengladbach · Mo–Fr, 9–18 Uhr',en:'Mönchengladbach · Mon–Fri, 9am–6pm'},
   'contact-desc':{de:'Beschreibt euer Projekt — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.',en:'Describe your project — we\'ll get back to you within 24 hours with a non-binding quote.'},
   // Form fields
-  'cf-name':{de:'Name *',en:'Name *'},'cf-company':{de:'Firma (optional)',en:'Company (optional)'},
+  'cf-vorname':{de:'Vorname *',en:'First name *'},'cf-nachname':{de:'Nachname *',en:'Last name *'},'cf-company':{de:'Firma (optional)',en:'Company (optional)'},
   'cf-email':{de:'E-Mail *',en:'Email *'},'cf-phone':{de:'Telefon / WhatsApp',en:'Phone / WhatsApp'},
   'cf-prefer':{de:'Wie wollt ihr kontaktiert werden?',en:'How would you like to be contacted?'},
   'cf-service':{de:'Welcher Service?',en:'Which service?'},
@@ -1221,7 +1227,8 @@ function rh(){
   const d=w.length*140+200;
   setTimeout(()=>document.getElementById('hl').classList.add('on'),100);
   setTimeout(()=>document.getElementById('hs').classList.add('on'),d);
-  setTimeout(()=>document.getElementById('hc').classList.add('on'),d+150);
+  setTimeout(()=>document.getElementById('hslogan').classList.add('on'),d+120);
+  setTimeout(()=>document.getElementById('hc').classList.add('on'),d+250);
 }
 
 // ===== TECH MARQUEE (seamless loop) =====
@@ -1295,7 +1302,7 @@ if(cForm){
     btn.disabled=true;btn.style.opacity='0.6';
     ok.classList.add('hidden');err.classList.add('hidden');
 
-    const n=cForm.name.value,c=cForm.company.value,em=cForm.email.value,
+    const n=cForm.vorname.value+' '+cForm.nachname.value,c=cForm.company.value,em=cForm.email.value,
           ph=cForm.phone.value,s=document.getElementById('cfServices').value||'Nicht angegeben',m=cForm.message.value;
     // Normalize phone for wa.me: strip formatting, convert 0xxx→49xxx
     let cleanPh=(ph||'').replace(/[\s\-\/\(\)\.]/g,'');
