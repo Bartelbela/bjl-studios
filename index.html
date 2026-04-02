@@ -6,21 +6,20 @@
   <title>BJL Studios — Digitalagentur aus Mönchengladbach</title>
   <meta name="description" content="Webdesign, SEO, Social Media, Branding und Imagefilme — BJL Studios ist eure Digitalagentur aus Mönchengladbach.">
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="icon" type="image/png" href="assets/logo-bjl.png">
+  <link rel="icon" type="image/jpeg" href="assets/BJL-Studios_Favicon.jpeg">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="BJL Studios — Digitalagentur aus Mönchengladbach">
   <meta property="og:description" content="Webdesign, SEO, Social Media, Branding und Imagefilme — alles aus einer Hand, direkt aus Mönchengladbach.">
   <meta property="og:url" content="https://bjl-studios.de">
-  <meta property="og:image" content="https://bjl-studios.de/assets/logo-bjl.png">
+  <meta property="og:image" content="https://bjl-studios.de/assets/BJL-Studios_Logo.png">
   <meta property="og:locale" content="de_DE">
   <meta property="og:site_name" content="BJL Studios">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BJL Studios — Digitalagentur aus Mönchengladbach">
   <meta name="twitter:description" content="Webdesign, SEO, Social Media, Branding und Imagefilme — alles aus einer Hand.">
-  <meta name="twitter:image" content="https://bjl-studios.de/assets/logo-bjl.png">
+  <meta name="twitter:image" content="https://bjl-studios.de/assets/BJL-Studios_Logo.png">
   <!-- Theme color -->
   <meta name="theme-color" content="#060606">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -170,54 +169,33 @@
 
     /* ========== SVG LOGO ========== */
     .logo-svg .logo-letter { fill: #fff; transition: fill .3s ease; }
-    .logo-svg .logo-square {
+    .logo-svg .logo-stripe {
       fill: #60A5FA;
-      transition: filter .3s ease, transform .3s ease;
-      transform-origin: center;
+      transition: transform .3s ease, filter .3s ease;
     }
-    .logo-svg .logo-studios { fill: #fff; transition: fill .3s ease; }
-    .logo-svg .logo-sparkle {
-      fill: #fff;
-      transition: transform .4s ease, opacity .3s ease;
-      transform-origin: center;
-    }
-    /* Hover effects */
-    .logo-hover:hover .logo-square {
-      filter: drop-shadow(0 0 8px rgba(96,165,250,0.7));
-      transform: scale(1.15);
-    }
-    .logo-hover:hover .logo-sparkle {
-      transform: rotate(90deg) scale(1.2);
-      opacity: 0.8;
-    }
-    .logo-hover:hover .logo-letter { fill: #d4e4ff; }
+    .logo-svg .logo-studios { fill: #fff; transition: fill .3s ease, opacity .3s ease; }
+    /* Hover: stripes slide + glow */
+    .logo-hover:hover .logo-stripe:nth-child(1) { transform: translateX(-2px) translateY(2px); filter: drop-shadow(0 0 4px rgba(96,165,250,0.6)); }
+    .logo-hover:hover .logo-stripe:nth-child(2) { transform: translateX(0); filter: drop-shadow(0 0 6px rgba(96,165,250,0.5)); }
+    .logo-hover:hover .logo-stripe:nth-child(3) { transform: translateX(2px) translateY(-2px); filter: drop-shadow(0 0 4px rgba(96,165,250,0.6)); }
+    .logo-hover:hover .logo-letter { fill: #e0eaff; }
 
     /* Loader logo animation */
+    .loader-logo .logo-stripe {
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .4s ease, transform .5s cubic-bezier(.16,1,.3,1);
+    }
+    .loader-logo .logo-stripe.on { opacity: 1; transform: translateY(0); }
     .loader-logo .logo-letter {
       opacity: 0; transform: translateY(8px);
       transition: opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1);
     }
     .loader-logo .logo-letter.on { opacity: 1; transform: translateY(0); }
-    .loader-logo .logo-square {
-      opacity: 0; transform: translateY(-12px) scale(0.5);
-      transition: opacity .4s ease, transform .6s cubic-bezier(.34,1.56,.64,1);
-    }
-    .loader-logo .logo-square.on { opacity: 1; transform: translateY(0) scale(1); }
     .loader-logo .logo-studios {
       opacity: 0; clip-path: inset(0 100% 0 0);
       transition: opacity .5s ease, clip-path .6s cubic-bezier(.77,0,.175,1);
     }
     .loader-logo .logo-studios.on { opacity: 1; clip-path: inset(0 0% 0 0); }
-    .loader-logo .logo-sparkle {
-      opacity: 0; transform: rotate(-90deg) scale(0);
-      transition: opacity .4s ease, transform .5s cubic-bezier(.34,1.56,.64,1);
-    }
-    .loader-logo .logo-sparkle.on { opacity: 1; transform: rotate(0deg) scale(1); }
-
-    @keyframes squarePulse {
-      0%,100% { filter: drop-shadow(0 0 0px rgba(96,165,250,0)); }
-      50% { filter: drop-shadow(0 0 12px rgba(96,165,250,0.6)); }
-    }
 
     /* ========== ANIMATED DOCK ========== */
     .dock {
@@ -284,25 +262,17 @@
 
 <!-- Loader -->
 <div id="loader" style="position:fixed;inset:0;z-index:10000;background:#060606;display:flex;align-items:center;justify-content:center;">
-  <svg class="loader-logo" id="loaderLogo" viewBox="0 0 200 90" width="220" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- B — wide, geometric, squared bowls -->
-    <g class="logo-letter" id="ll-b">
-      <path d="M4 12h30c10 0 16 5 16 14 0 6-3 10-8 12 6 2 10 7 10 14 0 10-7 15-18 15H4V12zM18 34h13c5 0 8-3 8-7s-3-7-8-7H18v14zm0 22h14c6 0 9-3 9-7s-3-7-9-7H18v14z" fill="white"/>
+  <svg class="loader-logo" id="loaderLogo" viewBox="0 0 280 70" width="260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 3 diagonal stripes -->
+    <path class="logo-stripe" id="ll-s1" d="M8 55L28 5h8L16 55H8z" fill="#60A5FA"/>
+    <path class="logo-stripe" id="ll-s2" d="M24 55L44 5h8L32 55h-8z" fill="#60A5FA"/>
+    <path class="logo-stripe" id="ll-s3" d="M40 55L60 5h8L48 55h-8z" fill="#60A5FA"/>
+    <!-- BJL text -->
+    <g class="logo-letter" id="ll-bjl">
+      <text x="82" y="44" font-family="Inter,sans-serif" font-size="46" font-weight="800" fill="white">BJL</text>
     </g>
-    <!-- J — narrow vertical bar, short left hook at bottom -->
-    <g class="logo-letter" id="ll-j">
-      <path d="M68 12h13v40c0 8-3 12-10 14-5 2-11 1-15-2l5-10c2 2 5 3 7 2 3-1 4-3 4-7V12z" fill="white"/>
-    </g>
-    <!-- Blue square — on top of J -->
-    <rect class="logo-square" id="ll-sq" x="71" y="0" width="13" height="13" rx="2" fill="#60A5FA"/>
-    <!-- L — wide, geometric -->
-    <g class="logo-letter" id="ll-l">
-      <path d="M96 12h14v43h28v12H96V12z" fill="white"/>
-    </g>
-    <!-- STUDIOS -->
-    <text class="logo-studios" id="ll-st" x="72" y="84" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="400" letter-spacing="7" fill="white">STUDIOS</text>
-    <!-- Sparkle — 4-point star -->
-    <path class="logo-sparkle" id="ll-sp" d="M152 72l1.8-4.5 1.8 4.5 4.5-1.8-4.5 1.8 1.8 4.5-1.8-4.5-4.5 1.8z" fill="white" opacity="0.7"/>
+    <!-- STUDIOS text -->
+    <text class="logo-studios" id="ll-st" x="82" y="62" font-family="Inter,sans-serif" font-size="16" font-weight="300" letter-spacing="6" fill="white">STUDIOS</text>
   </svg>
 </div>
 
@@ -314,13 +284,12 @@
 <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
     <a href="#" class="logo-hover block">
-      <svg class="logo-svg" viewBox="0 0 200 90" width="100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g class="logo-letter"><path d="M4 12h30c10 0 16 5 16 14 0 6-3 10-8 12 6 2 10 7 10 14 0 10-7 15-18 15H4V12zM18 34h13c5 0 8-3 8-7s-3-7-8-7H18v14zm0 22h14c6 0 9-3 9-7s-3-7-9-7H18v14z" fill="white"/></g>
-        <g class="logo-letter"><path d="M68 12h13v40c0 8-3 12-10 14-5 2-11 1-15-2l5-10c2 2 5 3 7 2 3-1 4-3 4-7V12z" fill="white"/></g>
-        <rect class="logo-square" x="71" y="0" width="13" height="13" rx="2" fill="#60A5FA"/>
-        <g class="logo-letter"><path d="M96 12h14v43h28v12H96V12z" fill="white"/></g>
-        <text class="logo-studios" x="72" y="84" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="400" letter-spacing="7" fill="white">STUDIOS</text>
-        <path class="logo-sparkle" d="M152 72l1.8-4.5 1.8 4.5 4.5-1.8-4.5 1.8 1.8 4.5-1.8-4.5-4.5 1.8z" fill="white" opacity="0.7"/>
+      <svg class="logo-svg" viewBox="0 0 280 70" width="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="logo-stripe" d="M8 55L28 5h8L16 55H8z" fill="#60A5FA"/>
+        <path class="logo-stripe" d="M24 55L44 5h8L32 55h-8z" fill="#60A5FA"/>
+        <path class="logo-stripe" d="M40 55L60 5h8L48 55h-8z" fill="#60A5FA"/>
+        <g class="logo-letter"><text x="82" y="44" font-family="Inter,sans-serif" font-size="46" font-weight="800" fill="white">BJL</text></g>
+        <text class="logo-studios" x="82" y="62" font-family="Inter,sans-serif" font-size="16" font-weight="300" letter-spacing="6" fill="white">STUDIOS</text>
       </svg>
     </a>
     <div class="hidden md:flex items-center gap-8">
@@ -1009,13 +978,12 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
       <div>
         <div class="logo-hover">
-          <svg class="logo-svg" viewBox="0 0 200 90" width="80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g class="logo-letter"><path d="M4 12h30c10 0 16 5 16 14 0 6-3 10-8 12 6 2 10 7 10 14 0 10-7 15-18 15H4V12zM18 34h13c5 0 8-3 8-7s-3-7-8-7H18v14zm0 22h14c6 0 9-3 9-7s-3-7-9-7H18v14z" fill="white"/></g>
-            <g class="logo-letter"><path d="M68 12h13v40c0 8-3 12-10 14-5 2-11 1-15-2l5-10c2 2 5 3 7 2 3-1 4-3 4-7V12z" fill="white"/></g>
-            <rect class="logo-square" x="71" y="0" width="13" height="13" rx="2" fill="#60A5FA"/>
-            <g class="logo-letter"><path d="M96 12h14v43h28v12H96V12z" fill="white"/></g>
-            <text class="logo-studios" x="72" y="84" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="400" letter-spacing="7" fill="white">STUDIOS</text>
-            <path class="logo-sparkle" d="M152 72l1.8-4.5 1.8 4.5 4.5-1.8-4.5 1.8 1.8 4.5-1.8-4.5-4.5 1.8z" fill="white" opacity="0.7"/>
+          <svg class="logo-svg" viewBox="0 0 280 70" width="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="logo-stripe" d="M8 55L28 5h8L16 55H8z" fill="#60A5FA"/>
+            <path class="logo-stripe" d="M24 55L44 5h8L32 55h-8z" fill="#60A5FA"/>
+            <path class="logo-stripe" d="M40 55L60 5h8L48 55h-8z" fill="#60A5FA"/>
+            <g class="logo-letter"><text x="82" y="44" font-family="Inter,sans-serif" font-size="46" font-weight="800" fill="white">BJL</text></g>
+            <text class="logo-studios" x="82" y="62" font-family="Inter,sans-serif" font-size="16" font-weight="300" letter-spacing="6" fill="white">STUDIOS</text>
           </svg>
         </div>
         <p class="text-xs mt-1" style="color:#333;" data-i="foot-sub">Digitalagentur · Mönchengladbach</p>
@@ -1231,22 +1199,19 @@ function setLang(lang){
 // ===== LOADER =====
 window.addEventListener('load',()=>{
   const l=document.getElementById('loader');
-  const llb=document.getElementById('ll-b');
-  const llj=document.getElementById('ll-j');
-  const lll=document.getElementById('ll-l');
-  const llsq=document.getElementById('ll-sq');
+  const s1=document.getElementById('ll-s1');
+  const s2=document.getElementById('ll-s2');
+  const s3=document.getElementById('ll-s3');
+  const bjl=document.getElementById('ll-bjl');
   const llst=document.getElementById('ll-st');
-  const llsp=document.getElementById('ll-sp');
-  // Staggered letter reveal
-  setTimeout(()=>llb.classList.add('on'),100);
-  setTimeout(()=>llj.classList.add('on'),250);
-  setTimeout(()=>lll.classList.add('on'),400);
-  // Blue square bounces in
-  setTimeout(()=>llsq.classList.add('on'),500);
+  // Staggered stripes
+  setTimeout(()=>s1.classList.add('on'),100);
+  setTimeout(()=>s2.classList.add('on'),220);
+  setTimeout(()=>s3.classList.add('on'),340);
+  // BJL text
+  setTimeout(()=>bjl.classList.add('on'),450);
   // STUDIOS wipes in
-  setTimeout(()=>llst.classList.add('on'),650);
-  // Sparkle appears last
-  setTimeout(()=>llsp.classList.add('on'),850);
+  setTimeout(()=>llst.classList.add('on'),600);
   // Dismiss loader
   setTimeout(()=>{l.classList.add('out');document.body.style.overflow='';},1500);
   setTimeout(()=>{l.remove();rh();},2000);
