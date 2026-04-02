@@ -1296,12 +1296,18 @@ if(cForm){
     const waLink=cleanPh?'https://wa.me/'+cleanPh:'';
 
     let methodLabel='🤷 Egal';
-    let reply='📩 [Per Gmail antworten]('+gmail+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
+    let reply='';
     if(method==='whatsapp'&&waLink){
       methodLabel='📱 WhatsApp';
       reply='📱 [Per WhatsApp antworten]('+waLink+')\n📩 [Per Gmail antworten]('+gmail+')';
     } else if(method==='email'){
       methodLabel='📧 E-Mail';
+      reply='📩 [Per Gmail antworten]('+gmail+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
+      if(waLink) reply+='\n📱 [Per WhatsApp antworten]('+waLink+')';
+    } else {
+      // Egal: show all available reply options
+      reply='📩 [Per Gmail antworten]('+gmail+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
+      if(waLink) reply+='\n📱 [Per WhatsApp antworten]('+waLink+')';
     }
 
     let text='🔔 *Neue Anfrage über bjl-studios.de*\n\n👤 *Name:* '+n+'\n';
