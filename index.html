@@ -98,21 +98,12 @@
       mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
     }
 
-    /* ========== REVEALS ========== */
-    .ru { opacity:0; transform:translateY(24px); transition:opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1); }
-    .ru.v { opacity:1; transform:translateY(0); }
-    .rs { opacity:0; transform:scale(.95); transition:opacity .4s ease, transform .5s cubic-bezier(.16,1,.3,1); }
-    .rs.v { opacity:1; transform:scale(1); }
-    .rl { opacity:0; transform:translateX(-20px); transition:opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1); }
-    .rl.v { opacity:1; transform:translateX(0); }
-    .rr { opacity:0; transform:translateX(20px); transition:opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1); }
-    .rr.v { opacity:1; transform:translateX(0); }
-    .rw { clip-path:inset(0 100% 0 0); transition:clip-path .6s cubic-bezier(.77,0,.175,1); }
-    .rw.v { clip-path:inset(0 0% 0 0); }
-    .rb { opacity:0; filter:blur(8px); transform:translateY(16px); transition:opacity .6s ease, filter .6s ease, transform .6s cubic-bezier(.16,1,.3,1); }
-    .rb.v { opacity:1; filter:blur(0px); transform:translateY(0); }
-    .ri { opacity:0; transform:translateY(10px); transition:opacity .35s ease, transform .35s cubic-bezier(.16,1,.3,1); }
-    .ri.v { opacity:1; transform:translateY(0); }
+    /* ========== REVEAL (unified, Raycast-style) ========== */
+    .reveal {
+      opacity:0; transform:translateY(20px);
+      transition: opacity 500ms ease-out, transform 500ms ease-out;
+    }
+    .reveal.v { opacity:1; transform:translateY(0); }
 
     /* ========== SERVICE ROW ========== */
     .svc { transition: background .3s ease; cursor: pointer; }
@@ -125,20 +116,20 @@
     .svc.open .svc-a { transform:rotate(45deg) !important; }
 
     /* ========== PRICING ========== */
-    .price-card { transition: transform .3s, border-color .3s, box-shadow .3s; }
-    .price-card:hover { transform:translateY(-8px); border-color:#60A5FA; box-shadow:0 20px 40px rgba(96,165,250,.08); }
+    .price-card { transition: transform .3s ease-out, box-shadow .3s ease-out; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 10px 30px rgba(0,0,0,0.2); }
+    .price-card:hover { transform:translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 50px rgba(0,0,0,0.35), 0 0 20px rgba(96,165,250,0.08); }
 
     /* ========== PROCESS STEP ========== */
-    .step-line { width:3px; background:linear-gradient(to bottom, #60A5FA, rgba(96,165,250,.15), #1a1a1a); box-shadow:0 0 8px rgba(96,165,250,.15); }
+    .step-line { width:2px; background:linear-gradient(to bottom, #60A5FA, #1a1a1a); }
 
     /* ========== CONTACT BUTTON ========== */
     .contact-btn {
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      transition: transform .3s ease-out, box-shadow .3s ease-out;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 10px 30px rgba(0,0,0,0.2);
     }
     .contact-btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(96,165,250,.12);
-      border-color: #60A5FA;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 50px rgba(0,0,0,0.35), 0 0 20px rgba(96,165,250,0.08);
     }
 
     /* ========== INPUT ========== */
@@ -259,30 +250,6 @@
 
     /* ========== GRADIENT LINE ========== */
     .gline { height:1px; background:linear-gradient(90deg, transparent, #1a1a1a 20%, #1a1a1a 80%, transparent); }
-    .gline-grow { height:1px; width:0; margin:0 auto; background:linear-gradient(90deg, transparent, rgba(96,165,250,.25) 30%, rgba(96,165,250,.25) 70%, transparent); transition:width 1.2s cubic-bezier(.16,1,.3,1); }
-    .gline-grow.v { width:100%; }
-
-    /* ========== DOT GRID ========== */
-    .dot-grid { position:relative; }
-    .dot-grid::before {
-      content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
-      background-image:radial-gradient(circle, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size:32px 32px;
-    }
-    .dot-grid > * { position:relative; z-index:1; }
-
-    /* ========== SECTION GLOW ========== */
-    .sec-glow { position:absolute; border-radius:50%; pointer-events:none; filter:blur(100px); }
-
-    /* ========== PULSE DOT ========== */
-    @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(96,165,250,.4)} 50%{box-shadow:0 0 0 8px rgba(96,165,250,0)} }
-    .pulse-dot { animation:pulse-dot 2.5s ease-in-out infinite; }
-
-    /* ========== FAQ ACCENT ========== */
-    [data-faq].open { border-left:2px solid #60A5FA; padding-left:16px; margin-left:-16px; }
-
-    /* ========== GLASSMORPHISM ========== */
-    .glass-header { background:rgba(96,165,250,.06) !important; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(96,165,250,.1) !important; }
 
     /* ========== MOBILE OPTIMIZATIONS ========== */
     @media (max-width: 640px) {
@@ -400,17 +367,16 @@
 </section>
 
 <!-- ===== SERVICES — Asymmetric layout with large numbers ===== -->
-<div class="gline-grow ru"></div>
-<section id="leistungen" class="px-6 dot-grid" style="padding:140px 0;">
-  <div class="sec-glow" style="width:500px;height:500px;background:radial-gradient(circle,rgba(96,165,250,.05),transparent 70%);top:10%;right:-10%;"></div>
+
+<section id="leistungen" class="px-6" style="padding:140px 0;">
   <div class="max-w-7xl mx-auto">
     <div class="mb-20 max-w-2xl mx-auto text-center">
-      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="svc-label">Leistungen</p>
-      <h2 class="rl text-4xl md:text-6xl font-black text-white leading-tight mb-6" data-i="svc-title" data-parallax="0.06">Was wir<br>für euch tun.</h2>
+      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="svc-label">Leistungen</p>
+      <h2 class="reveal text-4xl md:text-6xl font-black text-white leading-tight mb-6" data-i="svc-title">Was wir<br>für euch tun.</h2>
       <p class="text-muted text-lg leading-relaxed" data-i="svc-desc">Ihr braucht nicht fünf Agenturen. Wir decken euren kompletten digitalen Auftritt ab — von der Strategie bis zur Umsetzung, alles unter einem Dach.</p>
     </div>
 
-    <div class="rb space-y-0">
+    <div class="reveal space-y-0">
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
@@ -509,15 +475,15 @@
 
     <!-- Pricing table integrated -->
     <div class="mt-20 max-w-5xl mx-auto">
-      <h3 class="ru text-2xl md:text-3xl font-bold text-white mb-3 text-center" data-i="price-title">Was kostet's?</h3>
+      <h3 class="reveal text-2xl md:text-3xl font-bold text-white mb-3 text-center" data-i="price-title">Was kostet's?</h3>
       <p class="text-muted text-base max-w-xl mx-auto leading-relaxed mb-4 text-center" data-i="price-desc">Alle Preise sind Startpreise (netto zzgl. 19% MwSt.). Den genauen Umfang klären wir im Erstgespräch.</p>
       <p class="text-accent text-sm max-w-xl mx-auto leading-relaxed mb-10 text-center font-medium" data-i="price-vat">Alle Preise netto zzgl. 19 % MwSt.</p>
 
-      <div class="rb space-y-6">
+      <div class="reveal space-y-6">
 
         <!-- ── WEBSITE ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 glass-header">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-web-cat">Webdesign & Entwicklung</p>
           </div>
           <!-- Starter -->
@@ -546,7 +512,7 @@
 
         <!-- ── LOGO ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 glass-header">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-logo-cat">Logo Design</p>
           </div>
           <!-- Basic -->
@@ -565,7 +531,7 @@
 
         <!-- ── IMAGEFILM ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 glass-header">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-film-cat">Imagefilm & Video</p>
           </div>
           <!-- Mini -->
@@ -584,7 +550,7 @@
 
         <!-- ── SOCIAL MEDIA ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 glass-header">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-soc-cat">Social Media Management</p>
           </div>
           <!-- Starter -->
@@ -603,7 +569,7 @@
 
         <!-- ── SEO ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 glass-header">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-seo-cat">SEO & Online Marketing</p>
           </div>
           <!-- Basics -->
@@ -650,16 +616,15 @@
 </section>
 
 <!-- ===== FAQ ===== -->
-<div class="gline-grow ru"></div>
-<section id="faq" class="px-6 dot-grid" style="padding:120px 0;">
-  <div class="sec-glow" style="width:400px;height:400px;background:radial-gradient(circle,rgba(96,165,250,.04),transparent 70%);bottom:10%;left:-8%;"></div>
+
+<section id="faq" class="px-6" style="padding:120px 0;">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16">
-      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">Häufige Fragen</p>
-      <h2 class="ru text-4xl md:text-5xl font-black text-white" data-i="faq-title" data-parallax="0.06">Noch Fragen? Hier sind Antworten.</h2>
+      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">Häufige Fragen</p>
+      <h2 class="reveal text-4xl md:text-5xl font-black text-white" data-i="faq-title">Noch Fragen? Hier sind Antworten.</h2>
     </div>
 
-    <div class="rb space-y-0">
+    <div class="reveal space-y-0">
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
           <div class="flex items-center gap-4 pr-4">
@@ -744,13 +709,12 @@
 <div class="gline mx-6"></div>
 
 <!-- ===== PROCESS — Vertical timeline, totally different layout ===== -->
-<div class="gline-grow ru"></div>
-<section id="prozess" class="px-6 dot-grid" style="padding:140px 0;">
-  <div class="sec-glow" style="width:450px;height:450px;background:radial-gradient(circle,rgba(96,165,250,.04),transparent 70%);top:30%;right:-5%;"></div>
+
+<section id="prozess" class="px-6" style="padding:140px 0;">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-24">
-      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="proc-label">Unser Prozess</p>
-      <h2 class="ru text-4xl md:text-6xl font-black text-white" data-i="proc-title" data-parallax="0.06">So arbeiten wir.</h2>
+      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="proc-label">Unser Prozess</p>
+      <h2 class="reveal text-4xl md:text-6xl font-black text-white" data-i="proc-title">So arbeiten wir.</h2>
     </div>
 
     <div class="relative">
@@ -758,20 +722,20 @@
       <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px"></div>
 
       <!-- Step 1 — left -->
-      <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
+      <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">01</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc1-t">Kennenlernen</h3>
           <p class="text-muted leading-relaxed" data-i="proc1-d">Kostenloses Erstgespräch per WhatsApp oder Videocall. Wir hören zu, stellen Fragen und verstehen, was euer Unternehmen wirklich braucht.</p>
         </div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16"></div>
       </div>
 
       <!-- Step 2 — right -->
-      <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
+      <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16"></div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">02</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc2-t">Konzept & Angebot</h3>
@@ -780,20 +744,20 @@
       </div>
 
       <!-- Step 3 — left -->
-      <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
+      <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">03</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc3-t">Umsetzung</h3>
           <p class="text-muted leading-relaxed" data-i="proc3-d">Wir setzen um — mit regelmäßigen Updates und Zwischenständen. Ihr seid jederzeit im Loop und könnt Feedback geben.</p>
         </div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16"></div>
       </div>
 
       <!-- Step 4 — right -->
-      <div class="rb relative flex flex-col md:flex-row items-start">
+      <div class="reveal relative flex flex-col md:flex-row items-start">
         <div class="md:w-1/2 md:pr-16"></div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">04</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc4-t">Launch & Support</h3>
@@ -805,12 +769,12 @@
 </section>
 
 <!-- ===== TEAM ===== -->
-<div class="gline-grow ru"></div>
+
 <section id="team" class="bg-light px-6" style="padding:140px 0;">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-20">
-      <p class="rw text-xs tracking-widest uppercase mb-4" style="color:#bbb;font-size:11px;letter-spacing:5px;" data-i="team-label">Das Team</p>
-      <h2 class="ru text-4xl md:text-6xl font-black leading-tight mb-6" style="color:#111;">
+      <p class="reveal text-xs tracking-widest uppercase mb-4" style="color:#bbb;font-size:11px;letter-spacing:5px;" data-i="team-label">Das Team</p>
+      <h2 class="reveal text-4xl md:text-6xl font-black leading-tight mb-6" style="color:#111;">
         <span data-i="team-title">Drei Gründer.</span> <span class="font-extralight text-accent" data-i="team-title2">Ein Ziel.</span>
       </h2>
       <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color:#555;" data-i="team-desc">Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.</p>
@@ -819,7 +783,7 @@
     <!-- 3 cards side by side -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mb-16">
       <!-- Béla -->
-      <div class="rs group h-full">
+      <div class="reveal group h-full">
         <div class="bg-white rounded-2xl border overflow-hidden h-full flex flex-col" style="border-color:#e5e5e5;transition:border-color .3s,transform .3s,box-shadow .3s;" onmouseover="this.style.borderColor='#60A5FA';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e5e5';this.style.transform='';this.style.boxShadow=''">
           <!-- Photo placeholder -->
           <div class="w-full aspect-[3/4] flex items-center justify-center" style="background:linear-gradient(135deg,#e8edf2,#d5dce6);">
@@ -840,7 +804,7 @@
       </div>
 
       <!-- Jonah -->
-      <div class="rs group h-full">
+      <div class="reveal group h-full">
         <div class="bg-white rounded-2xl border overflow-hidden h-full flex flex-col" style="border-color:#e5e5e5;transition:border-color .3s,transform .3s,box-shadow .3s;" onmouseover="this.style.borderColor='#60A5FA';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e5e5';this.style.transform='';this.style.boxShadow=''">
           <div class="w-full aspect-[3/4] flex items-center justify-center" style="background:linear-gradient(135deg,#e8edf2,#d5dce6);">
             <span class="text-7xl font-black" style="color:rgba(96,165,250,0.25);">J</span>
@@ -860,7 +824,7 @@
       </div>
 
       <!-- Lennard -->
-      <div class="rs group h-full">
+      <div class="reveal group h-full">
         <div class="bg-white rounded-2xl border overflow-hidden h-full flex flex-col" style="border-color:#e5e5e5;transition:border-color .3s,transform .3s,box-shadow .3s;" onmouseover="this.style.borderColor='#60A5FA';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e5e5';this.style.transform='';this.style.boxShadow=''">
           <div class="w-full aspect-[3/4] flex items-center justify-center" style="background:linear-gradient(135deg,#e8edf2,#d5dce6);">
             <span class="text-7xl font-black" style="color:rgba(96,165,250,0.25);">L</span>
@@ -884,31 +848,31 @@
     <div class="text-center">
       <p class="text-xs uppercase tracking-widest mb-4" style="color:#bbb;letter-spacing:3px;" data-i="tools-label">Unsere Tools</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Figma</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">HTML / CSS</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">JavaScript</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Tailwind CSS</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Google Ads</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">SEO Tools</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Instagram</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Premiere Pro</span>
-        <span class="ri text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">After Effects</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Figma</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">HTML / CSS</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">JavaScript</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Tailwind CSS</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Google Ads</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">SEO Tools</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Instagram</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Premiere Pro</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">After Effects</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="gline-grow ru"></div>
+
 <!-- ===== PROJEKT SHOWCASE ===== -->
-<section class="px-6 dot-grid" style="padding:120px 0;">
+<section class="px-6" style="padding:120px 0;">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
-      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="ref-label">Referenz</p>
-      <h2 class="ru text-4xl md:text-5xl font-black text-white mb-4"><span data-i="ref-title">Unser erstes Projekt?</span><br><span class="font-extralight text-muted" data-i="ref-title2">Diese Website.</span></h2>
+      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="ref-label">Referenz</p>
+      <h2 class="reveal text-4xl md:text-5xl font-black text-white mb-4"><span data-i="ref-title">Unser erstes Projekt?</span><br><span class="font-extralight text-muted" data-i="ref-title2">Diese Website.</span></h2>
       <p class="text-muted text-base max-w-2xl mx-auto leading-relaxed" data-i="ref-desc">Ja, wir sind neu. Aber jede Agentur hat irgendwann angefangen. Diese Website ist der Beweis, dass wir unser Handwerk verstehen.</p>
     </div>
 
-    <div class="rb border border-border rounded-2xl overflow-hidden bg-surface">
+    <div class="reveal border border-border rounded-2xl overflow-hidden bg-surface">
       <div class="p-8 md:p-12">
         <div class="flex flex-col md:flex-row gap-10 items-start">
           <!-- Left: project details -->
@@ -927,19 +891,19 @@
           <!-- Right: metrics -->
           <div class="md:w-1/2">
             <div class="grid grid-cols-2 gap-6">
-              <div class="ri border border-border rounded-xl p-5 bg-dark">
+              <div class="reveal border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">&lt;1s</p>
                 <p class="text-xs text-muted" data-i="ref-m1">Ladezeit</p>
               </div>
-              <div class="ri border border-border rounded-xl p-5 bg-dark">
+              <div class="reveal border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">100%</p>
                 <p class="text-xs text-muted" data-i="ref-m2">Responsive</p>
               </div>
-              <div class="ri border border-border rounded-xl p-5 bg-dark">
+              <div class="reveal border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">0</p>
                 <p class="text-xs text-muted" data-i="ref-m3">Frameworks</p>
               </div>
-              <div class="ri border border-border rounded-xl p-5 bg-dark">
+              <div class="reveal border border-border rounded-xl p-5 bg-dark">
                 <p class="text-3xl font-black text-white mb-1">SEO</p>
                 <p class="text-xs text-muted" data-i="ref-m4">Optimiert</p>
               </div>
@@ -957,20 +921,19 @@
 </section>
 
 <!-- ===== CONTACT ===== -->
-<div class="gline-grow ru"></div>
-<section id="kontakt" class="px-6 dot-grid" style="padding:160px 0;background:linear-gradient(180deg,transparent 0%,rgba(96,165,250,.02) 50%,transparent 100%);">
-  <div class="sec-glow" style="width:500px;height:500px;background:radial-gradient(circle,rgba(96,165,250,.05),transparent 70%);top:5%;left:-10%;"></div>
+
+<section id="kontakt" class="px-6" style="padding:160px 0;">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
-      <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="contact-label">Kontakt</p>
-      <h2 class="ru text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6" data-i="contact-title" data-parallax="0.06">Projekt starten?</h2>
+      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="contact-label">Kontakt</p>
+      <h2 class="reveal text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6" data-i="contact-title">Projekt starten?</h2>
       <p class="text-muted text-lg max-w-xl mx-auto leading-relaxed" data-i="contact-desc">Beschreibt euer Projekt — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.</p>
     </div>
 
     <div class="flex flex-col lg:flex-row gap-12">
       <!-- LEFT: Contact Form -->
       <div class="lg:w-3/5">
-        <form id="contactForm" class="rb border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
+        <form id="contactForm" class="reveal border border-border rounded-2xl p-6 sm:p-8 bg-surface2">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
           <!-- Row 1: Vorname + Nachname -->
@@ -1067,7 +1030,7 @@
 
       <!-- RIGHT: Direct contact options -->
       <div class="lg:w-2/5 flex flex-col gap-4">
-        <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="ri contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="reveal contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </div>
@@ -1076,7 +1039,7 @@
             <p class="text-muted text-xs" data-i="contact-wa-s">Direkt chatten</p>
           </div>
         </a>
-        <a href="mailto:info@bjl-studios.de" class="ri contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="mailto:info@bjl-studios.de" class="reveal contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
           </div>
@@ -1085,7 +1048,7 @@
             <p class="text-muted text-xs">info@bjl-studios.de</p>
           </div>
         </a>
-        <a href="tel:+4917681163100" class="ri contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="tel:+4917681163100" class="reveal contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
           </div>
@@ -1588,50 +1551,21 @@ document.querySelectorAll('[data-expandable]').forEach(r=>{
   });
 });
 
-// ===== SCROLL REVEAL =====
-const RC=['ru','rs','rl','rr','rw','rb','ri'];
-const re=document.querySelectorAll('.'+RC.join(',.'));
-const io=new IntersectionObserver(en=>{
+// ===== SCROLL REVEAL (unified) =====
+const reveals=document.querySelectorAll('.reveal');
+const rio=new IntersectionObserver(en=>{
   en.forEach(e=>{
     if(e.isIntersecting){
+      // Stagger siblings: 100ms per item
       const p=e.target.parentElement;
-      const s=Array.from(p.children).filter(c=>RC.some(r=>c.classList.contains(r)));
-      const i=s.indexOf(e.target);
-      setTimeout(()=>e.target.classList.add('v'),Math.max(0,i)*50);
-      io.unobserve(e.target);
+      const siblings=Array.from(p.children).filter(c=>c.classList.contains('reveal'));
+      const i=siblings.indexOf(e.target);
+      setTimeout(()=>e.target.classList.add('v'),Math.max(0,i)*100);
+      rio.unobserve(e.target);
     }
   });
 },{threshold:.08});
-re.forEach(e=>io.observe(e));
-
-// ===== GLINE GROW (scroll-reveal for gradient dividers) =====
-document.querySelectorAll('.gline-grow').forEach(gl=>{
-  const gio=new IntersectionObserver(en=>{
-    en.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('v');gio.unobserve(e.target);} });
-  },{threshold:.1});
-  gio.observe(gl);
-});
-
-// ===== PARALLAX SCROLL =====
-(function(){
-  const pEls=document.querySelectorAll('[data-parallax]');
-  if(!pEls.length||!matchMedia('(pointer:fine)').matches) return;
-  let ticking=false;
-  window.addEventListener('scroll',()=>{
-    if(!ticking){
-      ticking=true;
-      requestAnimationFrame(()=>{
-        pEls.forEach(el=>{
-          const speed=parseFloat(el.dataset.parallax)||0.08;
-          const rect=el.getBoundingClientRect();
-          const offset=(rect.top-window.innerHeight/2)*speed;
-          el.style.transform='translateY('+offset+'px)';
-        });
-        ticking=false;
-      });
-    }
-  });
-})();
+reveals.forEach(e=>rio.observe(e));
 
 // ===== ANIMATED DOCK =====
 // Matches original: useTransform(distance,[-150,0,150],[40,80,40]) + useSpring
