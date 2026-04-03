@@ -97,6 +97,15 @@
       transform: translateY(-2px);
     }
 
+    /* ========== SECTION SPOTLIGHT (Stitch warm glow) ========== */
+    .sec-spot {
+      position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+      width: 80%; max-width: 800px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(96,165,250,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
     /* ========== PREMIUM TYPOGRAPHY ========== */
     h1, h2, h3 { letter-spacing:-0.02em; color:#f4feff; }
 
@@ -134,15 +143,22 @@
     .svc:hover { background: rgba(96,165,250,.03); }
     .svc:hover .svc-n { transform: translateX(4px); }
     .svc:hover .svc-a { transform: translateX(6px); }
-    /* Corner accents (21st.dev Features 10 pattern) */
-    .svc::before, .svc::after { content:''; position:absolute; width:6px; height:6px; opacity:0; transition:opacity .3s ease; }
-    .svc::before { top:-1px; left:-1px; border-top:2px solid #60A5FA; border-left:2px solid #60A5FA; }
-    .svc::after { top:-1px; right:-1px; border-top:2px solid #60A5FA; border-right:2px solid #60A5FA; }
-    .svc:hover::before, .svc:hover::after { opacity:1; }
     .svc-n, .svc-a { transition: transform .3s ease; }
     .svc-d { max-height:0; overflow:hidden; opacity:0; transition:max-height .5s cubic-bezier(.4,0,.2,1), opacity .4s ease .1s; }
     .svc.open .svc-d { max-height:200px; opacity:1; }
     .svc.open .svc-a { transform:rotate(45deg) !important; }
+    /* Outline numbers (Stitch design) */
+    .num-outline {
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
+      color: transparent;
+      font-weight: 900;
+    }
+    /* Fix for "4" rendering bug with text-stroke */
+    .num-outline-fix4 {
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.03);
+      font-weight: 900;
+    }
 
     /* ========== PRICING ========== */
     .price-card { transition: transform .3s ease-out, box-shadow .3s ease-out; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 10px 30px rgba(0,0,0,0.2); }
@@ -398,21 +414,22 @@
 
 <!-- ===== SERVICES — Asymmetric layout with large numbers ===== -->
 
-<section id="leistungen" class="px-6" style="padding:140px 0;">
-  <div class="max-w-7xl mx-auto">
-    <div class="mb-20 max-w-2xl mx-auto text-center">
-      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="svc-label">Leistungen</p>
-      <h2 class="reveal text-4xl md:text-6xl font-black text-white leading-tight mb-6" data-i="svc-title">Was wir<br>für euch tun.</h2>
-      <p class="text-muted text-lg leading-relaxed" data-i="svc-desc">Ihr braucht nicht fünf Agenturen. Wir decken euren kompletten digitalen Auftritt ab — von der Strategie bis zur Umsetzung, alles unter einem Dach.</p>
+<section id="leistungen" class="px-6 relative overflow-hidden" style="padding:140px 0;">
+  <div class="sec-spot"></div>
+  <div class="max-w-7xl mx-auto relative z-1">
+    <div class="mb-20 max-w-3xl mx-auto text-center">
+      <p class="reveal text-accent text-xs tracking-widest uppercase mb-6" style="font-size:11px;letter-spacing:5px;" data-i="svc-label">Leistungen</p>
+      <h2 class="reveal text-5xl md:text-7xl font-black italic leading-tight mb-8" data-i="svc-title">Was wir für<br>euch tun.</h2>
+      <p class="text-muted text-base leading-relaxed max-w-xl mx-auto" data-i="svc-desc">Ihr braucht nicht fünf Agenturen. Wir decken euren kompletten digitalen Auftritt ab — von der Strategie bis zur Umsetzung, alles unter einem Dach.</p>
     </div>
 
     <div class="reveal space-y-0">
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-5xl md:text-6xl font-black text-border select-none" style="color:#2a2a2a;">01</span>
+            <span class="text-4xl md:text-5xl num-outline select-none" style="min-width:60px;">01</span>
             <div>
-              <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc1-t">Webdesign & Entwicklung</span>
+              <span class="svc-n text-white text-xl md:text-2xl font-bold block" data-i="svc1-t">Webdesign & Entwicklung.</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc1-s">Individuelle Websites die Kunden bringen</span>
             </div>
           </div>
@@ -429,9 +446,9 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">02</span>
+            <span class="text-4xl md:text-5xl num-outline select-none" style="min-width:60px;">02</span>
             <div>
-              <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc2-t">SEO & Online Marketing</span>
+              <span class="svc-n text-white text-xl md:text-2xl font-bold block" data-i="svc2-t">SEO & Online Marketing</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc2-s">Sichtbarkeit bei Google, dort wo es zählt</span>
             </div>
           </div>
@@ -448,9 +465,9 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">03</span>
+            <span class="text-4xl md:text-5xl num-outline select-none" style="min-width:60px;">03</span>
             <div>
-              <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc3-t">Social Media</span>
+              <span class="svc-n text-white text-xl md:text-2xl font-bold block" data-i="svc3-t">Social Media</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc3-s">Content-Strategie, Posts, Reels & Community</span>
             </div>
           </div>
@@ -467,9 +484,9 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">04</span>
+            <span class="text-4xl md:text-5xl num-outline-fix4 select-none" style="min-width:60px;">04</span>
             <div>
-              <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc4-t">Logo & Branding</span>
+              <span class="svc-n text-white text-xl md:text-2xl font-bold block" data-i="svc4-t">Logo & Branding</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc4-s">Visuelles Erscheinungsbild das bleibt</span>
             </div>
           </div>
@@ -486,9 +503,9 @@
       <div class="svc border-t border-b border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">05</span>
+            <span class="text-4xl md:text-5xl num-outline select-none" style="min-width:60px;">05</span>
             <div>
-              <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc5-t">Imagefilme & Video</span>
+              <span class="svc-n text-white text-xl md:text-2xl font-bold block" data-i="svc5-t">Imagefilme & Video</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc5-s">Bewegtbild das Vertrauen schafft</span>
             </div>
           </div>
@@ -512,7 +529,7 @@
       <div class="reveal space-y-6">
 
         <!-- ── WEBSITE ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
+        <div class="rounded-2xl overflow-hidden rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-web-cat">Webdesign & Entwicklung</p>
           </div>
@@ -541,7 +558,7 @@
         </div>
 
         <!-- ── LOGO ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
+        <div class="rounded-2xl overflow-hidden rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-logo-cat">Logo Design</p>
           </div>
@@ -560,7 +577,7 @@
         </div>
 
         <!-- ── IMAGEFILM ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
+        <div class="rounded-2xl overflow-hidden rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-film-cat">Imagefilm & Video</p>
           </div>
@@ -579,7 +596,7 @@
         </div>
 
         <!-- ── SOCIAL MEDIA ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
+        <div class="rounded-2xl overflow-hidden rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-soc-cat">Social Media Management</p>
           </div>
@@ -598,7 +615,7 @@
         </div>
 
         <!-- ── SEO ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
+        <div class="rounded-2xl overflow-hidden rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-seo-cat">SEO & Online Marketing</p>
           </div>
@@ -639,7 +656,7 @@
       <!-- CTA -->
       <div class="text-center mt-12">
         <p class="text-muted text-sm mb-5" data-i="price-multi">Ihr braucht mehrere Leistungen? Wir schnüren euch ein individuelles Paket.</p>
-        <a href="#kontakt" class="mag inline-block border border-white/15 text-white px-8 py-3 rounded-full text-sm hover:bg-white hover:text-black transition-all duration-300" data-i="price-cta">Unverbindlich anfragen →</a>
+        <a href="#kontakt" class="mag inline-block px-10 py-4 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5" style="background:linear-gradient(135deg,#60A5FA,#3B82F6);color:#060606;box-shadow:0 8px 24px rgba(96,165,250,0.25);" data-i="price-cta">Unverbindlich anfragen →</a>
       </div>
     </div>
   </div>
@@ -647,86 +664,69 @@
 
 <!-- ===== FAQ ===== -->
 
-<section id="faq" class="px-6 bg-surface" style="padding:120px 0;">
+<section id="faq" class="px-6 bg-surface relative overflow-hidden" style="padding:120px 0;">
+  <div class="sec-spot"></div>
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16">
-      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">Häufige Fragen</p>
-      <h2 class="reveal text-4xl md:text-5xl font-black text-white" data-i="faq-title">Noch Fragen? Hier sind Antworten.</h2>
+      <p class="reveal text-muted text-xs tracking-widest uppercase mb-6" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">F.A.Q.</p>
+      <h2 class="reveal text-5xl md:text-7xl font-black leading-tight"><span data-i="faq-title-1">Noch Fragen? Hier<br>sind </span><span class="text-accent" data-i="faq-title-2">Antworten</span></h2>
     </div>
 
     <div class="reveal space-y-0">
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <div class="flex items-center gap-4 pr-4">
-            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">01</span>
-            <span class="text-white text-base md:text-lg font-medium" data-i="faq1-q">Was kostet eine Website bei euch?</span>
-          </div>
-          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq1-q">Was kostet eine Website bei euch?</span>
+          <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq1-a">Unsere Websites starten ab 799 €. Der genaue Preis hängt vom Umfang ab — Anzahl Seiten, Funktionen, Texte und Bilder. Im kostenlosen Erstgespräch klären wir, was ihr braucht und was es kostet.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq1-a">Unsere Websites starten ab 799 €. Der genaue Preis hängt vom Umfang ab — Anzahl Seiten, Funktionen, Texte und Bilder. Im kostenlosen Erstgespräch klären wir, was ihr braucht und was es kostet.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <div class="flex items-center gap-4 pr-4">
-            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">02</span>
-            <span class="text-white text-base md:text-lg font-medium" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
-          </div>
-          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
+          <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq2-a">Eine einfache Website ist in 1–2 Wochen fertig. Größere Projekte mit Branding, SEO und Content dauern 3–4 Wochen. Wir geben euch im Angebot einen konkreten Zeitrahmen.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq2-a">Eine einfache Website ist in 1–2 Wochen fertig. Größere Projekte mit Branding, SEO und Content dauern 3–4 Wochen. Wir geben euch im Angebot einen konkreten Zeitrahmen.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <div class="flex items-center gap-4 pr-4">
-            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">03</span>
-            <span class="text-white text-base md:text-lg font-medium" data-i="faq3-q">Brauche ich wirklich SEO?</span>
-          </div>
-          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq3-q">Brauche ich wirklich SEO?</span>
+          <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq3-a">Wenn eure Kunden euch über Google suchen — ja. Lokales SEO sorgt dafür, dass ihr bei Suchanfragen wie „Friseur Mönchengladbach" oder „Handwerker in der Nähe" auftaucht. Ohne SEO ist eure Website unsichtbar.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq3-a">Wenn eure Kunden euch über Google suchen — ja. Lokales SEO sorgt dafür, dass ihr bei Suchanfragen wie „Friseur Mönchengladbach" oder „Handwerker in der Nähe" auftaucht. Ohne SEO ist eure Website unsichtbar.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <div class="flex items-center gap-4 pr-4">
-            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">04</span>
-            <span class="text-white text-base md:text-lg font-medium" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
-          </div>
-          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
+          <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq4-a">Ja. Wir bauen eure Website so, dass ihr Texte und Bilder selbst ändern könnt. Wenn ihr Hilfe braucht, sind wir natürlich weiterhin für euch da.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq4-a">Ja. Wir bauen eure Website so, dass ihr Texte und Bilder selbst ändern könnt. Wenn ihr Hilfe braucht, sind wir natürlich weiterhin für euch da.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <div class="flex items-center gap-4 pr-4">
-            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">05</span>
-            <span class="text-white text-base md:text-lg font-medium" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
-          </div>
-          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
+          <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq5-a">Klar. Wir schauen uns an, was funktioniert und was nicht. Manchmal reicht ein Redesign, manchmal ist ein Neuaufbau sinnvoller. Das klären wir im Erstgespräch.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq5-a">Klar. Wir schauen uns an, was funktioniert und was nicht. Manchmal reicht ein Redesign, manchmal ist ein Neuaufbau sinnvoller. Das klären wir im Erstgespräch.</p>
         </div>
       </div>
 
       <div class="border-t border-b border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <div class="flex items-center gap-4 pr-4">
-            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">06</span>
-            <span class="text-white text-base md:text-lg font-medium" data-i="faq6-q">Was passiert nach dem Launch?</span>
-          </div>
-          <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
+          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq6-q">Was passiert nach dem Launch?</span>
+          <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
           <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq6-a">Wir lassen euch nicht allein. Kleinere Änderungen und Support sind im ersten Monat inklusive. Danach bieten wir optionale Wartungspakete an.</p>
@@ -740,34 +740,35 @@
 
 <!-- ===== PROCESS — Vertical timeline, totally different layout ===== -->
 
-<section id="prozess" class="px-6" style="padding:140px 0;">
+<section id="prozess" class="px-6 relative overflow-hidden" style="padding:140px 0;">
+  <div class="sec-spot"></div>
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-24">
-      <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="proc-label">Unser Prozess</p>
-      <h2 class="reveal text-4xl md:text-6xl font-black text-white" data-i="proc-title">So arbeiten wir.</h2>
+      <p class="reveal text-muted text-xs tracking-widest uppercase mb-6" style="font-size:11px;letter-spacing:5px;" data-i="proc-label">Unser Prozess</p>
+      <h2 class="reveal text-5xl md:text-7xl font-black italic leading-tight" data-i="proc-title">So arbeiten wir.</h2>
     </div>
 
     <div class="relative">
-      <!-- Vertical line -->
-      <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px"></div>
+      <!-- Vertical line with glow -->
+      <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px" style="background:linear-gradient(to bottom,#60A5FA,rgba(96,165,250,0.15),transparent);box-shadow:0 0 8px rgba(96,165,250,0.1);"></div>
 
       <!-- Step 1 — left -->
       <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">01</span>
+          <span class="text-5xl md:text-7xl num-outline select-none">01</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc1-t">Kennenlernen</h3>
           <p class="text-muted leading-relaxed" data-i="proc1-d">Kostenloses Erstgespräch per WhatsApp oder Videocall. Wir hören zu, stellen Fragen und verstehen, was euer Unternehmen wirklich braucht.</p>
         </div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-4 h-4 rounded-full bg-accent border-4 border-dark z-10" style="box-shadow:0 0 12px rgba(96,165,250,0.4);"></div>
         <div class="md:w-1/2 md:pl-16"></div>
       </div>
 
       <!-- Step 2 — right -->
       <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16"></div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-4 h-4 rounded-full bg-accent border-4 border-dark z-10" style="box-shadow:0 0 12px rgba(96,165,250,0.4);"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">02</span>
+          <span class="text-5xl md:text-7xl num-outline select-none">02</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc2-t">Konzept & Angebot</h3>
           <p class="text-muted leading-relaxed" data-i="proc2-d">Innerhalb von 48h bekommt ihr ein klares Konzept und ein transparentes Angebot. Keine versteckten Kosten, kein Kleingedrucktes.</p>
         </div>
@@ -776,20 +777,20 @@
       <!-- Step 3 — left -->
       <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">03</span>
+          <span class="text-5xl md:text-7xl num-outline select-none">03</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc3-t">Umsetzung</h3>
           <p class="text-muted leading-relaxed" data-i="proc3-d">Wir setzen um — mit regelmäßigen Updates und Zwischenständen. Ihr seid jederzeit im Loop und könnt Feedback geben.</p>
         </div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-4 h-4 rounded-full bg-accent border-4 border-dark z-10" style="box-shadow:0 0 12px rgba(96,165,250,0.4);"></div>
         <div class="md:w-1/2 md:pl-16"></div>
       </div>
 
       <!-- Step 4 — right -->
       <div class="reveal relative flex flex-col md:flex-row items-start">
         <div class="md:w-1/2 md:pr-16"></div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-4 h-4 rounded-full bg-accent border-4 border-dark z-10" style="box-shadow:0 0 12px rgba(96,165,250,0.4);"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">04</span>
+          <span class="text-5xl md:text-7xl num-outline-fix4 select-none">04</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc4-t">Launch & Support</h3>
           <p class="text-muted leading-relaxed" data-i="proc4-d">Go-Live! Und danach? Wir bleiben euer Ansprechpartner. Bei Fragen, Updates oder neuen Ideen — wir sind da.</p>
         </div>
@@ -800,93 +801,89 @@
 
 <!-- ===== TEAM ===== -->
 
-<section id="team" class="bg-light px-6" style="padding:140px 0;">
+<section id="team" class="px-6" style="padding:140px 0;">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-20">
-      <p class="reveal text-xs tracking-widest uppercase mb-4" style="color:#bbb;font-size:11px;letter-spacing:5px;" data-i="team-label">Das Team</p>
-      <h2 class="reveal text-4xl md:text-6xl font-black leading-tight mb-6" style="color:#111;">
+      <h2 class="reveal text-5xl md:text-7xl font-black leading-tight mb-6">
         <span data-i="team-title">Drei Gründer.</span> <span class="font-extralight text-accent" data-i="team-title2">Ein Ziel.</span>
       </h2>
-      <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color:#888;" data-i="team-desc">Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.</p>
+      <p class="text-muted text-base max-w-2xl mx-auto leading-relaxed" data-i="team-desc">Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.</p>
     </div>
 
-    <!-- 3 cards side by side -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mb-16">
+    <!-- 3 dark cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-16">
       <!-- Béla -->
-      <div class="reveal group h-full">
-        <div class="bg-white rounded-2xl border overflow-hidden h-full flex flex-col" style="border-color:#e5e5e5;transition:border-color .3s,transform .3s,box-shadow .3s;" onmouseover="this.style.borderColor='#60A5FA';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e5e5';this.style.transform='';this.style.boxShadow=''">
-          <!-- Photo placeholder -->
-          <div class="w-full aspect-[3/4] flex items-center justify-center shimmer-bg">
-            <span class="text-7xl font-black" style="color:rgba(96,165,250,0.25);">B</span>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <p class="text-xl font-bold mb-1" style="color:#111;">Béla Junker</p>
-            <p class="text-accent text-sm font-medium mb-4" data-i="team-b-role">Co-Founder · Development</p>
-            <p class="text-sm leading-relaxed mb-4 flex-1" style="color:#666;" data-i="team-b-desc">Technik, Design und Performance. Béla baut eure Website nicht nur schnell und funktional, sondern sorgt dafür, dass sie richtig gut aussieht — auf jedem Gerät.</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(96,165,250,0.1);color:#60A5FA;">HTML/CSS</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(96,165,250,0.1);color:#60A5FA;">JavaScript</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(96,165,250,0.1);color:#60A5FA;">Tailwind</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1);color:#10b981;">SEO</span>
-            </div>
+      <div class="reveal rc h-full flex flex-col overflow-hidden">
+        <!-- Photo placeholder with glow ring -->
+        <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(96,165,250,0.12),transparent 70%),#0a0a0a;">
+          <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">B</span>
+          <div class="absolute inset-0 rounded-full m-8 border border-accent/20" style="box-shadow:0 0 30px rgba(96,165,250,0.15);"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-xl font-bold text-white mb-1">Béla Junker</p>
+          <p class="text-accent text-sm font-medium mb-3" data-i="team-b-role">Co-Founder · Development</p>
+          <p class="text-muted text-sm leading-relaxed mb-4 flex-1" data-i="team-b-desc">Technik, Design und Performance. Béla baut eure Website nicht nur schnell und funktional, sondern sorgt dafür, dass sie richtig gut aussieht — auf jedem Gerät.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-accent/20 text-accent/80">HTML/CSS</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-accent/20 text-accent/80">JavaScript</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-accent/20 text-accent/80">Tailwind</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-green-500/20 text-green-400/80">SEO</span>
           </div>
         </div>
       </div>
 
       <!-- Jonah -->
-      <div class="reveal group h-full">
-        <div class="bg-white rounded-2xl border overflow-hidden h-full flex flex-col" style="border-color:#e5e5e5;transition:border-color .3s,transform .3s,box-shadow .3s;" onmouseover="this.style.borderColor='#60A5FA';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e5e5';this.style.transform='';this.style.boxShadow=''">
-          <div class="w-full aspect-[3/4] flex items-center justify-center shimmer-bg">
-            <span class="text-7xl font-black" style="color:rgba(96,165,250,0.25);">J</span>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <p class="text-xl font-bold mb-1" style="color:#111;">Jonah Böckem</p>
-            <p class="text-accent text-sm font-medium mb-4" data-i="team-j-role">Co-Founder · Design</p>
-            <p class="text-sm leading-relaxed mb-4 flex-1" style="color:#666;" data-i="team-j-desc">UI/UX, Branding und visuelle Identität. Jonah entwickelt Designs, die nicht nur gut aussehen, sondern eure Zielgruppe ansprechen.</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">Figma</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">UI/UX</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">Branding</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">Typografie</span>
-            </div>
+      <div class="reveal rc h-full flex flex-col overflow-hidden">
+        <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(168,85,247,0.12),transparent 70%),#0a0a0a;">
+          <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">J</span>
+          <div class="absolute inset-0 rounded-full m-8 border border-purple-400/20" style="box-shadow:0 0 30px rgba(168,85,247,0.15);"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-xl font-bold text-white mb-1">Jonah Böckem</p>
+          <p class="text-accent text-sm font-medium mb-3" data-i="team-j-role">Co-Founder · Design</p>
+          <p class="text-muted text-sm leading-relaxed mb-4 flex-1" data-i="team-j-desc">UI/UX, Branding und visuelle Identität. Jonah entwickelt Designs, die nicht nur gut aussehen, sondern eure Zielgruppe ansprechen.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-purple-400/20 text-purple-400/80">Figma</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-purple-400/20 text-purple-400/80">UI/UX</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-purple-400/20 text-purple-400/80">Branding</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-purple-400/20 text-purple-400/80">Typografie</span>
           </div>
         </div>
       </div>
 
       <!-- Lennard -->
-      <div class="reveal group h-full">
-        <div class="bg-white rounded-2xl border overflow-hidden h-full flex flex-col" style="border-color:#e5e5e5;transition:border-color .3s,transform .3s,box-shadow .3s;" onmouseover="this.style.borderColor='#60A5FA';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e5e5';this.style.transform='';this.style.boxShadow=''">
-          <div class="w-full aspect-[3/4] flex items-center justify-center shimmer-bg">
-            <span class="text-7xl font-black" style="color:rgba(96,165,250,0.25);">L</span>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <p class="text-xl font-bold mb-1" style="color:#111;">Lennard Schumacher</p>
-            <p class="text-accent text-sm font-medium mb-4" data-i="team-l-role">Co-Founder · Videoproduktion & Marketing</p>
-            <p class="text-sm leading-relaxed mb-4 flex-1" style="color:#666;" data-i="team-l-desc">SEO, Social Media, Videodreh und Postproduction. Lennard sorgt dafür, dass eure Zielgruppe euch findet und eure Geschichte im Bewegtbild erzählt wird.</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1);color:#10b981;">SEO</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1);color:#10b981;">Google Ads</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(249,115,22,0.1);color:#f97316;">Videodreh</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(249,115,22,0.1);color:#f97316;">Schnitt</span>
-            </div>
+      <div class="reveal rc h-full flex flex-col overflow-hidden">
+        <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(249,115,22,0.1),transparent 70%),#0a0a0a;">
+          <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">L</span>
+          <div class="absolute inset-0 rounded-full m-8 border border-orange-400/20" style="box-shadow:0 0 30px rgba(249,115,22,0.12);"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-xl font-bold text-white mb-1">Lennard Schumacher</p>
+          <p class="text-accent text-sm font-medium mb-3" data-i="team-l-role">Co-Founder · Videoproduktion & Marketing</p>
+          <p class="text-muted text-sm leading-relaxed mb-4 flex-1" data-i="team-l-desc">SEO, Social Media, Videodreh und Postproduction. Lennard sorgt dafür, dass eure Zielgruppe euch findet und eure Geschichte im Bewegtbild erzählt wird.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2.5 py-1 rounded-full border border-green-500/20 text-green-400/80">SEO</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-green-500/20 text-green-400/80">Google Ads</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-orange-400/20 text-orange-400/80">Videodreh</span>
+            <span class="text-xs px-2.5 py-1 rounded-full border border-orange-400/20 text-orange-400/80">Schnitt</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Tools/Skills bar -->
+    <!-- Tools bar (dark theme) -->
     <div class="text-center">
-      <p class="text-xs uppercase tracking-widest mb-4" style="color:#bbb;letter-spacing:3px;" data-i="tools-label">Unsere Tools</p>
+      <p class="text-xs uppercase tracking-widest mb-4 text-muted" style="letter-spacing:3px;" data-i="tools-label">Unsere Tools</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Figma</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">HTML / CSS</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">JavaScript</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Tailwind CSS</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Google Ads</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">SEO Tools</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Instagram</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">Premiere Pro</span>
-        <span class="reveal text-xs px-4 py-2 rounded-full border" style="border-color:#ddd;color:#888;">After Effects</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">Figma</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">HTML / CSS</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">JavaScript</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">Tailwind CSS</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">Google Ads</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">SEO Tools</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">Instagram</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">Premiere Pro</span>
+        <span class="reveal text-xs px-4 py-2 rounded-full border border-border text-muted">After Effects</span>
       </div>
     </div>
   </div>
@@ -1225,7 +1222,8 @@ const T={
   'sp1':{de:'ab 799 €',en:'from €799'},'sp2':{de:'ab 199 €/mtl.',en:'from €199/mo.'},'sp3':{de:'ab 249 €/mtl.',en:'from €249/mo.'},'sp4':{de:'ab 299 €',en:'from €299'},'sp5':{de:'ab 999 €',en:'from €999'},
   // FAQ
   'faq-label':{de:'Häufige Fragen',en:'FAQ'},
-  'faq-title':{de:'Noch Fragen? Hier sind Antworten.',en:'Questions? Here are answers.'},
+  'faq-title-1':{de:'Noch Fragen? Hier sind ',en:'Questions? Here are '},
+  'faq-title-2':{de:'Antworten',en:'Answers'},
   'faq1-q':{de:'Was kostet eine Website bei euch?',en:'How much does a website cost?'},
   'faq1-a':{de:'Unsere Websites starten ab 799 € (Starter) bis 1.499 € (Business). Für komplexe Projekte gibt es das Pro-Paket auf Anfrage. Der genaue Preis hängt vom Umfang ab. Im kostenlosen Erstgespräch klären wir, was ihr braucht und was es kostet.',en:'Our websites start from €799 (Starter) to €1,499 (Business). For complex projects there\'s the Pro package on request. The exact price depends on scope. In a free consultation we\'ll clarify what you need and what it costs.'},
   'faq2-q':{de:'Wie lange dauert es bis meine Website fertig ist?',en:'How long until my website is ready?'},
