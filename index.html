@@ -129,7 +129,7 @@
     .price-card:hover { transform:translateY(-8px); border-color:#60A5FA; box-shadow:0 20px 40px rgba(96,165,250,.08); }
 
     /* ========== PROCESS STEP ========== */
-    .step-line { width:2px; background:linear-gradient(to bottom, #60A5FA, #1a1a1a); }
+    .step-line { width:3px; background:linear-gradient(to bottom, #60A5FA, rgba(96,165,250,.15), #1a1a1a); box-shadow:0 0 8px rgba(96,165,250,.15); }
 
     /* ========== CONTACT BUTTON ========== */
     .contact-btn {
@@ -259,6 +259,30 @@
 
     /* ========== GRADIENT LINE ========== */
     .gline { height:1px; background:linear-gradient(90deg, transparent, #1a1a1a 20%, #1a1a1a 80%, transparent); }
+    .gline-grow { height:1px; width:0; margin:0 auto; background:linear-gradient(90deg, transparent, rgba(96,165,250,.25) 30%, rgba(96,165,250,.25) 70%, transparent); transition:width 1.2s cubic-bezier(.16,1,.3,1); }
+    .gline-grow.v { width:100%; }
+
+    /* ========== DOT GRID ========== */
+    .dot-grid { position:relative; }
+    .dot-grid::before {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:radial-gradient(circle, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:32px 32px;
+    }
+    .dot-grid > * { position:relative; z-index:1; }
+
+    /* ========== SECTION GLOW ========== */
+    .sec-glow { position:absolute; border-radius:50%; pointer-events:none; filter:blur(100px); }
+
+    /* ========== PULSE DOT ========== */
+    @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(96,165,250,.4)} 50%{box-shadow:0 0 0 8px rgba(96,165,250,0)} }
+    .pulse-dot { animation:pulse-dot 2.5s ease-in-out infinite; }
+
+    /* ========== FAQ ACCENT ========== */
+    [data-faq].open { border-left:2px solid #60A5FA; padding-left:16px; margin-left:-16px; }
+
+    /* ========== GLASSMORPHISM ========== */
+    .glass-header { background:rgba(96,165,250,.06) !important; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(96,165,250,.1) !important; }
 
     /* ========== MOBILE OPTIMIZATIONS ========== */
     @media (max-width: 640px) {
@@ -376,11 +400,13 @@
 </section>
 
 <!-- ===== SERVICES — Asymmetric layout with large numbers ===== -->
-<section id="leistungen" class="px-6" style="padding:140px 0;">
+<div class="gline-grow ru"></div>
+<section id="leistungen" class="px-6 dot-grid" style="padding:140px 0;">
+  <div class="sec-glow" style="width:500px;height:500px;background:radial-gradient(circle,rgba(96,165,250,.05),transparent 70%);top:10%;right:-10%;"></div>
   <div class="max-w-7xl mx-auto">
     <div class="mb-20 max-w-2xl mx-auto text-center">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="svc-label">Leistungen</p>
-      <h2 class="rl text-4xl md:text-6xl font-black text-white leading-tight mb-6" data-i="svc-title">Was wir<br>für euch tun.</h2>
+      <h2 class="rl text-4xl md:text-6xl font-black text-white leading-tight mb-6" data-i="svc-title" data-parallax="0.06">Was wir<br>für euch tun.</h2>
       <p class="text-muted text-lg leading-relaxed" data-i="svc-desc">Ihr braucht nicht fünf Agenturen. Wir decken euren kompletten digitalen Auftritt ab — von der Strategie bis zur Umsetzung, alles unter einem Dach.</p>
     </div>
 
@@ -491,7 +517,7 @@
 
         <!-- ── WEBSITE ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+          <div class="px-5 sm:px-8 py-4 glass-header">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-web-cat">Webdesign & Entwicklung</p>
           </div>
           <!-- Starter -->
@@ -520,7 +546,7 @@
 
         <!-- ── LOGO ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+          <div class="px-5 sm:px-8 py-4 glass-header">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-logo-cat">Logo Design</p>
           </div>
           <!-- Basic -->
@@ -539,7 +565,7 @@
 
         <!-- ── IMAGEFILM ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+          <div class="px-5 sm:px-8 py-4 glass-header">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-film-cat">Imagefilm & Video</p>
           </div>
           <!-- Mini -->
@@ -558,7 +584,7 @@
 
         <!-- ── SOCIAL MEDIA ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+          <div class="px-5 sm:px-8 py-4 glass-header">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-soc-cat">Social Media Management</p>
           </div>
           <!-- Starter -->
@@ -577,7 +603,7 @@
 
         <!-- ── SEO ── -->
         <div class="border border-border rounded-2xl overflow-hidden bg-surface2">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+          <div class="px-5 sm:px-8 py-4 glass-header">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-seo-cat">SEO & Online Marketing</p>
           </div>
           <!-- Basics -->
@@ -624,67 +650,87 @@
 </section>
 
 <!-- ===== FAQ ===== -->
-<section id="faq" class="px-6" style="padding:120px 0;">
+<div class="gline-grow ru"></div>
+<section id="faq" class="px-6 dot-grid" style="padding:120px 0;">
+  <div class="sec-glow" style="width:400px;height:400px;background:radial-gradient(circle,rgba(96,165,250,.04),transparent 70%);bottom:10%;left:-8%;"></div>
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">Häufige Fragen</p>
-      <h2 class="ru text-4xl md:text-5xl font-black text-white" data-i="faq-title">Noch Fragen? Hier sind Antworten.</h2>
+      <h2 class="ru text-4xl md:text-5xl font-black text-white" data-i="faq-title" data-parallax="0.06">Noch Fragen? Hier sind Antworten.</h2>
     </div>
 
     <div class="rb space-y-0">
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq1-q">Was kostet eine Website bei euch?</span>
+          <div class="flex items-center gap-4 pr-4">
+            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">01</span>
+            <span class="text-white text-base md:text-lg font-medium" data-i="faq1-q">Was kostet eine Website bei euch?</span>
+          </div>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq1-a">Unsere Websites starten ab 1.499 €. Der genaue Preis hängt vom Umfang ab — Anzahl Seiten, Funktionen, Texte und Bilder. Im kostenlosen Erstgespräch klären wir, was ihr braucht und was es kostet.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq1-a">Unsere Websites starten ab 799 €. Der genaue Preis hängt vom Umfang ab — Anzahl Seiten, Funktionen, Texte und Bilder. Im kostenlosen Erstgespräch klären wir, was ihr braucht und was es kostet.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
+          <div class="flex items-center gap-4 pr-4">
+            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">02</span>
+            <span class="text-white text-base md:text-lg font-medium" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
+          </div>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq2-a">Eine einfache Website ist in 1–2 Wochen fertig. Größere Projekte mit Branding, SEO und Content dauern 3–4 Wochen. Wir geben euch im Angebot einen konkreten Zeitrahmen.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq2-a">Eine einfache Website ist in 1–2 Wochen fertig. Größere Projekte mit Branding, SEO und Content dauern 3–4 Wochen. Wir geben euch im Angebot einen konkreten Zeitrahmen.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq3-q">Brauche ich wirklich SEO?</span>
+          <div class="flex items-center gap-4 pr-4">
+            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">03</span>
+            <span class="text-white text-base md:text-lg font-medium" data-i="faq3-q">Brauche ich wirklich SEO?</span>
+          </div>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq3-a">Wenn eure Kunden euch über Google suchen — ja. Lokales SEO sorgt dafür, dass ihr bei Suchanfragen wie „Friseur Mönchengladbach" oder „Handwerker in der Nähe" auftaucht. Ohne SEO ist eure Website unsichtbar.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq3-a">Wenn eure Kunden euch über Google suchen — ja. Lokales SEO sorgt dafür, dass ihr bei Suchanfragen wie „Friseur Mönchengladbach" oder „Handwerker in der Nähe" auftaucht. Ohne SEO ist eure Website unsichtbar.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
+          <div class="flex items-center gap-4 pr-4">
+            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">04</span>
+            <span class="text-white text-base md:text-lg font-medium" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
+          </div>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq4-a">Ja. Wir bauen eure Website so, dass ihr Texte und Bilder selbst ändern könnt. Wenn ihr Hilfe braucht, sind wir natürlich weiterhin für euch da.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq4-a">Ja. Wir bauen eure Website so, dass ihr Texte und Bilder selbst ändern könnt. Wenn ihr Hilfe braucht, sind wir natürlich weiterhin für euch da.</p>
         </div>
       </div>
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
+          <div class="flex items-center gap-4 pr-4">
+            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">05</span>
+            <span class="text-white text-base md:text-lg font-medium" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
+          </div>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
-          <p class="text-muted text-sm leading-relaxed pb-6" data-i="faq5-a">Klar. Wir schauen uns an, was funktioniert und was nicht. Manchmal reicht ein Redesign, manchmal ist ein Neuaufbau sinnvoller. Das klären wir im Erstgespräch.</p>
+          <p class="text-muted text-sm leading-relaxed pb-6 pl-10" data-i="faq5-a">Klar. Wir schauen uns an, was funktioniert und was nicht. Manchmal reicht ein Redesign, manchmal ist ein Neuaufbau sinnvoller. Das klären wir im Erstgespräch.</p>
         </div>
       </div>
 
       <div class="border-t border-b border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-base md:text-lg font-medium pr-4" data-i="faq6-q">Was passiert nach dem Launch?</span>
+          <div class="flex items-center gap-4 pr-4">
+            <span class="text-accent text-xs font-mono shrink-0" style="min-width:24px;">06</span>
+            <span class="text-white text-base md:text-lg font-medium" data-i="faq6-q">Was passiert nach dem Launch?</span>
+          </div>
           <span class="faq-icon text-muted text-xl shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -698,11 +744,13 @@
 <div class="gline mx-6"></div>
 
 <!-- ===== PROCESS — Vertical timeline, totally different layout ===== -->
-<section id="prozess" class="px-6" style="padding:140px 0;">
+<div class="gline-grow ru"></div>
+<section id="prozess" class="px-6 dot-grid" style="padding:140px 0;">
+  <div class="sec-glow" style="width:450px;height:450px;background:radial-gradient(circle,rgba(96,165,250,.04),transparent 70%);top:30%;right:-5%;"></div>
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-24">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="proc-label">Unser Prozess</p>
-      <h2 class="ru text-4xl md:text-6xl font-black text-white" data-i="proc-title">So arbeiten wir.</h2>
+      <h2 class="ru text-4xl md:text-6xl font-black text-white" data-i="proc-title" data-parallax="0.06">So arbeiten wir.</h2>
     </div>
 
     <div class="relative">
@@ -716,14 +764,14 @@
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc1-t">Kennenlernen</h3>
           <p class="text-muted leading-relaxed" data-i="proc1-d">Kostenloses Erstgespräch per WhatsApp oder Videocall. Wir hören zu, stellen Fragen und verstehen, was euer Unternehmen wirklich braucht.</p>
         </div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
         <div class="md:w-1/2 md:pl-16"></div>
       </div>
 
       <!-- Step 2 — right -->
       <div class="rb relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16"></div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">02</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc2-t">Konzept & Angebot</h3>
@@ -738,14 +786,14 @@
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc3-t">Umsetzung</h3>
           <p class="text-muted leading-relaxed" data-i="proc3-d">Wir setzen um — mit regelmäßigen Updates und Zwischenständen. Ihr seid jederzeit im Loop und könnt Feedback geben.</p>
         </div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
         <div class="md:w-1/2 md:pl-16"></div>
       </div>
 
       <!-- Step 4 — right -->
       <div class="rb relative flex flex-col md:flex-row items-start">
         <div class="md:w-1/2 md:pr-16"></div>
-        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
+        <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10 pulse-dot"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
           <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">04</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc4-t">Launch & Support</h3>
@@ -757,6 +805,7 @@
 </section>
 
 <!-- ===== TEAM ===== -->
+<div class="gline-grow ru"></div>
 <section id="team" class="bg-light px-6" style="padding:140px 0;">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-20">
@@ -865,8 +914,9 @@
   </div>
 </section>
 
+<div class="gline-grow ru"></div>
 <!-- ===== PROJEKT SHOWCASE ===== -->
-<section class="px-6" style="padding:120px 0;">
+<section class="px-6 dot-grid" style="padding:120px 0;">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="ref-label">Referenz</p>
@@ -923,11 +973,13 @@
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section id="kontakt" class="px-6" style="padding:160px 0;">
+<div class="gline-grow ru"></div>
+<section id="kontakt" class="px-6 dot-grid" style="padding:160px 0;background:linear-gradient(180deg,transparent 0%,rgba(96,165,250,.02) 50%,transparent 100%);">
+  <div class="sec-glow" style="width:500px;height:500px;background:radial-gradient(circle,rgba(96,165,250,.05),transparent 70%);top:5%;left:-10%;"></div>
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="contact-label">Kontakt</p>
-      <h2 class="ru text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6" data-i="contact-title">Projekt starten?</h2>
+      <h2 class="ru text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6" data-i="contact-title" data-parallax="0.06">Projekt starten?</h2>
       <p class="text-muted text-lg max-w-xl mx-auto leading-relaxed" data-i="contact-desc">Beschreibt euer Projekt — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.</p>
     </div>
 
@@ -1570,6 +1622,35 @@ const io=new IntersectionObserver(en=>{
   });
 },{threshold:.08});
 re.forEach(e=>io.observe(e));
+
+// ===== GLINE GROW (scroll-reveal for gradient dividers) =====
+document.querySelectorAll('.gline-grow').forEach(gl=>{
+  const gio=new IntersectionObserver(en=>{
+    en.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('v');gio.unobserve(e.target);} });
+  },{threshold:.1});
+  gio.observe(gl);
+});
+
+// ===== PARALLAX SCROLL =====
+(function(){
+  const pEls=document.querySelectorAll('[data-parallax]');
+  if(!pEls.length||!matchMedia('(pointer:fine)').matches) return;
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      ticking=true;
+      requestAnimationFrame(()=>{
+        pEls.forEach(el=>{
+          const speed=parseFloat(el.dataset.parallax)||0.08;
+          const rect=el.getBoundingClientRect();
+          const offset=(rect.top-window.innerHeight/2)*speed;
+          el.style.transform='translateY('+offset+'px)';
+        });
+        ticking=false;
+      });
+    }
+  });
+})();
 
 // ===== COUNTER ANIMATION =====
 const counters=document.querySelectorAll('[data-counter]');
