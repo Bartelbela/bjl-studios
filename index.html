@@ -94,7 +94,14 @@
     .rc:hover {
       border-color: rgba(96,165,250,0.15);
       box-shadow: 0 30px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(96,165,250,0.08);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+    }
+    /* Team cards stronger hover */
+    .team-card { transition: all 300ms cubic-bezier(0.4,0,0.2,1); }
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 30px rgba(96,165,250,0.12);
+      border-color: rgba(96,165,250,0.2);
     }
 
     /* ========== SECTION SPOTLIGHT (Stitch warm glow) ========== */
@@ -366,9 +373,9 @@
 <!-- ===== HERO ===== -->
 <section class="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden pt-24 sm:pt-0">
   <!-- 21st.dev-style light streaks — subtle, elongated, rotated -->
-  <div class="hero-streak" style="width:35rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(68% 69% at 55% 31%,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 50%,transparent 80%);"></div>
-  <div class="hero-streak" style="width:14rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0.02) 80%,transparent 100%);transform:translateX(5%) translateY(-50%) rotate(-45deg);"></div>
-  <div class="hero-streak" style="width:14rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(96,165,250,0.06) 0%,rgba(96,165,250,0.02) 80%,transparent 100%);"></div>
+  <div class="hero-streak" style="width:40rem;height:80rem;top:-300px;left:0;rotate:-45deg;background:radial-gradient(68% 69% at 55% 31%,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0.04) 50%,transparent 80%);"></div>
+  <div class="hero-streak" style="width:18rem;height:80rem;top:-300px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 80%,transparent 100%);transform:translateX(5%) translateY(-50%) rotate(-45deg);"></div>
+  <div class="hero-streak" style="width:18rem;height:80rem;top:-300px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(96,165,250,0.10) 0%,rgba(96,165,250,0.03) 80%,transparent 100%);"></div>
 
   <div class="text-center max-w-5xl mx-auto relative z-10">
     <p class="hfade text-accent text-xs tracking-widest uppercase mb-10" id="hl" style="font-size:12px;letter-spacing:4px;" data-i="hero-label">Digitalagentur · Mönchengladbach</p>
@@ -552,63 +559,6 @@
           </div>
         </div>
 
-        <!-- ── LOGO ── -->
-        <div class="rounded-2xl overflow-hidden rc">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
-            <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-logo-cat">Logo Design</p>
-          </div>
-          <!-- Basic -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
-            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-logo-b">Basic</p></div>
-            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-logo-bp">ab 299 €</p></div>
-            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-logo-bd">2 Konzepte, Vektordateien, Nutzungsrechte inkl.</p></div>
-          </div>
-          <!-- Brand Package -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
-            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-logo-br">Brand-Paket</p></div>
-            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-logo-brp">ab 599 €</p></div>
-            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-logo-brd">Logo + Farbpalette + Typografie + Style Guide</p></div>
-          </div>
-        </div>
-
-        <!-- ── IMAGEFILM ── -->
-        <div class="rounded-2xl overflow-hidden rc">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
-            <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-film-cat">Imagefilm & Video</p>
-          </div>
-          <!-- Mini -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
-            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-m">Mini</p></div>
-            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-mp">ab 999 €</p></div>
-            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-md">1 Drehtag, bis 90 Sek., Basis-Schnitt</p></div>
-          </div>
-          <!-- Standard -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
-            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-st">Standard</p></div>
-            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-stp">ab 2.499 €</p></div>
-            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-std">Konzept, 1–2 Drehtage, Color Grading, Musik</p></div>
-          </div>
-        </div>
-
-        <!-- ── SOCIAL MEDIA ── -->
-        <div class="rounded-2xl overflow-hidden rc">
-          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
-            <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-soc-cat">Social Media Management</p>
-          </div>
-          <!-- Starter -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
-            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-soc-s">Starter</p></div>
-            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-soc-sp">ab 249 €<span class="text-sm font-normal text-muted">/mtl.</span></p></div>
-            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-soc-sd">1 Kanal, 8 Posts/Monat, Content-Erstellung</p></div>
-          </div>
-          <!-- Growth -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
-            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-soc-g">Growth</p></div>
-            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-soc-gp">ab 499 €<span class="text-sm font-normal text-muted">/mtl.</span></p></div>
-            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-soc-gd">2 Kanäle, 16 Posts/Monat, Community Management, Report</p></div>
-          </div>
-        </div>
-
         <!-- ── SEO ── -->
         <div class="rounded-2xl overflow-hidden rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
@@ -625,6 +575,57 @@
             <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-seo-g">Growth</p></div>
             <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-seo-gp">ab 449 €<span class="text-sm font-normal text-muted">/mtl.</span></p></div>
             <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-seo-gd">Content-Strategie, Linkbuilding, technisches SEO</p></div>
+          </div>
+        </div>
+
+        <!-- ── SOCIAL MEDIA ── -->
+        <div class="rounded-2xl overflow-hidden rc">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+            <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-soc-cat">Social Media Management</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-soc-s">Starter</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-soc-sp">ab 249 €<span class="text-sm font-normal text-muted">/mtl.</span></p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-soc-sd">1 Kanal, 8 Posts/Monat, Content-Erstellung</p></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-soc-g">Growth</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-soc-gp">ab 499 €<span class="text-sm font-normal text-muted">/mtl.</span></p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-soc-gd">2 Kanäle, 16 Posts/Monat, Community Management, Report</p></div>
+          </div>
+        </div>
+
+        <!-- ── LOGO ── -->
+        <div class="rounded-2xl overflow-hidden rc">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+            <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-logo-cat">Logo Design</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-logo-b">Basic</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-logo-bp">ab 299 €</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-logo-bd">2 Konzepte, Vektordateien, Nutzungsrechte inkl.</p></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-logo-br">Brand-Paket</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-logo-brp">ab 599 €</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-logo-brd">Logo + Farbpalette + Typografie + Style Guide</p></div>
+          </div>
+        </div>
+
+        <!-- ── IMAGEFILM ── -->
+        <div class="rounded-2xl overflow-hidden rc">
+          <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
+            <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-film-cat">Imagefilm & Video</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-m">Mini</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-mp">ab 999 €</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-md">1 Drehtag, bis 90 Sek., Basis-Schnitt</p></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-st">Standard</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-stp">ab 2.499 €</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-std">Konzept, 1–2 Drehtage, Color Grading, Musik</p></div>
           </div>
         </div>
 
@@ -808,7 +809,7 @@
     <!-- 3 dark cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-16">
       <!-- Béla -->
-      <div class="reveal rc h-full flex flex-col overflow-hidden">
+      <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <!-- Photo placeholder with glow ring -->
         <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(96,165,250,0.12),transparent 70%),#0a0a0a;">
           <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">B</span>
@@ -828,7 +829,7 @@
       </div>
 
       <!-- Jonah -->
-      <div class="reveal rc h-full flex flex-col overflow-hidden">
+      <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(168,85,247,0.12),transparent 70%),#0a0a0a;">
           <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">J</span>
           <div class="absolute inset-0 rounded-full m-8 border border-purple-400/20" style="box-shadow:0 0 30px rgba(168,85,247,0.15);"></div>
@@ -847,7 +848,7 @@
       </div>
 
       <!-- Lennard -->
-      <div class="reveal rc h-full flex flex-col overflow-hidden">
+      <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(249,115,22,0.1),transparent 70%),#0a0a0a;">
           <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">L</span>
           <div class="absolute inset-0 rounded-full m-8 border border-orange-400/20" style="box-shadow:0 0 30px rgba(249,115,22,0.12);"></div>
