@@ -281,6 +281,13 @@
     /* ========== FAQ ACCENT ========== */
     [data-faq].open { border-left:2px solid #60A5FA; padding-left:16px; margin-left:-16px; }
 
+    /* ========== GOOGLY CREATURES ========== */
+    .googly-pupil { transition: transform 0.08s ease-out; }
+    .googly-creature { filter: drop-shadow(0 4px 12px rgba(96,165,250,.15)); }
+    @keyframes creature-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    .creature-float { animation: creature-float 4s ease-in-out infinite; }
+    .creature-float-slow { animation: creature-float 6s ease-in-out infinite; animation-delay: -2s; }
+
     /* ========== GLASSMORPHISM ========== */
     .glass-header { background:rgba(96,165,250,.06) !important; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(96,165,250,.1) !important; }
 
@@ -653,6 +660,30 @@
 <div class="gline-grow ru"></div>
 <section id="faq" class="px-6 dot-grid" style="padding:120px 0;">
   <div class="sec-glow" style="width:400px;height:400px;background:radial-gradient(circle,rgba(96,165,250,.04),transparent 70%);bottom:10%;left:-8%;"></div>
+  <!-- Googly Creature 2: curious little watcher -->
+  <div class="hidden xl:block absolute right-12 top-1/2 -translate-y-1/2 creature-float-slow" style="z-index:2;">
+    <svg class="googly-creature" width="80" height="90" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body: rounded square blob -->
+      <rect x="8" y="12" width="64" height="64" rx="20" fill="#818CF8" opacity="0.85"/>
+      <!-- Highlight -->
+      <rect x="18" y="48" width="44" height="18" rx="9" fill="#a5b4fc" opacity="0.2"/>
+      <!-- Left eye -->
+      <g class="googly-eye">
+        <circle cx="28" cy="38" r="12" fill="white"/>
+        <circle class="googly-pupil" cx="28" cy="38" r="6" fill="#111"/>
+        <circle cx="25" cy="34" r="2.5" fill="white" opacity="0.8"/>
+      </g>
+      <!-- Right eye -->
+      <g class="googly-eye">
+        <circle cx="52" cy="38" r="12" fill="white"/>
+        <circle class="googly-pupil" cx="52" cy="38" r="6" fill="#111"/>
+        <circle cx="49" cy="34" r="2.5" fill="white" opacity="0.8"/>
+      </g>
+      <!-- Little feet -->
+      <ellipse cx="28" cy="80" rx="8" ry="5" fill="#818CF8" opacity="0.7"/>
+      <ellipse cx="52" cy="80" rx="8" ry="5" fill="#818CF8" opacity="0.7"/>
+    </svg>
+  </div>
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16">
       <p class="rw text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">Häufige Fragen</p>
@@ -1111,10 +1142,56 @@
           </div>
         </a>
         <p class="text-xs text-muted mt-2 text-center" data-i="contact-hours">Mönchengladbach · Mo–Fr, 9–18 Uhr</p>
+        <!-- Googly Creature 1: friendly blob watching you fill the form -->
+        <div class="hidden lg:flex justify-center mt-8 creature-float">
+          <svg class="googly-creature" width="120" height="110" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body: rounded friendly blob -->
+            <path d="M10 65C10 30 30 10 60 10C90 10 110 30 110 65C110 90 90 105 60 105C30 105 10 90 10 65Z" fill="#3B82F6" opacity="0.9"/>
+            <!-- Belly highlight -->
+            <ellipse cx="60" cy="72" rx="28" ry="18" fill="#60A5FA" opacity="0.3"/>
+            <!-- Left eye -->
+            <g class="googly-eye">
+              <circle cx="42" cy="52" r="16" fill="white"/>
+              <circle class="googly-pupil" cx="42" cy="52" r="8" fill="#111"/>
+              <circle cx="38" cy="47" r="3" fill="white" opacity="0.8"/>
+            </g>
+            <!-- Right eye -->
+            <g class="googly-eye">
+              <circle cx="78" cy="52" r="16" fill="white"/>
+              <circle class="googly-pupil" cx="78" cy="52" r="8" fill="#111"/>
+              <circle cx="74" cy="47" r="3" fill="white" opacity="0.8"/>
+            </g>
+            <!-- Smile -->
+            <path d="M48 76C52 82 68 82 72 76" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Little arms -->
+            <path d="M18 60C10 55 8 48 12 44" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M102 60C110 55 112 48 108 44" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Googly Creature 3: peeking from below -->
+<div class="hidden md:flex justify-center -mb-1 relative" style="z-index:2;">
+  <svg class="googly-creature" width="60" height="35" viewBox="0 0 60 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Half body peeking up -->
+    <ellipse cx="30" cy="32" rx="28" ry="24" fill="#34D399" opacity="0.85"/>
+    <!-- Left eye -->
+    <g class="googly-eye">
+      <circle cx="20" cy="18" r="9" fill="white"/>
+      <circle class="googly-pupil" cx="20" cy="18" r="4.5" fill="#111"/>
+      <circle cx="18" cy="15" r="2" fill="white" opacity="0.8"/>
+    </g>
+    <!-- Right eye -->
+    <g class="googly-eye">
+      <circle cx="40" cy="18" r="9" fill="white"/>
+      <circle class="googly-pupil" cx="40" cy="18" r="4.5" fill="#111"/>
+      <circle cx="38" cy="15" r="2" fill="white" opacity="0.8"/>
+    </g>
+  </svg>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="border-t border-border px-6 py-10">
@@ -1677,6 +1754,27 @@ if(counters.length){
   },{threshold:.5});
   counters.forEach(c=>cio.observe(c));
 }
+
+// ===== GOOGLY EYE TRACKING =====
+(function(){
+  const pupils=document.querySelectorAll('.googly-pupil');
+  if(!pupils.length) return;
+  function updateEyes(){
+    pupils.forEach(p=>{
+      const eye=p.closest('.googly-eye');
+      if(!eye) return;
+      const r=eye.getBoundingClientRect();
+      const ecx=r.left+r.width/2, ecy=r.top+r.height/2;
+      const dx=mx-ecx, dy=my-ecy;
+      const angle=Math.atan2(dy,dx);
+      const maxMove=r.width*0.22;
+      const dist=Math.min(Math.sqrt(dx*dx+dy*dy)*0.15,maxMove);
+      p.style.transform='translate('+Math.cos(angle)*dist+'px,'+Math.sin(angle)*dist+'px)';
+    });
+    requestAnimationFrame(updateEyes);
+  }
+  requestAnimationFrame(updateEyes);
+})();
 
 // ===== ANIMATED DOCK =====
 // Matches original: useTransform(distance,[-150,0,150],[40,80,40]) + useSpring
