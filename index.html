@@ -79,6 +79,48 @@
     /* ========== LOADER ========== */
     #loader.out { opacity:0; transition:opacity .5s ease .1s; pointer-events:none; }
 
+    /* ========== LAMP EFFECT ========== */
+    .lamp-wrap { position:absolute; top:0; left:0; right:0; height:60%; pointer-events:none; overflow:hidden; z-index:0; }
+    .lamp-beam-l, .lamp-beam-r {
+      position:absolute; top:0; height:100%; width:15rem;
+      opacity:0;
+      animation: lamp-grow 1.8s cubic-bezier(.16,1,.3,1) 1.6s forwards;
+    }
+    .lamp-beam-l {
+      right:50%;
+      background:conic-gradient(from 70deg at center top, #60A5FA, transparent 40%);
+    }
+    .lamp-beam-r {
+      left:50%;
+      background:conic-gradient(from 290deg at center top, transparent 60%, #60A5FA);
+    }
+    @keyframes lamp-grow {
+      0% { width:15rem; opacity:0.3; }
+      100% { width:30rem; opacity:0.6; }
+    }
+    .lamp-mask-bottom { position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top,#060606,transparent); z-index:2; }
+    .lamp-mask-l { position:absolute; left:0; top:0; bottom:0; width:10rem; background:linear-gradient(to right,#060606,transparent); z-index:2; }
+    .lamp-mask-r { position:absolute; right:0; top:0; bottom:0; width:10rem; background:linear-gradient(to left,#060606,transparent); z-index:2; }
+    .lamp-glow {
+      position:absolute; top:45%; left:50%; transform:translate(-50%,-50%);
+      width:8rem; height:9rem; border-radius:50%;
+      background:#60A5FA; opacity:0; filter:blur(60px);
+      animation: lamp-glow-in 1.8s cubic-bezier(.16,1,.3,1) 1.6s forwards;
+    }
+    @keyframes lamp-glow-in {
+      0% { width:8rem; opacity:0; }
+      100% { width:16rem; opacity:0.35; }
+    }
+    .lamp-line {
+      position:absolute; top:45%; left:50%; transform:translate(-50%,-50%);
+      height:2px; width:15rem; background:#60A5FA; opacity:0; z-index:3;
+      animation: lamp-line-in 1.8s cubic-bezier(.16,1,.3,1) 1.6s forwards;
+    }
+    @keyframes lamp-line-in {
+      0% { width:8rem; opacity:0; }
+      100% { width:30rem; opacity:0.8; }
+    }
+
     /* ========== HERO TEXT ========== */
     .word {
       display: inline-block;
@@ -361,6 +403,17 @@
   <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#60A5FA,transparent 70%);top:-15%;right:-10%;opacity:.1;animation:d1 12s ease-in-out infinite alternate"></div>
   <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,#818CF8,transparent 70%);bottom:5%;left:-10%;opacity:.06;animation:d2 16s ease-in-out infinite alternate"></div>
   <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,#60A5FA,transparent 70%);top:35%;left:55%;opacity:.05;animation:d3 20s ease-in-out infinite alternate"></div>
+
+  <!-- Lamp effect -->
+  <div class="lamp-wrap">
+    <div class="lamp-beam-l"></div>
+    <div class="lamp-beam-r"></div>
+    <div class="lamp-mask-bottom"></div>
+    <div class="lamp-mask-l"></div>
+    <div class="lamp-mask-r"></div>
+    <div class="lamp-glow"></div>
+    <div class="lamp-line"></div>
+  </div>
 
   <div class="text-center max-w-5xl mx-auto relative z-10">
     <p class="hfade text-accent text-xs tracking-widest uppercase mb-10" id="hl" style="font-size:12px;letter-spacing:4px;" data-i="hero-label">Digitalagentur · Mönchengladbach</p>
