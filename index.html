@@ -153,11 +153,16 @@
       color: transparent;
       font-weight: 900;
     }
-    /* Fix for "4" rendering bug with text-stroke */
+    /* Fix for "4" rendering bug — use text-shadow outline instead of stroke */
     .num-outline-fix4 {
-      -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
-      color: #060606;
+      -webkit-text-stroke: 0;
+      color: transparent;
       font-weight: 900;
+      text-shadow:
+        -1px -1px 0 rgba(255,255,255,0.25),
+         1px -1px 0 rgba(255,255,255,0.25),
+        -1px  1px 0 rgba(255,255,255,0.25),
+         1px  1px 0 rgba(255,255,255,0.25);
     }
 
     /* ========== PRICING ========== */
