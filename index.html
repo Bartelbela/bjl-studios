@@ -247,6 +247,16 @@
       transform: translateY(-2px) scale(1.08);
     }
 
+    /* ========== TIER PILLS SLIDE ========== */
+    .tier-pills {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .3s ease .05s, margin .3s ease;
+      margin-top: 0;
+    }
+    .tier-pills.show {
+      max-height: 60px; opacity: 1; margin-top: 6px;
+    }
+
     /* ========== GRADIENT LINE ========== */
     .gline { height:1px; background:linear-gradient(90deg, transparent, #1a1a1a 20%, #1a1a1a 80%, transparent); }
 
@@ -323,7 +333,7 @@
 </div>
 
 <!-- ===== HERO ===== -->
-<section class="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
+<section class="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden pt-24 sm:pt-0">
   <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#60A5FA,transparent 70%);top:-15%;right:-10%;opacity:.1;animation:d1 12s ease-in-out infinite alternate"></div>
   <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,#818CF8,transparent 70%);bottom:5%;left:-10%;opacity:.06;animation:d2 16s ease-in-out infinite alternate"></div>
   <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,#60A5FA,transparent 70%);top:35%;left:55%;opacity:.05;animation:d3 20s ease-in-out infinite alternate"></div>
@@ -769,7 +779,7 @@
           <div class="p-6">
             <p class="text-xl font-bold mb-1" style="color:#111;">Béla Junker</p>
             <p class="text-accent text-sm font-medium mb-4" data-i="team-b-role">Co-Founder · Development</p>
-            <p class="text-sm leading-relaxed mb-4" style="color:#666;" data-i="team-b-desc">Technik, Code und Performance. Béla baut eure Website so, dass sie schnell lädt, bei Google rankt und auf jedem Gerät funktioniert.</p>
+            <p class="text-sm leading-relaxed mb-4" style="color:#666;" data-i="team-b-desc">Technik, Design und Performance. Béla baut eure Website nicht nur schnell und funktional, sondern sorgt dafür, dass sie richtig gut aussieht — auf jedem Gerät.</p>
             <div class="flex flex-wrap gap-1.5">
               <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">HTML/CSS</span>
               <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">JavaScript</span>
@@ -808,7 +818,7 @@
           </div>
           <div class="p-6">
             <p class="text-xl font-bold mb-1" style="color:#111;">Lennard Schumacher</p>
-            <p class="text-accent text-sm font-medium mb-4" data-i="team-l-role">Co-Founder · Marketing</p>
+            <p class="text-accent text-sm font-medium mb-4" data-i="team-l-role">Co-Founder · Videoproduktion & Marketing</p>
             <p class="text-sm leading-relaxed mb-4" style="color:#666;" data-i="team-l-desc">SEO, Social Media, Videodreh und Postproduction. Lennard sorgt dafür, dass eure Zielgruppe euch findet und eure Geschichte im Bewegtbild erzählt wird.</p>
             <div class="flex flex-wrap gap-1.5">
               <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">SEO</span>
@@ -818,6 +828,22 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Animated stats row -->
+    <div class="rb grid grid-cols-3 gap-4 md:gap-8 mb-16 border rounded-2xl p-6 md:p-10" style="border-color:#e0e0e0;background:linear-gradient(135deg,#f8f9fb,#f0f2f6);">
+      <div class="text-center">
+        <p class="text-3xl md:text-5xl font-black text-accent mb-1" data-counter="3">0</p>
+        <p class="text-xs md:text-sm" style="color:#888;" data-i="stat-founders">Gründer</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl md:text-5xl font-black mb-1" style="color:#111;" data-counter="100" data-suffix="%">0%</p>
+        <p class="text-xs md:text-sm" style="color:#888;" data-i="stat-inhouse">In-House</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl md:text-5xl font-black mb-1" style="color:#111;" data-counter="24" data-suffix="h">0h</p>
+        <p class="text-xs md:text-sm" style="color:#888;" data-i="stat-response">Antwortzeit</p>
       </div>
     </div>
 
@@ -941,43 +967,43 @@
             <div class="space-y-2" id="servicePills">
               <!-- Webdesign -->
               <div class="svc-group">
-                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Webdesign" onclick="toggleSvc(this)" data-i="cf-opt1">Webdesign</button>
-                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Webdesign">
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Starter" onclick="toggleTier(this)">Starter</button>
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Business" onclick="toggleTier(this)">Business</button>
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Pro" onclick="toggleTier(this)">Pro</button>
+                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="Webdesign" onclick="toggleSvc(this)" data-i="cf-opt1">Webdesign</button>
+                <div class="tier-pills flex gap-1.5 flex-wrap ml-2" data-tiers-for="Webdesign">
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Starter" onclick="toggleTier(this)">Starter</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Business" onclick="toggleTier(this)">Business</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Pro" onclick="toggleTier(this)">Pro</button>
                 </div>
               </div>
               <!-- SEO -->
               <div class="svc-group">
-                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="SEO" onclick="toggleSvc(this)" data-i="cf-opt2">SEO</button>
-                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="SEO">
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Basics" onclick="toggleTier(this)">Basics</button>
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Growth" onclick="toggleTier(this)">Growth</button>
+                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="SEO" onclick="toggleSvc(this)" data-i="cf-opt2">SEO</button>
+                <div class="tier-pills flex gap-1.5 flex-wrap ml-2" data-tiers-for="SEO">
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Basics" onclick="toggleTier(this)">Basics</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Growth" onclick="toggleTier(this)">Growth</button>
                 </div>
               </div>
               <!-- Social Media -->
               <div class="svc-group">
-                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Social Media" onclick="toggleSvc(this)" data-i="cf-opt3">Social Media</button>
-                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Social Media">
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Starter" onclick="toggleTier(this)">Starter</button>
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Growth" onclick="toggleTier(this)">Growth</button>
+                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="Social Media" onclick="toggleSvc(this)" data-i="cf-opt3">Social Media</button>
+                <div class="tier-pills flex gap-1.5 flex-wrap ml-2" data-tiers-for="Social Media">
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Starter" onclick="toggleTier(this)">Starter</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Growth" onclick="toggleTier(this)">Growth</button>
                 </div>
               </div>
               <!-- Branding -->
               <div class="svc-group">
-                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Branding" onclick="toggleSvc(this)" data-i="cf-opt4">Branding</button>
-                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Branding">
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Basic" onclick="toggleTier(this)">Basic</button>
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Brand-Paket" onclick="toggleTier(this)">Brand-Paket</button>
+                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="Branding" onclick="toggleSvc(this)" data-i="cf-opt4">Branding</button>
+                <div class="tier-pills flex gap-1.5 flex-wrap ml-2" data-tiers-for="Branding">
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Basic" onclick="toggleTier(this)">Basic</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Brand-Paket" onclick="toggleTier(this)">Brand-Paket</button>
                 </div>
               </div>
               <!-- Video -->
               <div class="svc-group">
-                <button type="button" class="svc-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Video" onclick="toggleSvc(this)" data-i="cf-opt5">Video</button>
-                <div class="tier-pills hidden flex gap-1.5 flex-wrap mt-1.5 ml-2" data-tiers-for="Video">
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Mini" onclick="toggleTier(this)">Mini</button>
-                  <button type="button" class="tier-pill text-[10px] px-3 py-1 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Standard" onclick="toggleTier(this)">Standard</button>
+                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="Video" onclick="toggleSvc(this)" data-i="cf-opt5">Video</button>
+                <div class="tier-pills flex gap-1.5 flex-wrap ml-2" data-tiers-for="Video">
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Mini" onclick="toggleTier(this)">Mini</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Standard" onclick="toggleTier(this)">Standard</button>
                 </div>
               </div>
             </div>
@@ -1200,11 +1226,14 @@ const T={
   'team-title2':{de:'Ein Ziel.',en:'One Goal.'},
   'team-desc':{de:'Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.',en:'No corporation, no call center — at BJL Studios you work directly with us. Personal, transparent and from Mönchengladbach.'},
   'team-b-role':{de:'Co-Founder · Development',en:'Co-Founder · Development'},
-  'team-b-desc':{de:'Technik, Code und Performance. Béla baut eure Website so, dass sie schnell lädt, bei Google rankt und auf jedem Gerät funktioniert.',en:'Tech, code and performance. Béla builds your website so it loads fast, ranks on Google and works on every device.'},
+  'team-b-desc':{de:'Technik, Design und Performance. Béla baut eure Website nicht nur schnell und funktional, sondern sorgt dafür, dass sie richtig gut aussieht — auf jedem Gerät.',en:'Tech, design and performance. Béla doesn\'t just build your website fast and functional — he makes sure it looks great on every device.'},
   'team-j-role':{de:'Co-Founder · Design',en:'Co-Founder · Design'},
   'team-j-desc':{de:'UI/UX, Branding und visuelle Identität. Jonah entwickelt Designs, die nicht nur gut aussehen, sondern eure Zielgruppe ansprechen.',en:'UI/UX, branding and visual identity. Jonah creates designs that don\'t just look good, but speak to your audience.'},
-  'team-l-role':{de:'Co-Founder · Marketing',en:'Co-Founder · Marketing'},
+  'team-l-role':{de:'Co-Founder · Videoproduktion & Marketing',en:'Co-Founder · Video Production & Marketing'},
   'team-l-desc':{de:'SEO, Social Media, Videodreh und Postproduction. Lennard sorgt dafür, dass eure Zielgruppe euch findet und eure Geschichte im Bewegtbild erzählt wird.',en:'SEO, social media, video production and post-production. Lennard makes sure your audience finds you and your story is told through motion picture.'},
+  'stat-founders':{de:'Gründer',en:'Founders'},
+  'stat-inhouse':{de:'In-House',en:'In-House'},
+  'stat-response':{de:'Antwortzeit',en:'Response Time'},
   'tools-label':{de:'Unsere Tools',en:'Our Tools'},
   // Reference
   'ref-label':{de:'Referenz',en:'Reference'},
@@ -1326,12 +1355,12 @@ function toggleSvc(btn){
   const tierWrap=document.querySelector('[data-tiers-for="'+svc+'"]');
   if(btn.classList.contains('active')){
     btn.style.borderColor='#60A5FA';btn.style.color='#60A5FA';btn.style.background='rgba(96,165,250,.08)';
-    if(tierWrap) tierWrap.classList.remove('hidden');
+    if(tierWrap) tierWrap.classList.add('show');
   } else {
     btn.style.borderColor='';btn.style.color='';btn.style.background='';
     // Hide and reset tier pills
     if(tierWrap){
-      tierWrap.classList.add('hidden');
+      tierWrap.classList.remove('show');
       tierWrap.querySelectorAll('.tier-pill').forEach(t=>{
         t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';
       });
@@ -1461,7 +1490,7 @@ if(cForm){
       document.getElementById('cfMethod').value='egal';
       // Reset service + tier pills
       document.querySelectorAll('.svc-pill').forEach(p=>{p.classList.remove('active');p.style.borderColor='';p.style.color='';p.style.background='';});
-      document.querySelectorAll('.tier-pills').forEach(w=>{w.classList.add('hidden');w.querySelectorAll('.tier-pill').forEach(t=>{t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';});});
+      document.querySelectorAll('.tier-pills').forEach(w=>{w.classList.remove('show');w.querySelectorAll('.tier-pill').forEach(t=>{t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';});});
       document.getElementById('cfServices').value='';
     } else {
       err.classList.remove('hidden');
@@ -1541,6 +1570,32 @@ const io=new IntersectionObserver(en=>{
   });
 },{threshold:.08});
 re.forEach(e=>io.observe(e));
+
+// ===== COUNTER ANIMATION =====
+const counters=document.querySelectorAll('[data-counter]');
+if(counters.length){
+  const cio=new IntersectionObserver(en=>{
+    en.forEach(e=>{
+      if(e.isIntersecting){
+        const el=e.target;
+        const target=parseInt(el.dataset.counter);
+        const suffix=el.dataset.suffix||'';
+        const dur=1200;
+        const start=performance.now();
+        function step(now){
+          const p=Math.min((now-start)/dur,1);
+          const ease=1-Math.pow(1-p,3); // ease-out cubic
+          const val=Math.round(ease*target);
+          el.textContent=val+suffix;
+          if(p<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        cio.unobserve(el);
+      }
+    });
+  },{threshold:.5});
+  counters.forEach(c=>cio.observe(c));
+}
 
 // ===== ANIMATED DOCK =====
 // Matches original: useTransform(distance,[-150,0,150],[40,80,40]) + useSpring
