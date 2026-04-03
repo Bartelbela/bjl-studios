@@ -97,12 +97,16 @@
       transform: translateY(-4px);
     }
     /* Team cards stronger hover */
-    .team-card { transition: all 300ms cubic-bezier(0.4,0,0.2,1); }
     .team-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 30px rgba(96,165,250,0.12);
-      border-color: rgba(96,165,250,0.2);
+      transform: translateY(-8px) !important;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12), 0 0 30px rgba(96,165,250,0.15) !important;
+      border-color: rgba(96,165,250,0.25) !important;
     }
+    .team-card:hover .glow-ring {
+      box-shadow: 0 0 50px rgba(96,165,250,0.3);
+      border-color: rgba(96,165,250,0.4);
+    }
+    .glow-ring { transition: box-shadow 300ms ease, border-color 300ms ease; }
 
     /* ========== SECTION SPOTLIGHT (Stitch warm glow) ========== */
     .sec-spot {
@@ -813,7 +817,7 @@
         <!-- Photo placeholder with glow ring -->
         <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(96,165,250,0.12),transparent 70%),#0a0a0a;">
           <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">B</span>
-          <div class="absolute inset-0 rounded-full m-8 border border-accent/20" style="box-shadow:0 0 30px rgba(96,165,250,0.15);"></div>
+          <div class="glow-ring absolute inset-0 rounded-full m-8 border border-accent/20" style="box-shadow:0 0 30px rgba(96,165,250,0.15);"></div>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <p class="text-xl font-bold text-white mb-1">Béla Junker</p>
@@ -832,7 +836,7 @@
       <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(168,85,247,0.12),transparent 70%),#0a0a0a;">
           <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">J</span>
-          <div class="absolute inset-0 rounded-full m-8 border border-purple-400/20" style="box-shadow:0 0 30px rgba(168,85,247,0.15);"></div>
+          <div class="glow-ring absolute inset-0 rounded-full m-8 border border-purple-400/20" style="box-shadow:0 0 30px rgba(168,85,247,0.15);"></div>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <p class="text-xl font-bold text-white mb-1">Jonah Böckem</p>
@@ -851,7 +855,7 @@
       <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <div class="w-full aspect-square flex items-center justify-center relative" style="background:radial-gradient(circle at 50% 60%,rgba(249,115,22,0.1),transparent 70%),#0a0a0a;">
           <span class="text-8xl font-black" style="color:rgba(255,255,255,0.06);">L</span>
-          <div class="absolute inset-0 rounded-full m-8 border border-orange-400/20" style="box-shadow:0 0 30px rgba(249,115,22,0.12);"></div>
+          <div class="glow-ring absolute inset-0 rounded-full m-8 border border-orange-400/20" style="box-shadow:0 0 30px rgba(249,115,22,0.12);"></div>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <p class="text-xl font-bold text-white mb-1">Lennard Schumacher</p>
