@@ -72,7 +72,12 @@
 
     /* ========== HERO LIGHT STREAKS (21st.dev pattern) ========== */
     .hero-streak {
-      position:absolute; pointer-events:none; border-radius:50%; opacity:0.5;
+      position:absolute; pointer-events:none; border-radius:50%;
+      opacity:0; transition: none;
+    }
+    .hero-streak.on {
+      opacity:0.5;
+      transition: opacity 1.5s cubic-bezier(0.16,1,0.3,1);
     }
 
     /* ========== SHIMMER (team placeholders) ========== */
@@ -1347,6 +1352,8 @@ function rh(){
   w.forEach((e,i)=>setTimeout(()=>e.classList.add('on'),i*140));
   const d=w.length*140+200;
   setTimeout(()=>document.getElementById('hl').classList.add('on'),100);
+  // Fade in hero light streaks
+  setTimeout(()=>document.querySelectorAll('.hero-streak').forEach(s=>s.classList.add('on')),200);
   setTimeout(()=>document.getElementById('hs').classList.add('on'),d);
   setTimeout(()=>document.getElementById('hslogan').classList.add('on'),d+120);
   setTimeout(()=>document.getElementById('hc').classList.add('on'),d+250);
