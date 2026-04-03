@@ -33,10 +33,10 @@
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             dark: '#060606',
-            surface: '#0c0c0c',
-            surface2: '#111111',
+            surface: '#0a0a0a',
+            surface2: '#0e0e0e',
             border: '#1a1a1a',
-            muted: '#777777',
+            muted: '#a0a0a0',
             accent: '#60A5FA',
             light: '#f5f5f5',
           }
@@ -83,15 +83,22 @@
       animation:shimmer 3s ease-in-out infinite;
     }
 
-    /* ========== CARD DEPTH (Raycast inset-shadow) ========== */
-    .card-depth {
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.2);
-      transition: box-shadow .3s ease-out, transform .3s ease-out;
+    /* ========== RAYCAST CARD (layered shadows + gradient bg) ========== */
+    .rc {
+      background: linear-gradient(135deg, rgba(96,165,250,0.03) 0%, rgba(6,6,6,0.5) 100%);
+      border: 1px solid rgba(96,165,250,0.08);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: all 300ms cubic-bezier(0.4,0,0.2,1);
     }
-    .card-depth:hover {
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 30px 50px rgba(0,0,0,0.35), 0 0 20px rgba(96,165,250,0.08);
-      transform: translateY(-4px);
+    .rc:hover {
+      border-color: rgba(96,165,250,0.15);
+      box-shadow: 0 30px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(96,165,250,0.08);
+      transform: translateY(-2px);
     }
+
+    /* ========== PREMIUM TYPOGRAPHY ========== */
+    h1, h2, h3 { letter-spacing:-0.02em; color:#f4feff; }
 
     /* ========== LOADER ========== */
     #loader.out { opacity:0; transition:opacity .5s ease .1s; pointer-events:none; }
@@ -348,9 +355,9 @@
 <!-- ===== HERO ===== -->
 <section class="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden pt-24 sm:pt-0">
   <!-- 21st.dev-style light streaks — subtle, elongated, rotated -->
-  <div class="hero-streak" style="width:35rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(68% 69% at 55% 31%,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.015) 50%,transparent 80%);"></div>
-  <div class="hero-streak" style="width:14rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 80%,transparent 100%);transform:translateX(5%) translateY(-50%) rotate(-45deg);"></div>
-  <div class="hero-streak" style="width:14rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(96,165,250,0.03) 0%,rgba(96,165,250,0.01) 80%,transparent 100%);"></div>
+  <div class="hero-streak" style="width:35rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(68% 69% at 55% 31%,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 50%,transparent 80%);"></div>
+  <div class="hero-streak" style="width:14rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0.02) 80%,transparent 100%);transform:translateX(5%) translateY(-50%) rotate(-45deg);"></div>
+  <div class="hero-streak" style="width:14rem;height:80rem;top:-350px;left:0;rotate:-45deg;background:radial-gradient(50% 50% at 50% 50%,rgba(96,165,250,0.06) 0%,rgba(96,165,250,0.02) 80%,transparent 100%);"></div>
 
   <div class="text-center max-w-5xl mx-auto relative z-10">
     <p class="hfade text-accent text-xs tracking-widest uppercase mb-10" id="hl" style="font-size:12px;letter-spacing:4px;" data-i="hero-label">Digitalagentur · Mönchengladbach</p>
@@ -362,11 +369,11 @@
         <span class="word" data-i="hero-w3">Lokal</span> <span class="word" data-i="hero-w4">wachsen.</span>
       </span>
     </h1>
-    <p class="hfade text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed" id="hs" style="color:#555;" data-i="hero-sub">Webdesign, SEO, Social Media, Branding & Video — alles aus einer Hand, direkt aus Mönchengladbach.</p>
-    <p class="hfade text-xs tracking-widest uppercase mb-14" id="hslogan" style="color:#444;letter-spacing:4px;" data-i="hero-slogan">Branding. Journey. Logic. — Wir denken digitales zu Ende.</p>
+    <p class="hfade text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed" id="hs" style="color:#999;" data-i="hero-sub">Webdesign, SEO, Social Media, Branding & Video — alles aus einer Hand, direkt aus Mönchengladbach.</p>
+    <p class="hfade text-xs tracking-widest uppercase mb-14" id="hslogan" style="color:#666;letter-spacing:4px;" data-i="hero-slogan">Branding. Journey. Logic. — Wir denken digitales zu Ende.</p>
     <div class="hfade flex flex-col sm:flex-row gap-4 justify-center" id="hc">
-      <a href="#kontakt" class="mag bg-white text-black px-10 py-4 rounded-full font-semibold hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-sm" data-i="hero-cta1">Kostenloses Erstgespräch</a>
-      <a href="#leistungen" class="mag border border-white/20 text-white/70 px-10 py-4 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 text-sm" data-i="hero-cta2">Was wir machen ↓</a>
+      <a href="#kontakt" class="mag px-10 py-4 rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5" style="background:linear-gradient(135deg,#60A5FA,#3B82F6);color:#060606;box-shadow:0 8px 24px rgba(96,165,250,0.25);" onmouseover="this.style.boxShadow='0 12px 32px rgba(96,165,250,0.35)'" onmouseout="this.style.boxShadow='0 8px 24px rgba(96,165,250,0.25)'" data-i="hero-cta1">Kostenloses Erstgespräch</a>
+      <a href="#leistungen" class="mag border text-white/80 px-10 py-4 rounded-full hover:text-white transition-all duration-300 text-sm hover:-translate-y-0.5" style="border-color:rgba(96,165,250,0.2);" onmouseover="this.style.borderColor='rgba(96,165,250,0.4)';this.style.background='rgba(96,165,250,0.05)'" onmouseout="this.style.borderColor='rgba(96,165,250,0.2)';this.style.background=''" data-i="hero-cta2">Was wir machen ↓</a>
     </div>
   </div>
 
@@ -374,8 +381,8 @@
     <div class="gline"></div>
     <div class="mq-wrap overflow-hidden py-4">
       <div class="mq-track flex whitespace-nowrap">
-        <span style="color:#222;font-size:12px;letter-spacing:3px;font-variant:small-caps" class="mx-4">Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 · Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 ·&nbsp;</span>
-        <span style="color:#222;font-size:12px;letter-spacing:3px;font-variant:small-caps" class="mx-4">Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 · Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 ·&nbsp;</span>
+        <span style="color:#444;font-size:12px;letter-spacing:3px;font-variant:small-caps" class="mx-4">Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 · Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 ·&nbsp;</span>
+        <span style="color:#444;font-size:12px;letter-spacing:3px;font-variant:small-caps" class="mx-4">Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 · Webdesign · SEO · Social Media · Branding · Imagefilme · Mönchengladbach · 2026 ·&nbsp;</span>
       </div>
     </div>
   </div>
@@ -403,7 +410,7 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-5xl md:text-6xl font-black text-border select-none" style="color:#1a1a1a;">01</span>
+            <span class="text-5xl md:text-6xl font-black text-border select-none" style="color:#2a2a2a;">01</span>
             <div>
               <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc1-t">Webdesign & Entwicklung</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc1-s">Individuelle Websites die Kunden bringen</span>
@@ -422,7 +429,7 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">02</span>
+            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">02</span>
             <div>
               <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc2-t">SEO & Online Marketing</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc2-s">Sichtbarkeit bei Google, dort wo es zählt</span>
@@ -441,7 +448,7 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">03</span>
+            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">03</span>
             <div>
               <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc3-t">Social Media</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc3-s">Content-Strategie, Posts, Reels & Community</span>
@@ -460,7 +467,7 @@
       <div class="svc border-t border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">04</span>
+            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">04</span>
             <div>
               <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc4-t">Logo & Branding</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc4-s">Visuelles Erscheinungsbild das bleibt</span>
@@ -479,7 +486,7 @@
       <div class="svc border-t border-b border-border" data-expandable>
         <div class="flex items-center justify-between py-7" style="min-height:90px;">
           <div class="flex items-center gap-6">
-            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#1a1a1a;">05</span>
+            <span class="text-3xl sm:text-5xl md:text-6xl font-black select-none" style="color:#2a2a2a;">05</span>
             <div>
               <span class="svc-n text-white text-lg md:text-xl font-semibold block" data-i="svc5-t">Imagefilme & Video</span>
               <span class="text-muted text-sm hidden sm:block" data-i="svc5-s">Bewegtbild das Vertrauen schafft</span>
@@ -505,7 +512,7 @@
       <div class="reveal space-y-6">
 
         <!-- ── WEBSITE ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 card-depth">
+        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-web-cat">Webdesign & Entwicklung</p>
           </div>
@@ -534,7 +541,7 @@
         </div>
 
         <!-- ── LOGO ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 card-depth">
+        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-logo-cat">Logo Design</p>
           </div>
@@ -553,7 +560,7 @@
         </div>
 
         <!-- ── IMAGEFILM ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 card-depth">
+        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-film-cat">Imagefilm & Video</p>
           </div>
@@ -572,7 +579,7 @@
         </div>
 
         <!-- ── SOCIAL MEDIA ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 card-depth">
+        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-soc-cat">Social Media Management</p>
           </div>
@@ -591,7 +598,7 @@
         </div>
 
         <!-- ── SEO ── -->
-        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 card-depth">
+        <div class="border border-border rounded-2xl overflow-hidden bg-surface2 rc">
           <div class="px-5 sm:px-8 py-4 border-b border-border" style="background:rgba(255,255,255,.02);">
             <p class="text-xs uppercase tracking-widest text-accent" style="letter-spacing:3px;" data-i="pt-seo-cat">SEO & Online Marketing</p>
           </div>
@@ -612,7 +619,7 @@
       </div>
 
       <!-- Notes -->
-      <div class="mt-10 border border-border rounded-2xl p-6 sm:p-8 bg-surface2 card-depth">
+      <div class="mt-10 border border-border rounded-2xl p-6 sm:p-8 bg-surface2 rc">
         <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <div class="flex items-start gap-3 flex-1">
             <span class="text-accent text-sm mt-1">—</span>
@@ -640,7 +647,7 @@
 
 <!-- ===== FAQ ===== -->
 
-<section id="faq" class="px-6" style="padding:120px 0;">
+<section id="faq" class="px-6 bg-surface" style="padding:120px 0;">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16">
       <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">Häufige Fragen</p>
@@ -747,7 +754,7 @@
       <!-- Step 1 — left -->
       <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">01</span>
+          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">01</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc1-t">Kennenlernen</h3>
           <p class="text-muted leading-relaxed" data-i="proc1-d">Kostenloses Erstgespräch per WhatsApp oder Videocall. Wir hören zu, stellen Fragen und verstehen, was euer Unternehmen wirklich braucht.</p>
         </div>
@@ -760,7 +767,7 @@
         <div class="md:w-1/2 md:pr-16"></div>
         <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">02</span>
+          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">02</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc2-t">Konzept & Angebot</h3>
           <p class="text-muted leading-relaxed" data-i="proc2-d">Innerhalb von 48h bekommt ihr ein klares Konzept und ein transparentes Angebot. Keine versteckten Kosten, kein Kleingedrucktes.</p>
         </div>
@@ -769,7 +776,7 @@
       <!-- Step 3 — left -->
       <div class="reveal relative flex flex-col md:flex-row items-start mb-12 md:mb-24">
         <div class="md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">03</span>
+          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">03</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc3-t">Umsetzung</h3>
           <p class="text-muted leading-relaxed" data-i="proc3-d">Wir setzen um — mit regelmäßigen Updates und Zwischenständen. Ihr seid jederzeit im Loop und könnt Feedback geben.</p>
         </div>
@@ -782,7 +789,7 @@
         <div class="md:w-1/2 md:pr-16"></div>
         <div class="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-2 w-5 h-5 rounded-full bg-accent border-4 border-dark z-10"></div>
         <div class="md:w-1/2 md:pl-16 pl-16">
-          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#333;">04</span>
+          <span class="text-4xl sm:text-5xl md:text-7xl font-black" style="color:#555;">04</span>
           <h3 class="text-2xl font-bold text-white mt-2 mb-3" data-i="proc4-t">Launch & Support</h3>
           <p class="text-muted leading-relaxed" data-i="proc4-d">Go-Live! Und danach? Wir bleiben euer Ansprechpartner. Bei Fragen, Updates oder neuen Ideen — wir sind da.</p>
         </div>
@@ -800,7 +807,7 @@
       <h2 class="reveal text-4xl md:text-6xl font-black leading-tight mb-6" style="color:#111;">
         <span data-i="team-title">Drei Gründer.</span> <span class="font-extralight text-accent" data-i="team-title2">Ein Ziel.</span>
       </h2>
-      <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color:#555;" data-i="team-desc">Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.</p>
+      <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color:#888;" data-i="team-desc">Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.</p>
     </div>
 
     <!-- 3 cards side by side -->
@@ -817,10 +824,10 @@
             <p class="text-accent text-sm font-medium mb-4" data-i="team-b-role">Co-Founder · Development</p>
             <p class="text-sm leading-relaxed mb-4 flex-1" style="color:#666;" data-i="team-b-desc">Technik, Design und Performance. Béla baut eure Website nicht nur schnell und funktional, sondern sorgt dafür, dass sie richtig gut aussieht — auf jedem Gerät.</p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">HTML/CSS</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">JavaScript</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Tailwind</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">SEO</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(96,165,250,0.1);color:#60A5FA;">HTML/CSS</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(96,165,250,0.1);color:#60A5FA;">JavaScript</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(96,165,250,0.1);color:#60A5FA;">Tailwind</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1);color:#10b981;">SEO</span>
             </div>
           </div>
         </div>
@@ -837,10 +844,10 @@
             <p class="text-accent text-sm font-medium mb-4" data-i="team-j-role">Co-Founder · Design</p>
             <p class="text-sm leading-relaxed mb-4 flex-1" style="color:#666;" data-i="team-j-desc">UI/UX, Branding und visuelle Identität. Jonah entwickelt Designs, die nicht nur gut aussehen, sondern eure Zielgruppe ansprechen.</p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Figma</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">UI/UX</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Branding</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Typografie</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">Figma</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">UI/UX</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">Branding</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(168,85,247,0.1);color:#a855f7;">Typografie</span>
             </div>
           </div>
         </div>
@@ -857,10 +864,10 @@
             <p class="text-accent text-sm font-medium mb-4" data-i="team-l-role">Co-Founder · Videoproduktion & Marketing</p>
             <p class="text-sm leading-relaxed mb-4 flex-1" style="color:#666;" data-i="team-l-desc">SEO, Social Media, Videodreh und Postproduction. Lennard sorgt dafür, dass eure Zielgruppe euch findet und eure Geschichte im Bewegtbild erzählt wird.</p>
             <div class="flex flex-wrap gap-1.5">
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">SEO</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Google Ads</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Videodreh</span>
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background:#f0f4f8;color:#555;">Schnitt</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1);color:#10b981;">SEO</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(16,185,129,0.1);color:#10b981;">Google Ads</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(249,115,22,0.1);color:#f97316;">Videodreh</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(249,115,22,0.1);color:#f97316;">Schnitt</span>
             </div>
           </div>
         </div>
@@ -887,7 +894,7 @@
 
 
 <!-- ===== PROJEKT SHOWCASE ===== -->
-<section class="px-6" style="padding:120px 0;">
+<section class="px-6 bg-surface" style="padding:120px 0;">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="ref-label">Referenz</p>
@@ -956,7 +963,7 @@
     <div class="flex flex-col lg:flex-row gap-12">
       <!-- LEFT: Contact Form -->
       <div class="lg:w-3/5">
-        <form id="contactForm" class="reveal border border-border rounded-2xl p-6 sm:p-8 bg-surface2 card-depth">
+        <form id="contactForm" class="reveal border border-border rounded-2xl p-6 sm:p-8 bg-surface2 rc">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
           <!-- Row 1: Vorname + Nachname -->
@@ -1038,7 +1045,7 @@
             <span id="submitText" data-i="cf-send">Anfrage absenden →</span>
             <span id="submitLoading" class="hidden" data-i="cf-loading">Wird gesendet...</span>
           </button>
-          <p class="text-xs text-center mt-3" style="color:#444;" data-i="cf-note">Kostenlos & unverbindlich. Keine Spam-Mails, versprochen.</p>
+          <p class="text-xs text-center mt-3" style="color:#666;" data-i="cf-note">Kostenlos & unverbindlich. Keine Spam-Mails, versprochen.</p>
 
           <div id="formSuccess" class="hidden mt-6 text-center p-6 border border-green-500/20 rounded-xl bg-green-500/5">
             <svg class="w-8 h-8 text-green-400 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -1053,7 +1060,7 @@
 
       <!-- RIGHT: Direct contact options -->
       <div class="lg:w-2/5 flex flex-col gap-4">
-        <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="reveal contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="reveal contact-btn rc p-6 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </div>
@@ -1062,7 +1069,7 @@
             <p class="text-muted text-xs" data-i="contact-wa-s">Direkt chatten</p>
           </div>
         </a>
-        <a href="mailto:info@bjl-studios.de" class="reveal contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="mailto:info@bjl-studios.de" class="reveal contact-btn rc p-6 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
           </div>
@@ -1071,7 +1078,7 @@
             <p class="text-muted text-xs">info@bjl-studios.de</p>
           </div>
         </a>
-        <a href="tel:+4917681163100" class="reveal contact-btn border border-border rounded-2xl p-6 bg-surface2 flex items-center gap-4 group">
+        <a href="tel:+4917681163100" class="reveal contact-btn rc p-6 flex items-center gap-4 group">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
           </div>
@@ -1100,14 +1107,14 @@
             <text class="logo-studios" x="82" y="62" font-family="Inter,sans-serif" font-size="16" font-weight="300" letter-spacing="6" fill="white">STUDIOS</text>
           </svg>
         </div>
-        <p class="text-xs mt-1" style="color:#333;" data-i="foot-sub">Digitalagentur · Mönchengladbach</p>
+        <p class="text-xs mt-1" style="color:#555;" data-i="foot-sub">Digitalagentur · Mönchengladbach</p>
       </div>
       <div class="flex flex-wrap justify-center gap-8">
-        <a href="#leistungen" class="react-link text-xs" style="color:#444;" data-i="nav-services">Leistungen</a>
-        <a href="#leistungen" class="react-link text-xs" style="color:#444;" data-i="nav-pricing">Preise</a>
-        <a href="#prozess" class="react-link text-xs" style="color:#444;" data-i="nav-process">Prozess</a>
-        <a href="#team" class="react-link text-xs" style="color:#444;" data-i="nav-team">Team</a>
-        <a href="#kontakt" class="react-link text-xs" style="color:#444;" data-i="nav-contact">Kontakt</a>
+        <a href="#leistungen" class="react-link text-xs" style="color:#666;" data-i="nav-services">Leistungen</a>
+        <a href="#leistungen" class="react-link text-xs" style="color:#666;" data-i="nav-pricing">Preise</a>
+        <a href="#prozess" class="react-link text-xs" style="color:#666;" data-i="nav-process">Prozess</a>
+        <a href="#team" class="react-link text-xs" style="color:#666;" data-i="nav-team">Team</a>
+        <a href="#kontakt" class="react-link text-xs" style="color:#666;" data-i="nav-contact">Kontakt</a>
       </div>
       <div class="dock" id="dock">
         <a href="https://instagram.com/" target="_blank" rel="noopener" class="dock-item">
@@ -1130,10 +1137,10 @@
     </div>
     <div class="gline mb-6"></div>
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-xs" style="color:#333;" data-i="foot-copy">© 2026 BJL Studios. Alle Rechte vorbehalten.</p>
+      <p class="text-xs" style="color:#555;" data-i="foot-copy">© <script>document.write(new Date().getFullYear())</script> BJL Studios. Alle Rechte vorbehalten.</p>
       <div class="flex gap-6">
-        <a href="impressum.html" class="react-link text-xs" style="color:#333;">Impressum</a>
-        <a href="datenschutz.html" class="react-link text-xs" style="color:#333;">Datenschutz</a>
+        <a href="impressum.html" class="react-link text-xs" style="color:#555;">Impressum</a>
+        <a href="datenschutz.html" class="react-link text-xs" style="color:#555;">Datenschutz</a>
       </div>
     </div>
   </div>
