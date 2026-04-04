@@ -309,9 +309,54 @@
 
     /* ========== MOBILE OPTIMIZATIONS ========== */
     @media (max-width: 640px) {
-      section[style*="padding:140px"] { padding: 70px 0 !important; }
-      section[style*="padding:120px"] { padding: 60px 0 !important; }
-      section[style*="padding:160px"] { padding: 80px 0 !important; }
+      /* Section padding — much tighter */
+      section[style*="padding:140px"] { padding: 50px 0 !important; }
+      section[style*="padding:120px"] { padding: 40px 0 !important; }
+      section[style*="padding:160px"] { padding: 50px 0 !important; }
+      /* Hero */
+      .hero-text .block { font-size: 28px !important; }
+      #hs { font-size: 15px !important; }
+      #hslogan { font-size: 10px !important; letter-spacing: 2px !important; }
+      #hc a { padding: 12px 20px !important; font-size: 13px !important; }
+      /* Services */
+      .num-outline { font-size: 28px !important; min-width: 40px !important; }
+      .svc .flex.items-center.gap-6 { gap: 12px !important; }
+      .svc-n { font-size: 16px !important; }
+      .svc .text-accent { font-size: 12px !important; }
+      /* Pricing */
+      .rc .text-xl.font-black { font-size: 16px !important; }
+      .rc .px-5 { padding-left: 12px !important; padding-right: 12px !important; }
+      .rc .py-5 { padding-top: 10px !important; padding-bottom: 10px !important; }
+      /* FAQ */
+      .faq-q { padding-top: 14px !important; padding-bottom: 14px !important; }
+      .faq-q .text-lg { font-size: 15px !important; }
+      [data-faq] .faq-a p { font-size: 13px !important; }
+      /* Process */
+      .reveal .num-outline { font-size: 24px !important; }
+      .reveal .pl-16 { padding-left: 40px !important; }
+      .reveal h3 { font-size: 18px !important; }
+      .reveal .text-muted.leading-relaxed { font-size: 13px !important; }
+      /* Team */
+      .team-card .aspect-square { aspect-ratio: auto !important; height: 180px !important; }
+      .team-card .text-8xl { font-size: 48px !important; }
+      .team-card .p-6 { padding: 14px !important; }
+      .team-card .text-xl { font-size: 17px !important; }
+      .team-card .flex-wrap.gap-1\.5 { gap: 4px !important; }
+      .team-card .text-xs.px-2\.5 { padding: 3px 8px !important; font-size: 10px !important; }
+      /* Contact */
+      .svc-pill { padding: 8px 14px !important; font-size: 13px !important; }
+      .tier-pill { padding: 5px 10px !important; font-size: 11px !important; }
+      .contact-btn.rc { padding: 14px !important; }
+      /* Footer */
+      footer .gap-8 { gap: 16px !important; }
+      /* Headings tighter */
+      h1, h2, h3 { letter-spacing: -0.01em !important; }
+      /* Section headings */
+      .text-5xl { font-size: 32px !important; }
+      .text-7xl { font-size: 32px !important; }
+      .mb-20 { margin-bottom: 40px !important; }
+      .mb-24 { margin-bottom: 40px !important; }
+      .mb-16 { margin-bottom: 30px !important; }
     }
 
     /* ========== TILT ========== */
@@ -389,10 +434,10 @@
   <div class="text-center max-w-5xl mx-auto relative z-10">
     <p class="hfade text-accent text-xs tracking-widest uppercase mb-10" id="hl" style="font-size:12px;letter-spacing:4px;" data-i="hero-label">Digitalagentur · Mönchengladbach</p>
     <h1 class="hero-text mb-10" id="hh">
-      <span class="block text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-muted tracking-tight" style="line-height:1.2;">
+      <span class="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight text-muted tracking-tight" style="line-height:1.2;">
         <span class="word" data-i="hero-w1">Digital</span> <span class="word" data-i="hero-w2">denken.</span>
       </span>
-      <span class="block text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight mt-2" style="line-height:1.1;">
+      <span class="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight mt-2" style="line-height:1.1;">
         <span class="word" data-i="hero-w3">Lokal</span> <span class="word" data-i="hero-w4">wachsen.</span>
       </span>
     </h1>
@@ -430,7 +475,7 @@
   <div class="max-w-7xl mx-auto relative z-1">
     <div class="mb-20 max-w-3xl mx-auto text-center">
       <p class="reveal text-accent text-xs tracking-widest uppercase mb-6" style="font-size:11px;letter-spacing:5px;" data-i="svc-label">Leistungen</p>
-      <h2 class="reveal text-5xl md:text-7xl font-black italic leading-tight mb-8" data-i="svc-title">Was wir für<br>euch tun.</h2>
+      <h2 class="reveal text-4xl md:text-7xl font-black italic leading-tight mb-8" data-i="svc-title">Was wir für<br>euch tun.</h2>
       <p class="text-muted text-base leading-relaxed max-w-xl mx-auto" data-i="svc-desc">Ihr braucht nicht fünf Agenturen. Wir decken euren kompletten digitalen Auftritt ab — von der Strategie bis zur Umsetzung, alles unter einem Dach.</p>
     </div>
 
@@ -674,13 +719,13 @@
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16">
       <p class="reveal text-muted text-xs tracking-widest uppercase mb-6" style="font-size:11px;letter-spacing:5px;" data-i="faq-label">F.A.Q.</p>
-      <h2 class="reveal text-5xl md:text-7xl font-black leading-tight"><span data-i="faq-title-1">Noch Fragen? Hier<br>sind </span><span class="text-accent" data-i="faq-title-2">Antworten</span></h2>
+      <h2 class="reveal text-4xl md:text-7xl font-black leading-tight"><span data-i="faq-title-1">Noch Fragen? Hier<br>sind </span><span class="text-accent" data-i="faq-title-2">Antworten</span></h2>
     </div>
 
     <div class="reveal space-y-0">
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq1-q">Was kostet eine Website bei euch?</span>
+          <span class="text-white text-base md:text-xl font-semibold pr-4" data-i="faq1-q">Was kostet eine Website bei euch?</span>
           <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -690,7 +735,7 @@
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
+          <span class="text-white text-base md:text-xl font-semibold pr-4" data-i="faq2-q">Wie lange dauert es bis meine Website fertig ist?</span>
           <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -700,7 +745,7 @@
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq3-q">Brauche ich wirklich SEO?</span>
+          <span class="text-white text-base md:text-xl font-semibold pr-4" data-i="faq3-q">Brauche ich wirklich SEO?</span>
           <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -710,7 +755,7 @@
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
+          <span class="text-white text-base md:text-xl font-semibold pr-4" data-i="faq4-q">Kann ich meine Website danach selbst bearbeiten?</span>
           <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -720,7 +765,7 @@
 
       <div class="border-t border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
+          <span class="text-white text-base md:text-xl font-semibold pr-4" data-i="faq5-q">Ich habe schon eine Website — könnt ihr die verbessern?</span>
           <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -730,7 +775,7 @@
 
       <div class="border-t border-b border-border" data-faq>
         <button class="faq-q w-full flex items-center justify-between py-6 text-left" onclick="this.parentElement.classList.toggle('open')">
-          <span class="text-white text-lg md:text-xl font-semibold pr-4" data-i="faq6-q">Was passiert nach dem Launch?</span>
+          <span class="text-white text-base md:text-xl font-semibold pr-4" data-i="faq6-q">Was passiert nach dem Launch?</span>
           <span class="faq-icon text-accent text-lg shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-a">
@@ -750,7 +795,7 @@
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-24">
       <p class="reveal text-muted text-xs tracking-widest uppercase mb-6" style="font-size:11px;letter-spacing:5px;" data-i="proc-label">Unser Prozess</p>
-      <h2 class="reveal text-5xl md:text-7xl font-black italic leading-tight" data-i="proc-title">So arbeiten wir.</h2>
+      <h2 class="reveal text-4xl md:text-7xl font-black italic leading-tight" data-i="proc-title">So arbeiten wir.</h2>
     </div>
 
     <div class="relative">
@@ -809,7 +854,7 @@
 <section id="team" class="px-6" style="padding:140px 0;">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-20">
-      <h2 class="reveal text-5xl md:text-7xl font-black leading-tight mb-6">
+      <h2 class="reveal text-4xl md:text-7xl font-black leading-tight mb-6">
         <span data-i="team-title">Drei Gründer.</span> <span class="font-extralight text-accent" data-i="team-title2">Ein Ziel.</span>
       </h2>
       <p class="text-muted text-base max-w-2xl mx-auto leading-relaxed" data-i="team-desc">Kein Konzern, kein Callcenter — bei BJL Studios arbeitet ihr direkt mit uns. Persönlich, transparent und aus Mönchengladbach.</p>
@@ -958,7 +1003,7 @@
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <p class="reveal text-accent text-xs tracking-widest uppercase mb-4" style="font-size:11px;letter-spacing:5px;" data-i="contact-label">Kontakt</p>
-      <h2 class="reveal text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6" data-i="contact-title">Projekt starten?</h2>
+      <h2 class="reveal text-3xl md:text-6xl lg:text-7xl font-black text-white mb-6" data-i="contact-title">Projekt starten?</h2>
       <p class="text-muted text-lg max-w-xl mx-auto leading-relaxed" data-i="contact-desc">Beschreibt euer Projekt — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.</p>
     </div>
 
