@@ -313,17 +313,16 @@
       transform: translateY(-4px);
     }
     /* Team cards stronger hover */
-    .team-card {
-      position: relative;
-      overflow: visible !important;
-    }
     .team-card:hover {
       transform: translateY(-8px) !important;
       box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12), 0 0 30px rgba(96,165,250,0.15) !important;
       border-color: rgba(96,165,250,0.25) !important;
     }
-    .glow-ring { transition: opacity .5s ease-out, box-shadow 300ms ease, border-color 300ms ease; }
-    .team-card:hover .glow-ring { opacity: 0; }
+    .team-card:hover .glow-ring {
+      box-shadow: 0 0 50px rgba(96,165,250,0.3);
+      border-color: rgba(96,165,250,0.4);
+    }
+    .glow-ring { transition: box-shadow 300ms ease, border-color 300ms ease; }
 
     /* ========== SECTION SPOTLIGHT (Stitch warm glow) ========== */
     .sec-spot {
@@ -421,25 +420,9 @@
     .rev-pill:hover { border-color:rgba(96,165,250,.4); color:#fff; }
     .rev-pill.active:hover { color:#60A5FA; }
 
-    /* ==== TEAM CARD PHOTO SYSTEM ====
-       At rest: base photo is circle-clipped with halo behind. Text below.
-       On hover: base photo + halo + ring + text all fade out smoothly.
-                 Transparent cutout fades in, fills the card, head breaks
-                 slightly above the top edge for a 3D pop-out effect. */
-
-    /* Halo layer — separate div so we can fade it independently. */
-    .team-halo {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      transition: opacity .5s ease-out;
-    }
-    .team-halo-blue   { background: radial-gradient(circle at 50% 60%, rgba(96,165,250,0.12), transparent 70%); }
-    .team-halo-purple { background: radial-gradient(circle at 50% 60%, rgba(168,85,247,0.12), transparent 70%); }
-    .team-halo-orange { background: radial-gradient(circle at 50% 60%, rgba(249,115,22,0.10), transparent 70%); }
-    .team-card:hover .team-halo { opacity: 0; }
-
-    /* Base circle photo — fades out on hover, no other transform */
+    /* Team photos — rotate 90° CCW because source files are landscape with head on the right.
+       clip-path:circle() masks everything outside the glow-ring circle. The ring has m-8
+       (32px margin), so the visible circle has radius = 50% - 32px, matching the ring exactly. */
     .team-photo {
       position: absolute;
       inset: 0;
@@ -448,56 +431,11 @@
       object-fit: cover;
       transform: rotate(-90deg);
       clip-path: circle(calc(50% - 32px) at 50% 50%);
-      transition: opacity .5s ease-out;
+      transition: transform .6s cubic-bezier(.16,1,.3,1), filter .3s;
     }
-    .team-card:hover .team-photo { opacity: 0; }
-
-    /* Text section — fades and slides down on hover */
-    .team-text {
-      transition: opacity .4s ease-out, transform .55s cubic-bezier(.22, 1, .36, 1);
-    }
-    .team-card:hover .team-text {
-      opacity: 0;
-      transform: translateY(28px);
-    }
-
-    /* Cutout stage — direct child of .team-card, covers the whole card + extends above.
-       container-type: size lets the inner rotor size itself via 100cqh (card height in px).
-       This avoids the rotation + object-fit coordinate weirdness of the old approach. */
-    .team-cutout-stage {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      container-type: size;
-      opacity: 0;
-      transition: opacity .5s ease-out;
-    }
-    .team-card:hover .team-cutout-stage { opacity: 1; }
-
-    /* Rotor — square wrap sized to the card's height, centered, rotated -90°.
-       Because it's a square matching source aspect (1:1), object-fit:cover inside
-       is a clean 1:1 render with no cropping or stretching. The square rotates
-       cleanly without changing its bounding box. translateY(-30px) lifts the
-       rotor so the head ends up slightly above the card top edge. */
-    .team-cutout-rotor {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100cqh;
-      height: 100cqh;
-      transform: translate(-50%, -50%) translateY(-30px) rotate(-90deg) scale(.95);
-      transition: transform .75s cubic-bezier(.22, 1, .36, 1);
-      will-change: transform;
-    }
-    .team-card:hover .team-cutout-rotor {
-      transform: translate(-50%, -50%) translateY(-30px) rotate(-90deg) scale(1);
-    }
-    .team-cutout {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .team-card:hover .team-photo {
+      transform: rotate(-90deg) scale(1.03);
+      filter: brightness(1.05);
     }
 
     /* ========== MOBILE MENU ========== */
@@ -641,7 +579,6 @@
       .reveal .text-muted.leading-relaxed { font-size: 13px !important; }
       /* Team */
       .team-card .aspect-square { aspect-ratio: auto !important; height: 260px !important; }
-      .team-cutout-stage { display: none !important; }
       .team-card .p-6 { padding: 14px !important; }
       .team-card .text-xl { font-size: 17px !important; }
       .team-card .flex-wrap.gap-1\.5 { gap: 4px !important; }
@@ -1183,14 +1120,13 @@
     <!-- 3 dark cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-16">
       <!-- Béla -->
-      <div class="reveal rc team-card h-full flex flex-col">
+      <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <!-- Photo with glow ring -->
-        <div class="w-full aspect-square relative overflow-hidden" style="background:#0a0a0a;">
-          <div class="team-halo team-halo-blue"></div>
+        <div class="w-full aspect-square relative overflow-hidden" style="background:radial-gradient(circle at 50% 60%,rgba(96,165,250,0.12),transparent 70%),#0a0a0a;">
           <img src="assets/team/B%C3%A9la.png?v=3" alt="Béla Junker — Co-Founder Development bei BJL Studios" class="team-photo" loading="lazy" decoding="async">
           <div class="glow-ring absolute inset-0 rounded-full m-8 border border-accent/20 pointer-events-none" style="box-shadow:0 0 30px rgba(96,165,250,0.15);"></div>
         </div>
-        <div class="p-6 flex flex-col flex-1 team-text">
+        <div class="p-6 flex flex-col flex-1">
           <p class="text-xl font-bold text-white mb-1">Béla Junker</p>
           <p class="text-accent text-sm font-medium mb-3" data-i="team-b-role">Co-Founder · Development</p>
           <p class="text-muted text-sm leading-relaxed mb-4 flex-1" data-i="team-b-desc">Technik, Design und Performance. Béla baut eure Website nicht nur schnell und funktional, sondern sorgt dafür, dass sie richtig gut aussieht — auf jedem Gerät.</p>
@@ -1201,21 +1137,15 @@
             <span class="text-xs px-2.5 py-1 rounded-full border border-green-500/20 text-green-400/80">SEO</span>
           </div>
         </div>
-        <div class="team-cutout-stage" aria-hidden="true">
-          <div class="team-cutout-rotor">
-            <img src="assets/team/B%C3%A9la-nobg.png" alt="" class="team-cutout" loading="lazy" decoding="async">
-          </div>
-        </div>
       </div>
 
       <!-- Jonah -->
-      <div class="reveal rc team-card h-full flex flex-col">
-        <div class="w-full aspect-square relative overflow-hidden" style="background:#0a0a0a;">
-          <div class="team-halo team-halo-purple"></div>
+      <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
+        <div class="w-full aspect-square relative overflow-hidden" style="background:radial-gradient(circle at 50% 60%,rgba(168,85,247,0.12),transparent 70%),#0a0a0a;">
           <img src="assets/team/Jonah.png" alt="Jonah Böckem — Co-Founder Design bei BJL Studios" class="team-photo" loading="lazy" decoding="async">
           <div class="glow-ring absolute inset-0 rounded-full m-8 border border-purple-400/20 pointer-events-none" style="box-shadow:0 0 30px rgba(168,85,247,0.15);"></div>
         </div>
-        <div class="p-6 flex flex-col flex-1 team-text">
+        <div class="p-6 flex flex-col flex-1">
           <p class="text-xl font-bold text-white mb-1">Jonah Böckem</p>
           <p class="text-accent text-sm font-medium mb-3" data-i="team-j-role">Co-Founder · Design</p>
           <p class="text-muted text-sm leading-relaxed mb-4 flex-1" data-i="team-j-desc">UI/UX, Branding und visuelle Identität. Jonah entwickelt Designs, die nicht nur gut aussehen, sondern eure Zielgruppe ansprechen.</p>
@@ -1226,23 +1156,15 @@
             <span class="text-xs px-2.5 py-1 rounded-full border border-purple-400/20 text-purple-400/80">Typografie</span>
           </div>
         </div>
-        <!-- TODO: when Jonah-nobg.png exists via remove.bg, uncomment this block to enable hover break-out effect
-        <div class="team-cutout-stage" aria-hidden="true">
-          <div class="team-cutout-rotor">
-            <img src="assets/team/Jonah-nobg.png" alt="" class="team-cutout" loading="lazy" decoding="async">
-          </div>
-        </div>
-        -->
       </div>
 
       <!-- Lennard -->
-      <div class="reveal rc team-card h-full flex flex-col">
-        <div class="w-full aspect-square relative overflow-hidden" style="background:#0a0a0a;">
-          <div class="team-halo team-halo-orange"></div>
+      <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
+        <div class="w-full aspect-square relative overflow-hidden" style="background:radial-gradient(circle at 50% 60%,rgba(249,115,22,0.1),transparent 70%),#0a0a0a;">
           <img src="assets/team/Lennard.png?v=2" alt="Lennard Schumacher — Co-Founder Videoproduktion & Marketing bei BJL Studios" class="team-photo" loading="lazy" decoding="async">
           <div class="glow-ring absolute inset-0 rounded-full m-8 border border-orange-400/20 pointer-events-none" style="box-shadow:0 0 30px rgba(249,115,22,0.12);"></div>
         </div>
-        <div class="p-6 flex flex-col flex-1 team-text">
+        <div class="p-6 flex flex-col flex-1">
           <p class="text-xl font-bold text-white mb-1">Lennard Schumacher</p>
           <p class="text-accent text-sm font-medium mb-3" data-i="team-l-role">Co-Founder · Videoproduktion & Marketing</p>
           <p class="text-muted text-sm leading-relaxed mb-4 flex-1" data-i="team-l-desc">SEO, Social Media, Videodreh und Postproduction. Lennard sorgt dafür, dass eure Zielgruppe euch findet und eure Geschichte im Bewegtbild erzählt wird.</p>
@@ -1253,13 +1175,6 @@
             <span class="text-xs px-2.5 py-1 rounded-full border border-orange-400/20 text-orange-400/80">Schnitt</span>
           </div>
         </div>
-        <!-- TODO: when Lennard-nobg.png exists via remove.bg, uncomment this block to enable hover break-out effect
-        <div class="team-cutout-stage" aria-hidden="true">
-          <div class="team-cutout-rotor">
-            <img src="assets/team/Lennard-nobg.png" alt="" class="team-cutout" loading="lazy" decoding="async">
-          </div>
-        </div>
-        -->
       </div>
     </div>
 
