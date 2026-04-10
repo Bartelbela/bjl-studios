@@ -20,5 +20,8 @@ jobs:
             set -e
             cd ~/sites/bjl-studios
             git pull origin main
-            docker compose up -d
+            # --build rebuilds the bjl-studios-api image whenever api/server.js
+            # or api/Dockerfile changed. TG_BOT_TOKEN / TG_CHAT_ID must exist
+            # in ~/sites/bjl-studios/.env on the host (see .env.example).
+            docker compose up -d --build
             echo "✅ bjl-studios.de deployed at $(date)"

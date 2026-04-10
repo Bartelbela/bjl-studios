@@ -198,6 +198,8 @@
     }
     .input-flat::placeholder { color:#555; }
     .input-flat:focus { border-color:#60A5FA; }
+    select.input-flat { background:transparent; color:#fff; }
+    select.input-flat option { background:#0a0a0a; color:#fff; }
 
     /* ========== MOBILE MENU ========== */
     .mm { opacity:0; pointer-events:none; transition:opacity .3s; }
@@ -678,10 +680,25 @@
             <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-mp">ab 999 €</p></div>
             <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-md">1 Drehtag, bis 90 Sek., Basis-Schnitt</p></div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
             <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-st">Standard</p></div>
             <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-stp">ab 2.499 €</p></div>
             <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-std">Konzept, 1–2 Drehtage, Color Grading, Musik</p></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-fb">Fotografie Basic</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-fbp">ab 299 €</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-fbd">Halber Drehtag, bis 30 bearbeitete Bilder, Web-Auflösung</p></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5 border-b border-border" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-fp">Fotografie Pro</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-fpp">ab 499 €</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-fpd">Ganzer Drehtag, bis 50 bearbeitete Bilder, Web + Print</p></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-0 px-5 sm:px-8 py-5" style="transition:background .3s;" onmouseover="this.style.background='rgba(96,165,250,.03)'" onmouseout="this.style.background=''">
+            <div class="col-span-3"><p class="text-white font-semibold" data-i="pt-film-sc">Nur Schnitt</p></div>
+            <div class="col-span-3"><p class="text-xl font-black text-white" data-i="pt-film-scp">auf Anfrage</p></div>
+            <div class="col-span-6"><p class="text-muted text-sm" data-i="pt-film-scd">Schnitt aus eurem Rohmaterial — Preis richtet sich nach Umfang und Länge</p></div>
           </div>
         </div>
 
@@ -1078,14 +1095,31 @@
               </div>
               <!-- Video -->
               <div class="svc-group">
-                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="Video" onclick="toggleSvc(this)" data-i="cf-opt5">Video</button>
+                <button type="button" class="svc-pill text-sm px-5 py-2.5 rounded-full border border-border text-muted transition-all" data-val="Video" onclick="toggleSvc(this)" data-i="cf-opt5">Imagefilm & Video</button>
                 <div class="tier-pills flex gap-1.5 flex-wrap ml-2" data-tiers-for="Video">
                   <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Mini" onclick="toggleTier(this)">Mini</button>
                   <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Standard" onclick="toggleTier(this)">Standard</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Fotografie" onclick="toggleTier(this)" data-i="cf-tier-foto">Fotografie</button>
+                  <button type="button" class="tier-pill text-xs px-4 py-1.5 rounded-full border border-border/50 text-muted/70 transition-all" data-tier="Nur Schnitt" onclick="toggleTier(this)" data-i="cf-tier-schnitt">Nur Schnitt</button>
                 </div>
               </div>
             </div>
             <input type="hidden" name="service" id="cfServices" value="">
+          </div>
+          <!-- Revisionen -->
+          <div class="mb-4">
+            <label for="cfRevisions" class="text-xs text-muted mb-2 block" data-i="cf-rev-label">Wie viele Revisionsrunden braucht ihr?</label>
+            <div class="relative">
+              <select name="revisions" id="cfRevisions" class="input-flat w-full appearance-none pr-10 cursor-pointer">
+                <option value="1 Revision (inklusive)" data-i="cf-rev-1">1 Revision (inklusive)</option>
+                <option value="2 Revisionen" data-i="cf-rev-2">2 Revisionen</option>
+                <option value="3 Revisionen" data-i="cf-rev-3">3 Revisionen</option>
+                <option value="Unlimited Revisionen" data-i="cf-rev-u">Unlimited Revisionen</option>
+                <option value="Noch unklar" data-i="cf-rev-x">Noch unklar</option>
+              </select>
+              <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <p class="text-xs text-muted/60 mt-2" data-i="cf-rev-hint">Je mehr Revisionen, desto höher der Endpreis. Die erste Revisionsrunde ist bei allen Paketen inklusive.</p>
           </div>
           <!-- Nachricht -->
           <textarea name="message" placeholder="Erzählt uns kurz von eurem Projekt..." required class="input-flat mb-6 w-full" rows="4" style="resize:vertical;min-height:80px;" data-i="cf-msg"></textarea>
@@ -1258,6 +1292,9 @@ const T={
   'pt-film-cat':{de:'Imagefilm & Video',en:'Corporate Film & Video'},
   'pt-film-m':{de:'Mini',en:'Mini'},'pt-film-mp':{de:'ab 999 €',en:'from €999'},'pt-film-md':{de:'1 Drehtag, bis 90 Sek., Basis-Schnitt',en:'1 shoot day, up to 90 sec, basic editing'},
   'pt-film-st':{de:'Standard',en:'Standard'},'pt-film-stp':{de:'ab 2.499 €',en:'from €2,499'},'pt-film-std':{de:'Konzept, 1–2 Drehtage, Color Grading, Musik',en:'Concept, 1–2 shoot days, color grading, music'},
+  'pt-film-fb':{de:'Fotografie Basic',en:'Photography Basic'},'pt-film-fbp':{de:'ab 299 €',en:'from €299'},'pt-film-fbd':{de:'Halber Drehtag, bis 30 bearbeitete Bilder, Web-Auflösung',en:'Half shoot day, up to 30 edited photos, web resolution'},
+  'pt-film-fp':{de:'Fotografie Pro',en:'Photography Pro'},'pt-film-fpp':{de:'ab 499 €',en:'from €499'},'pt-film-fpd':{de:'Ganzer Drehtag, bis 50 bearbeitete Bilder, Web + Print',en:'Full shoot day, up to 50 edited photos, web + print'},
+  'pt-film-sc':{de:'Nur Schnitt',en:'Editing Only'},'pt-film-scp':{de:'auf Anfrage',en:'on request'},'pt-film-scd':{de:'Schnitt aus eurem Rohmaterial — Preis richtet sich nach Umfang und Länge',en:'Editing from your raw footage — price depends on scope and length'},
   // Pricing table — Social Media
   'pt-soc-cat':{de:'Social Media Management',en:'Social Media Management'},
   'pt-soc-s':{de:'Starter',en:'Starter'},'pt-soc-sp':{de:'ab 249 €',en:'from €249'},'pt-soc-sd':{de:'1 Kanal, 8 Posts/Monat, Content-Erstellung',en:'1 channel, 8 posts/month, content creation'},
@@ -1345,6 +1382,15 @@ const T={
   'cf-opt4':{de:'Logo & Branding',en:'Logo & Branding'},
   'cf-opt5':{de:'Imagefilm & Video',en:'Corporate Film & Video'},
   'cf-opt6':{de:'Komplett-Paket',en:'Full Package'},
+  'cf-tier-foto':{de:'Fotografie',en:'Photography'},
+  'cf-tier-schnitt':{de:'Nur Schnitt',en:'Editing Only'},
+  'cf-rev-label':{de:'Wie viele Revisionsrunden braucht ihr?',en:'How many revision rounds do you need?'},
+  'cf-rev-1':{de:'1 Revision (inklusive)',en:'1 revision (included)'},
+  'cf-rev-2':{de:'2 Revisionen',en:'2 revisions'},
+  'cf-rev-3':{de:'3 Revisionen',en:'3 revisions'},
+  'cf-rev-u':{de:'Unlimited Revisionen',en:'Unlimited revisions'},
+  'cf-rev-x':{de:'Noch unklar',en:'Not sure yet'},
+  'cf-rev-hint':{de:'Je mehr Revisionen, desto höher der Endpreis. Die erste Revisionsrunde ist bei allen Paketen inklusive.',en:'More revisions mean a higher final price. The first revision round is included in every package.'},
   'cf-msg':{de:'Erzählt uns kurz von eurem Projekt...',en:'Tell us briefly about your project...'},
   'cf-send':{de:'Anfrage absenden →',en:'Submit inquiry →'},
   'cf-note':{de:'Kostenlos & unverbindlich. Keine Spam-Mails, versprochen.',en:'Free & non-binding. No spam, promised.'},
@@ -1507,7 +1553,8 @@ if(cForm){
     ok.classList.add('hidden');err.classList.add('hidden');
 
     const n=cForm.vorname.value+' '+cForm.nachname.value,c=cForm.company.value,em=cForm.email.value,
-          ph=cForm.phone.value,s=document.getElementById('cfServices').value||'Nicht angegeben',m=cForm.message.value;
+          ph=cForm.phone.value,s=document.getElementById('cfServices').value||'Nicht angegeben',m=cForm.message.value,
+          rev=document.getElementById('cfRevisions').value;
     // Normalize phone for wa.me: strip formatting, convert 0xxx→49xxx
     let cleanPh=(ph||'').replace(/[\s\-\/\(\)\.]/g,'');
     if(cleanPh.startsWith('+'))cleanPh=cleanPh.substring(1);
@@ -1536,29 +1583,21 @@ if(cForm){
     if(c) text+='🏢 *Firma:* '+c+'\n';
     text+='📧 *E-Mail:* '+em+'\n';
     if(ph) text+='📞 *Telefon:* '+ph+'\n';
-    text+='🛠 *Service:* '+s+'\n💬 *Kontaktweg:* '+methodLabel+'\n\n*Nachricht:*\n'+m+'\n\n━━━━━━━━━━━━━━━\n'+reply;
+    text+='🛠 *Service:* '+s+'\n🔁 *Revisionen:* '+rev+'\n💬 *Kontaktweg:* '+methodLabel+'\n\n*Nachricht:*\n'+m+'\n\n━━━━━━━━━━━━━━━\n'+reply;
 
-    // Try server API first, fallback to direct Telegram
+    // Server API (dockerbox Node container behind nginx reverse-proxy)
     let sent=false;
     try{
       const res=await fetch('/api/contact',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name:n,company:c,email:em,phone:ph,contact_method:method,service:s,message:m,tgText:text})
+        body:JSON.stringify({name:n,company:c,email:em,phone:ph,contact_method:method,service:s,revisions:rev,message:m,tgText:text})
       });
-      const data=await res.json();
-      sent=!!data.success;
+      if(res.ok){
+        const data=await res.json().catch(()=>({}));
+        sent=!!data.success;
+      }
     }catch(ex){}
-    // Fallback: direct Telegram (for local testing or if API fails)
-    if(!sent){
-      try{
-        const fb=await fetch('https://api.telegram.org/bot'+'8754878'+'353:AAHHI3_DTZq7yhApRix_fuJVc0PV0qTYrsM/sendMessage',{
-          method:'POST',headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({chat_id:'-5223673043',text:text,parse_mode:'Markdown',disable_web_page_preview:true})
-        });
-        const fd=await fb.json();sent=!!fd.ok;
-      }catch(ex2){}
-    }
     if(sent){
       ok.classList.remove('hidden');
       cForm.reset();
@@ -1570,6 +1609,7 @@ if(cForm){
       document.querySelectorAll('.svc-pill').forEach(p=>{p.classList.remove('active');p.style.borderColor='';p.style.color='';p.style.background='';});
       document.querySelectorAll('.tier-pills').forEach(w=>{w.classList.remove('show');w.querySelectorAll('.tier-pill').forEach(t=>{t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';});});
       document.getElementById('cfServices').value='';
+      document.getElementById('cfRevisions').selectedIndex=0;
     } else {
       err.classList.remove('hidden');
     }
