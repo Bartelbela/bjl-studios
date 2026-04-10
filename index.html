@@ -198,8 +198,10 @@
     }
     .input-flat::placeholder { color:#555; }
     .input-flat:focus { border-color:#60A5FA; }
-    select.input-flat { background:transparent; color:#fff; }
-    select.input-flat option { background:#0a0a0a; color:#fff; }
+
+    /* Revision pills hover state — matches tier/contact pills */
+    .rev-pill:hover { border-color:rgba(96,165,250,.4); color:#fff; }
+    .rev-pill.active:hover { color:#60A5FA; }
 
     /* ========== MOBILE MENU ========== */
     .mm { opacity:0; pointer-events:none; transition:opacity .3s; }
@@ -350,6 +352,7 @@
       /* Contact */
       .svc-pill { padding: 8px 14px !important; font-size: 13px !important; }
       .tier-pill { padding: 5px 10px !important; font-size: 11px !important; }
+      .rev-pill { padding: 6px 12px !important; font-size: 11px !important; }
       .contact-btn.rc { padding: 14px !important; }
       /* Footer */
       footer .gap-8 { gap: 16px !important; }
@@ -1108,18 +1111,16 @@
           </div>
           <!-- Revisionen -->
           <div class="mb-4">
-            <label for="cfRevisions" class="text-xs text-muted mb-2 block" data-i="cf-rev-label">Wie viele Revisionsrunden braucht ihr?</label>
-            <div class="relative">
-              <select name="revisions" id="cfRevisions" class="input-flat w-full appearance-none pr-10 cursor-pointer">
-                <option value="1 Revision (inklusive)" data-i="cf-rev-1">1 Revision (inklusive)</option>
-                <option value="2 Revisionen" data-i="cf-rev-2">2 Revisionen</option>
-                <option value="3 Revisionen" data-i="cf-rev-3">3 Revisionen</option>
-                <option value="Unlimited Revisionen" data-i="cf-rev-u">Unlimited Revisionen</option>
-                <option value="Noch unklar" data-i="cf-rev-x">Noch unklar</option>
-              </select>
-              <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            <p class="text-xs text-muted mb-2" data-i="cf-rev-label">Wie viele Revisionsrunden braucht ihr?</p>
+            <div class="flex gap-2 flex-wrap">
+              <button type="button" class="rev-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all active" data-val="1 Revision (inklusive)" onclick="pickRev(this)" style="border-color:#60A5FA;color:#60A5FA;background:rgba(96,165,250,.08);" data-i="cf-rev-1">1 Runde · inkl.</button>
+              <button type="button" class="rev-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="2 Revisionen" onclick="pickRev(this)" data-i="cf-rev-2">2 Runden</button>
+              <button type="button" class="rev-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="3 Revisionen" onclick="pickRev(this)" data-i="cf-rev-3">3 Runden</button>
+              <button type="button" class="rev-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Unlimited Revisionen" onclick="pickRev(this)" data-i="cf-rev-u">∞ Unlimited</button>
+              <button type="button" class="rev-pill text-xs px-4 py-2 rounded-full border border-border text-muted transition-all" data-val="Noch unklar" onclick="pickRev(this)" data-i="cf-rev-x">Noch unklar</button>
             </div>
-            <p class="text-xs text-muted/60 mt-2" data-i="cf-rev-hint">Je mehr Revisionen, desto höher der Endpreis. Die erste Revisionsrunde ist bei allen Paketen inklusive.</p>
+            <input type="hidden" name="revisions" id="cfRevisions" value="1 Revision (inklusive)">
+            <p class="text-xs text-muted/60 mt-2" data-i="cf-rev-hint">Je mehr Revisionen, desto höher der Endpreis. Die erste Runde ist bei allen Paketen inklusive.</p>
           </div>
           <!-- Nachricht -->
           <textarea name="message" placeholder="Erzählt uns kurz von eurem Projekt..." required class="input-flat mb-6 w-full" rows="4" style="resize:vertical;min-height:80px;" data-i="cf-msg"></textarea>
@@ -1385,12 +1386,12 @@ const T={
   'cf-tier-foto':{de:'Fotografie',en:'Photography'},
   'cf-tier-schnitt':{de:'Nur Schnitt',en:'Editing Only'},
   'cf-rev-label':{de:'Wie viele Revisionsrunden braucht ihr?',en:'How many revision rounds do you need?'},
-  'cf-rev-1':{de:'1 Revision (inklusive)',en:'1 revision (included)'},
-  'cf-rev-2':{de:'2 Revisionen',en:'2 revisions'},
-  'cf-rev-3':{de:'3 Revisionen',en:'3 revisions'},
-  'cf-rev-u':{de:'Unlimited Revisionen',en:'Unlimited revisions'},
+  'cf-rev-1':{de:'1 Runde · inkl.',en:'1 round · incl.'},
+  'cf-rev-2':{de:'2 Runden',en:'2 rounds'},
+  'cf-rev-3':{de:'3 Runden',en:'3 rounds'},
+  'cf-rev-u':{de:'∞ Unlimited',en:'∞ Unlimited'},
   'cf-rev-x':{de:'Noch unklar',en:'Not sure yet'},
-  'cf-rev-hint':{de:'Je mehr Revisionen, desto höher der Endpreis. Die erste Revisionsrunde ist bei allen Paketen inklusive.',en:'More revisions mean a higher final price. The first revision round is included in every package.'},
+  'cf-rev-hint':{de:'Je mehr Revisionen, desto höher der Endpreis. Die erste Runde ist bei allen Paketen inklusive.',en:'More revisions mean a higher final price. The first round is included in every package.'},
   'cf-msg':{de:'Erzählt uns kurz von eurem Projekt...',en:'Tell us briefly about your project...'},
   'cf-send':{de:'Anfrage absenden →',en:'Submit inquiry →'},
   'cf-note':{de:'Kostenlos & unverbindlich. Keine Spam-Mails, versprochen.',en:'Free & non-binding. No spam, promised.'},
@@ -1513,6 +1514,16 @@ function updateSvcValue(){
   document.getElementById('cfServices').value=parts.join(', ');
 }
 
+// ===== REVISION PILLS =====
+function pickRev(btn){
+  document.querySelectorAll('.rev-pill').forEach(p=>{
+    p.classList.remove('active');p.style.borderColor='';p.style.color='';p.style.background='';
+  });
+  btn.classList.add('active');
+  btn.style.borderColor='#60A5FA';btn.style.color='#60A5FA';btn.style.background='rgba(96,165,250,.08)';
+  document.getElementById('cfRevisions').value=btn.dataset.val;
+}
+
 // ===== CONTACT PILL BUTTONS =====
 function pickContact(btn){
   document.querySelectorAll('.contact-pill').forEach(p=>{
@@ -1609,7 +1620,16 @@ if(cForm){
       document.querySelectorAll('.svc-pill').forEach(p=>{p.classList.remove('active');p.style.borderColor='';p.style.color='';p.style.background='';});
       document.querySelectorAll('.tier-pills').forEach(w=>{w.classList.remove('show');w.querySelectorAll('.tier-pill').forEach(t=>{t.classList.remove('active');t.style.borderColor='';t.style.color='';t.style.background='';});});
       document.getElementById('cfServices').value='';
-      document.getElementById('cfRevisions').selectedIndex=0;
+      // Reset revision pills to default (1 Revision inklusive)
+      document.querySelectorAll('.rev-pill').forEach(p=>{
+        p.classList.remove('active');p.style.borderColor='';p.style.color='';p.style.background='';
+      });
+      const defaultRev=document.querySelector('.rev-pill[data-val="1 Revision (inklusive)"]');
+      if(defaultRev){
+        defaultRev.classList.add('active');
+        defaultRev.style.borderColor='#60A5FA';defaultRev.style.color='#60A5FA';defaultRev.style.background='rgba(96,165,250,.08)';
+      }
+      document.getElementById('cfRevisions').value='1 Revision (inklusive)';
     } else {
       err.classList.remove('hidden');
     }
