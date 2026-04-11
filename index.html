@@ -556,56 +556,185 @@
     /* ========== GRADIENT LINE ========== */
     .gline { height:1px; background:linear-gradient(90deg, transparent, #1a1a1a 20%, #1a1a1a 80%, transparent); }
 
-    /* ========== MOBILE OPTIMIZATIONS ========== */
+    /* ========== MOBILE OVERHAUL ==========
+       Comprehensive pass for 375px–640px. Fixes tap targets, restructures the
+       pricing table into a compact 2-line list, turns team photos into round
+       avatars, tightens spacing rhythm, and kills the min-height:90px landmine
+       on service items. No HTML changes — all CSS. */
     @media (max-width: 640px) {
-      /* Section padding — much tighter */
-      section[style*="padding:140px"] { padding: 50px 0 !important; }
+
+      /* ---- Section padding ---- */
+      section[style*="padding:140px"] { padding: 48px 0 !important; }
       section[style*="padding:120px"] { padding: 40px 0 !important; }
-      section[style*="padding:160px"] { padding: 50px 0 !important; }
-      /* Hero */
-      .hero-text .block { font-size: 28px !important; }
+      section[style*="padding:160px"] { padding: 52px 0 !important; }
+
+      /* ---- Global headings + spacing rhythm ---- */
+      h1, h2, h3 { letter-spacing: -0.01em !important; }
+      .text-5xl { font-size: 32px !important; line-height: 1.1 !important; }
+      .text-6xl { font-size: 34px !important; line-height: 1.1 !important; }
+      .text-7xl { font-size: 34px !important; line-height: 1.1 !important; }
+      .text-8xl { font-size: 36px !important; line-height: 1.05 !important; }
+      .text-9xl { font-size: 38px !important; line-height: 1.05 !important; }
+      .mb-20 { margin-bottom: 36px !important; }
+      .mb-24 { margin-bottom: 36px !important; }
+      .mb-16 { margin-bottom: 28px !important; }
+
+      /* ---- Hero ---- */
+      .hero-text .block { font-size: 28px !important; line-height: 1.15 !important; }
+      #hl { font-size: 11px !important; letter-spacing: 2px !important; }
       #hs { font-size: 15px !important; }
       #hslogan { font-size: 10px !important; letter-spacing: 2px !important; }
-      #hc a { padding: 12px 20px !important; font-size: 13px !important; }
-      /* Services */
+      #hc { gap: 10px !important; }
+      #hc a {
+        padding: 13px 22px !important;
+        font-size: 13px !important;
+        min-height: 46px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      /* Hero streaks tighter so they don't blow out */
+      .hero-streak { width: 22rem !important; height: 48rem !important; }
+      /* Tech marquee — tighter text */
+      .mq-track span { font-size: 10px !important; letter-spacing: 2px !important; }
+
+      /* ---- Services ---- */
+      /* Kill the 90px min-height landmine on service rows */
+      .svc > div[style*="min-height:90px"] { min-height: 68px !important; }
+      .svc .py-7 { padding-top: 16px !important; padding-bottom: 16px !important; }
       .num-outline { font-size: 28px !important; min-width: 40px !important; }
       .svc .flex.items-center.gap-6 { gap: 12px !important; }
-      .svc-n { font-size: 16px !important; }
+      .svc-n {
+        font-size: 16px !important;
+        word-break: break-word !important;
+        hyphens: auto !important;
+      }
       .svc .text-accent { font-size: 12px !important; }
-      /* Pricing */
-      .rc .text-xl.font-black { font-size: 16px !important; }
-      .rc .px-5 { padding-left: 12px !important; padding-right: 12px !important; }
-      .rc .py-5 { padding-top: 10px !important; padding-bottom: 10px !important; }
-      /* FAQ */
-      .faq-q { padding-top: 14px !important; padding-bottom: 14px !important; }
-      .faq-q .text-lg { font-size: 15px !important; }
-      [data-faq] .faq-a p { font-size: 13px !important; }
-      /* Process */
+      .svc-d .pb-8 { padding-bottom: 16px !important; }
+
+      /* ---- Pricing: compact 2-line list (name+price row, description below) ---- */
+      .rc .text-xl.font-black { font-size: 15px !important; white-space: nowrap !important; }
+      .rc .px-5 { padding-left: 14px !important; padding-right: 14px !important; }
+      .rc .py-5 { padding-top: 11px !important; padding-bottom: 11px !important; }
+      /* Convert the pricing row grid into a flex row on mobile */
+      .rc div[class*="md:grid-cols-12"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: baseline !important;
+        gap: 2px 10px !important;
+      }
+      .rc div[class*="md:grid-cols-12"] > .col-span-3:first-child {
+        flex: 1 1 auto !important;
+      }
+      .rc div[class*="md:grid-cols-12"] > .col-span-3:nth-child(2) {
+        flex: 0 0 auto !important;
+        text-align: right !important;
+      }
+      .rc div[class*="md:grid-cols-12"] > .col-span-6 {
+        flex: 1 0 100% !important;
+        margin-top: 2px !important;
+      }
+      .rc div[class*="md:grid-cols-12"] .text-muted.text-sm {
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+      }
+      /* Pricing category header label slightly tighter */
+      .rc .tracking-widest { letter-spacing: 2px !important; }
+
+      /* ---- FAQ: bigger tap targets ---- */
+      .faq-q {
+        padding-top: 18px !important;
+        padding-bottom: 18px !important;
+        min-height: 52px !important;
+      }
+      .faq-q .text-lg,
+      .faq-q .text-base { font-size: 15px !important; }
+      .faq-icon { font-size: 22px !important; }
+      [data-faq] .faq-a p { font-size: 13px !important; line-height: 1.55 !important; }
+
+      /* ---- Process ---- */
       .reveal .num-outline { font-size: 24px !important; }
       .reveal .pl-16 { padding-left: 40px !important; }
       .reveal h3 { font-size: 18px !important; }
-      .reveal .text-muted.leading-relaxed { font-size: 13px !important; }
-      /* Team */
-      .team-card .aspect-square { aspect-ratio: auto !important; height: 260px !important; }
-      .team-card .p-6 { padding: 14px !important; }
+      .reveal .text-muted.leading-relaxed { font-size: 13px !important; line-height: 1.6 !important; }
+
+      /* ---- Team: round avatars centered, text centered below ---- */
+      .team-card { padding-top: 22px !important; }
+      .team-card > .w-full.aspect-square {
+        aspect-ratio: 1 / 1 !important;
+        width: 180px !important;
+        height: 180px !important;
+        max-width: 180px !important;
+        margin: 0 auto !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+      }
+      /* Ring sits right at the circle edge (was m-8 = 32px inside a square) */
+      .team-card .glow-ring { margin: 2px !important; }
+      /* No more clip-path needed — the container itself is a circle */
+      .team-card .team-photo { clip-path: none !important; }
+      /* Center all text content in the text section */
+      .team-card .p-6 {
+        padding: 18px 18px 22px !important;
+        text-align: center !important;
+      }
       .team-card .text-xl { font-size: 17px !important; }
-      .team-card .flex-wrap.gap-1\.5 { gap: 4px !important; }
+      .team-card p.text-muted.text-sm { font-size: 13px !important; line-height: 1.5 !important; }
+      .team-card .flex-wrap.gap-1\.5 {
+        gap: 4px !important;
+        justify-content: center !important;
+      }
       .team-card .text-xs.px-2\.5 { padding: 3px 8px !important; font-size: 10px !important; }
-      /* Contact */
-      .svc-pill { padding: 8px 14px !important; font-size: 13px !important; }
-      .tier-pill { padding: 5px 10px !important; font-size: 11px !important; }
-      .rev-pill { padding: 6px 12px !important; font-size: 11px !important; }
-      .contact-btn.rc { padding: 14px !important; }
-      /* Footer */
+
+      /* ---- Contact form: bigger tap targets + tier pills slide fix ---- */
+      .svc-pill {
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+        min-height: 40px !important;
+      }
+      .tier-pill {
+        padding: 8px 14px !important;
+        font-size: 11px !important;
+        min-height: 34px !important;
+      }
+      .rev-pill {
+        padding: 9px 14px !important;
+        font-size: 11px !important;
+        min-height: 36px !important;
+      }
+      .contact-pill {
+        padding: 10px 16px !important;
+        min-height: 40px !important;
+      }
+      /* Tier pills slide-out: allow 2 rows of wrapped pills */
+      .tier-pills.show { max-height: 140px !important; }
+      .contact-btn.rc {
+        padding: 18px !important;
+        min-height: 64px !important;
+      }
+      #contactSubmit {
+        min-height: 52px !important;
+        padding: 15px 20px !important;
+      }
+      .input-flat {
+        padding: 16px 0 !important;
+        font-size: 15px !important;
+      }
+
+      /* ---- Footer ---- */
       footer .gap-8 { gap: 16px !important; }
-      /* Headings tighter */
-      h1, h2, h3 { letter-spacing: -0.01em !important; }
-      /* Section headings */
-      .text-5xl { font-size: 32px !important; }
-      .text-7xl { font-size: 32px !important; }
-      .mb-20 { margin-bottom: 40px !important; }
-      .mb-24 { margin-bottom: 40px !important; }
-      .mb-16 { margin-bottom: 30px !important; }
+      footer .dock { gap: 10px !important; }
+
+      /* ---- Nav hamburger tap target safety net ---- */
+      #hb {
+        min-width: 44px !important;
+        min-height: 44px !important;
+        padding: 10px !important;
+      }
+
+      /* ---- Global tap target safety net for any .mag button/link ---- */
+      a.mag, button.mag { min-height: 44px !important; }
     }
 
     /* ========== TILT ========== */
