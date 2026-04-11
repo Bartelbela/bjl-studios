@@ -369,11 +369,44 @@
     .svc { transition: background .3s ease; cursor: pointer; position:relative; }
     .svc:hover { background: rgba(96,165,250,.03); }
     .svc:hover .svc-n { transform: translateX(4px); }
-    .svc:hover .svc-a { transform: translateX(6px); }
-    .svc-n, .svc-a { transition: transform .3s ease; }
+    .svc-n { transition: transform .3s ease; }
     .svc-d { max-height:0; overflow:hidden; opacity:0; transition:max-height .5s cubic-bezier(.4,0,.2,1), opacity .4s ease .1s; }
-    .svc.open .svc-d { max-height:200px; opacity:1; }
-    .svc.open .svc-a { transform:rotate(45deg) !important; }
+    .svc.open .svc-d { max-height:240px; opacity:1; }
+    /* Expand/collapse button — fixed circular target, only the inner icon rotates
+       so the button's bounding box never moves (no mobile overflow). */
+    .svc-a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(96,165,250,0.18);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.55);
+      flex-shrink: 0;
+      transition: border-color .35s ease, background .35s ease, color .35s ease;
+      padding: 0;
+      cursor: pointer;
+    }
+    .svc:hover .svc-a {
+      border-color: rgba(96,165,250,0.4);
+      background: rgba(96,165,250,0.06);
+      color: #60A5FA;
+    }
+    .svc-a svg {
+      transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+      width: 18px;
+      height: 18px;
+    }
+    .svc.open .svc-a {
+      border-color: #60A5FA;
+      background: rgba(96,165,250,0.12);
+      color: #60A5FA;
+    }
+    .svc.open .svc-a svg {
+      transform: rotate(45deg);
+    }
     /* Outline numbers (Stitch design) */
     .num-outline {
       color: rgba(255,255,255,0.08);
@@ -870,7 +903,7 @@
           </div>
           <div class="flex items-center gap-4">
             <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp1">ab 799 €</span>
-            <span class="svc-a text-muted text-xl">↗</span>
+            <button type="button" class="svc-a" aria-label="Details anzeigen" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
         </div>
         <div class="svc-d">
@@ -889,7 +922,7 @@
           </div>
           <div class="flex items-center gap-4">
             <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp2">ab 199 €/mtl.</span>
-            <span class="svc-a text-muted text-xl">↗</span>
+            <button type="button" class="svc-a" aria-label="Details anzeigen" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
         </div>
         <div class="svc-d">
@@ -908,7 +941,7 @@
           </div>
           <div class="flex items-center gap-4">
             <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp3">ab 249 €/mtl.</span>
-            <span class="svc-a text-muted text-xl">↗</span>
+            <button type="button" class="svc-a" aria-label="Details anzeigen" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
         </div>
         <div class="svc-d">
@@ -927,7 +960,7 @@
           </div>
           <div class="flex items-center gap-4">
             <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp4">ab 299 €</span>
-            <span class="svc-a text-muted text-xl">↗</span>
+            <button type="button" class="svc-a" aria-label="Details anzeigen" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
         </div>
         <div class="svc-d">
@@ -946,7 +979,7 @@
           </div>
           <div class="flex items-center gap-4">
             <span class="text-accent text-xs sm:text-sm font-medium" data-i="sp5">ab 999 €</span>
-            <span class="svc-a text-muted text-xl">↗</span>
+            <button type="button" class="svc-a" aria-label="Details anzeigen" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
         </div>
         <div class="svc-d">
@@ -1508,8 +1541,19 @@
             <p class="text-white font-semibold mb-1" data-i="cf-ok">Danke für eure Anfrage!</p>
             <p class="text-muted text-sm" data-i="cf-ok2">Wir melden uns innerhalb von 24 Stunden.</p>
           </div>
-          <div id="formError" class="hidden mt-6 text-center p-4 border border-red-500/20 rounded-xl bg-red-500/5">
-            <p class="text-red-400 text-sm" data-i="cf-err">Etwas ist schiefgelaufen. Schreibt uns direkt per WhatsApp oder E-Mail.</p>
+          <div id="formError" class="hidden mt-6 p-5 border border-red-500/20 rounded-xl bg-red-500/5">
+            <div class="flex items-start gap-3 mb-4">
+              <svg class="w-5 h-5 text-red-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 0 0-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z"/></svg>
+              <div class="flex-1">
+                <p class="text-red-400 text-sm font-semibold mb-1" data-i="cf-err">Senden fehlgeschlagen</p>
+                <p class="text-muted text-xs leading-relaxed" data-i="cf-err2">Das Formular konnte nicht verschickt werden. Schreibt uns stattdessen direkt:</p>
+                <p id="formErrorDetail" class="hidden text-red-400/60 text-[10px] mt-2 font-mono break-all"></p>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <a href="https://wa.me/4917681163100" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-3 rounded-lg border border-green-500/30 text-green-400 text-sm hover:bg-green-500/10 transition">📱 WhatsApp</a>
+              <a href="mailto:info@bjl-studios.de" class="flex-1 text-center px-4 py-3 rounded-lg border border-accent/30 text-accent text-sm hover:bg-accent/10 transition">📧 E-Mail</a>
+            </div>
           </div>
         </form>
       </div>
@@ -1769,7 +1813,8 @@ const T={
   'cf-note':{de:'Kostenlos & unverbindlich. Keine Spam-Mails, versprochen.',en:'Free & non-binding. No spam, promised.'},
   'cf-ok':{de:'Danke für eure Anfrage!',en:'Thanks for your inquiry!'},
   'cf-ok2':{de:'Wir melden uns innerhalb von 24 Stunden.',en:'We\'ll get back to you within 24 hours.'},
-  'cf-err':{de:'Etwas ist schiefgelaufen. Schreibt uns direkt per WhatsApp oder E-Mail.',en:'Something went wrong. Contact us directly via WhatsApp or email.'},
+  'cf-err':{de:'Senden fehlgeschlagen',en:'Sending failed'},
+  'cf-err2':{de:'Das Formular konnte nicht verschickt werden. Schreibt uns stattdessen direkt:',en:'The form could not be sent. Reach out directly instead:'},
   // Footer
   'foot-sub':{de:'Digitalagentur · Mönchengladbach',en:'Digital Agency · Mönchengladbach'},
   'foot-copy':{de:'© 2026 BJL Studios. Alle Rechte vorbehalten.',en:'© 2026 BJL Studios. All rights reserved.'},
@@ -1970,6 +2015,7 @@ if(cForm){
 
     // Server API (dockerbox Node container behind nginx reverse-proxy)
     let sent=false;
+    let errorDetail='';
     try{
       const res=await fetch('/api/contact',{
         method:'POST',
@@ -1979,8 +2025,14 @@ if(cForm){
       if(res.ok){
         const data=await res.json().catch(()=>({}));
         sent=!!data.success;
+        if(!sent) errorDetail='HTTP '+res.status+' — unexpected response';
+      } else {
+        const data=await res.json().catch(()=>({error:res.statusText||'Unknown'}));
+        errorDetail='HTTP '+res.status+' — '+(data.error||'')+(data.detail?' ('+data.detail+')':'');
       }
-    }catch(ex){}
+    }catch(ex){
+      errorDetail='Network error — '+(ex.message||'server unreachable');
+    }
     if(sent){
       ok.classList.remove('hidden');
       cForm.reset();
@@ -2004,6 +2056,11 @@ if(cForm){
       document.getElementById('cfRevisions').value='1 Revision (inklusive)';
     } else {
       err.classList.remove('hidden');
+      const dt=document.getElementById('formErrorDetail');
+      if(dt && errorDetail){
+        dt.textContent=errorDetail;
+        dt.classList.remove('hidden');
+      }
     }
     txt.classList.remove('hidden');load.classList.add('hidden');
     btn.disabled=false;btn.style.opacity='1';
