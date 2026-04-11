@@ -24,4 +24,12 @@ jobs:
             # or api/Dockerfile changed. TG_BOT_TOKEN / TG_CHAT_ID must exist
             # in ~/sites/bjl-studios/.env on the host (see .env.example).
             docker compose up -d --build
+            # nginx.conf is bind-mounted into the web container, so a git pull
+            # updates the file on disk but the running nginx daemon still has
+            # the old config in memory. Send SIGHUP to reload it in-place;
+            # fall back to a full container restart if the reload fails
+            # (e.g. if the config has a syntax error or the container just
+            # started and isn't ready to accept signals yet).
+            docker compose exec -T bjl-studios-web nginx -s reload 2>/dev/null \
+              || docker compose restart bjl-studios-web
             echo "✅ bjl-studios.de deployed at $(date)"
