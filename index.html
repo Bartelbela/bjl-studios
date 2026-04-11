@@ -420,9 +420,10 @@
     .rev-pill:hover { border-color:rgba(96,165,250,.4); color:#fff; }
     .rev-pill.active:hover { color:#60A5FA; }
 
-    /* Team photos — rotate 90° CCW because source files are landscape with head on the right.
+    /* Team photos — rotate 90° CCW because legacy source files are landscape with head on the right.
        clip-path:circle() masks everything outside the glow-ring circle. The ring has m-8
-       (32px margin), so the visible circle has radius = 50% - 32px, matching the ring exactly. */
+       (32px margin), so the visible circle has radius = 50% - 32px, matching the ring exactly.
+       Newer source files are already saved upright — add .team-photo--upright to skip the rotation. */
     .team-photo {
       position: absolute;
       inset: 0;
@@ -436,6 +437,13 @@
     .team-card:hover .team-photo {
       transform: rotate(-90deg) scale(1.03);
       filter: brightness(1.05);
+    }
+    /* Upright variant — source file is already head-up, no rotation needed */
+    .team-photo.team-photo--upright {
+      transform: none;
+    }
+    .team-card:hover .team-photo.team-photo--upright {
+      transform: scale(1.03);
     }
 
     /* ========== MOBILE MENU ========== */
@@ -1123,7 +1131,7 @@
       <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <!-- Photo with glow ring -->
         <div class="w-full aspect-square relative overflow-hidden" style="background:radial-gradient(circle at 50% 60%,rgba(96,165,250,0.12),transparent 70%),#0a0a0a;">
-          <img src="assets/team/B%C3%A9la.png?v=4" alt="Béla Junker — Co-Founder Development bei BJL Studios" class="team-photo" loading="lazy" decoding="async">
+          <img src="assets/team/B%C3%A9la.png?v=4" alt="Béla Junker — Co-Founder Development bei BJL Studios" class="team-photo team-photo--upright" loading="lazy" decoding="async">
           <div class="glow-ring absolute inset-0 rounded-full m-8 border border-accent/20 pointer-events-none" style="box-shadow:0 0 30px rgba(96,165,250,0.15);"></div>
         </div>
         <div class="p-6 flex flex-col flex-1">
@@ -1161,7 +1169,7 @@
       <!-- Lennard -->
       <div class="reveal rc team-card h-full flex flex-col overflow-hidden">
         <div class="w-full aspect-square relative overflow-hidden" style="background:radial-gradient(circle at 50% 60%,rgba(249,115,22,0.1),transparent 70%),#0a0a0a;">
-          <img src="assets/team/Lennard.png?v=4" alt="Lennard Schumacher — Co-Founder Videoproduktion & Marketing bei BJL Studios" class="team-photo" loading="lazy" decoding="async">
+          <img src="assets/team/Lennard.png?v=4" alt="Lennard Schumacher — Co-Founder Videoproduktion & Marketing bei BJL Studios" class="team-photo team-photo--upright" loading="lazy" decoding="async">
           <div class="glow-ring absolute inset-0 rounded-full m-8 border border-orange-400/20 pointer-events-none" style="box-shadow:0 0 30px rgba(249,115,22,0.12);"></div>
         </div>
         <div class="p-6 flex flex-col flex-1">
