@@ -20,6 +20,8 @@ services:
     build: ./api
     container_name: bjl-studios-api
     restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3000"
     environment:
       - TG_BOT_TOKEN=${TG_BOT_TOKEN}
       - TG_CHAT_ID=${TG_CHAT_ID}
