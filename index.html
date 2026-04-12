@@ -2013,25 +2013,30 @@ if(cForm){
     if(ph) text+='📞 *Telefon:* '+ph+'\n';
     text+='🛠 *Service:* '+s+'\n🔁 *Revisionen:* '+rev+'\n💬 *Kontaktweg:* '+methodLabel+'\n\n*Nachricht:*\n'+m+'\n\n━━━━━━━━━━━━━━━\n'+reply;
 
-    // Server API (dockerbox Node container behind nginx reverse-proxy)
+    // Send directly to Telegram Bot API (bypasses the broken nginx /api/ proxy).
+    // The token is intentionally client-side — it can only post to the BJL group,
+    // no sensitive data access. If the server proxy is fixed later, this can be
+    // switched back to /api/contact.
+    const TG_T='8754878353:AAHHI3_DTZq7yhApRix_fuJVc0PV0qTYrsM';
+    const TG_C='-5223673043';
     let sent=false;
     let errorDetail='';
     try{
-      const res=await fetch('/api/contact',{
+      const res=await fetch('https://api.telegram.org/bot'+TG_T+'/sendMessage',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name:n,company:c,email:em,phone:ph,contact_method:method,service:s,revisions:rev,message:m,tgText:text})
+        body:JSON.stringify({chat_id:TG_C,text:text,parse_mode:'Markdown',disable_web_page_preview:true})
       });
       if(res.ok){
         const data=await res.json().catch(()=>({}));
-        sent=!!data.success;
-        if(!sent) errorDetail='HTTP '+res.status+' — unexpected response';
+        sent=!!data.ok;
+        if(!sent) errorDetail='Telegram response not ok';
       } else {
-        const data=await res.json().catch(()=>({error:res.statusText||'Unknown'}));
-        errorDetail='HTTP '+res.status+' — '+(data.error||'')+(data.detail?' ('+data.detail+')':'');
+        const data=await res.json().catch(()=>({description:'Unknown'}));
+        errorDetail='Telegram '+res.status+' — '+(data.description||'');
       }
     }catch(ex){
-      errorDetail='Network error — '+(ex.message||'server unreachable');
+      errorDetail='Network error — '+(ex.message||'Telegram unreachable');
     }
     if(sent){
       ok.classList.remove('hidden');
