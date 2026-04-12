@@ -12,17 +12,25 @@ jobs:
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: TG_BOT_TOKEN,TG_CHAT_ID
           script: |
             set -e
             cd ~/sites/bjl-studios
             git pull origin main
+            # Write .env from GitHub Secrets so docker compose picks them up.
+            cat > .env <<EOF
+            TG_BOT_TOKEN=$TG_BOT_TOKEN
+            TG_CHAT_ID=$TG_CHAT_ID
+            EOF
             # --build rebuilds the bjl-studios-api image whenever api/server.js
-            # or api/Dockerfile changed. TG_BOT_TOKEN / TG_CHAT_ID must exist
-            # in ~/sites/bjl-studios/.env on the host (see .env.example).
+            # or api/Dockerfile changed.
             docker compose up -d --build
             # nginx.conf is bind-mounted into the web container, so a git pull
             # updates the file on disk but the running nginx daemon still has
