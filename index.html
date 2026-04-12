@@ -1989,21 +1989,21 @@ if(cForm){
     if(cleanPh.startsWith('00'))cleanPh=cleanPh.substring(2);
     if(cleanPh.startsWith('0'))cleanPh='49'+cleanPh.substring(1);
     cleanPh=cleanPh.replace(/[^0-9]/g,'');
-    const gmail='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(em)+'&su='+encodeURIComponent('Re: Anfrage von '+n+' — BJL Studios')+'&body='+encodeURIComponent('Hallo '+n+',\n\nvielen Dank für eure Anfrage!\n\n');
+    const outlook='https://outlook.office.com/mail/deeplink/compose?to='+encodeURIComponent(em)+'&subject='+encodeURIComponent('Re: Anfrage von '+n+' — BJL Studios')+'&body='+encodeURIComponent('Hallo '+n+',\n\nvielen Dank für eure Anfrage!\n\n');
     const waLink=cleanPh?'https://wa.me/'+cleanPh:'';
 
     let methodLabel='🤷 Egal';
     let reply='';
     if(method==='whatsapp'&&waLink){
       methodLabel='📱 WhatsApp';
-      reply='📱 [Per WhatsApp antworten]('+waLink+')\n📩 [Per Gmail antworten]('+gmail+')';
+      reply='📱 [Per WhatsApp antworten]('+waLink+')\n📩 [Per Outlook antworten]('+outlook+')';
     } else if(method==='email'){
       methodLabel='📧 E-Mail';
-      reply='📩 [Per Gmail antworten]('+gmail+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
+      reply='📩 [Per Outlook antworten]('+outlook+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
       if(waLink) reply+='\n📱 [Per WhatsApp antworten]('+waLink+')';
     } else {
       // Egal: show all available reply options
-      reply='📩 [Per Gmail antworten]('+gmail+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
+      reply='📩 [Per Outlook antworten]('+outlook+')\n📧 [Per E-Mail antworten](mailto:'+em+'?subject=Re:+Anfrage+BJL+Studios)';
       if(waLink) reply+='\n📱 [Per WhatsApp antworten]('+waLink+')';
     }
 
