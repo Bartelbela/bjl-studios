@@ -61,12 +61,14 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  // Healthcheck
-  if (req.method === 'GET' && (req.url === '/health' || req.url === '/')) {
+  // Healthcheck — accept with and without /api prefix
+  if (req.method === 'GET' && (req.url === '/health' || req.url === '/api/health' || req.url === '/' || req.url === '/api/')) {
     return json(res, 200, { ok: true, service: 'bjl-studios-api' });
   }
 
-  if (req.url !== '/contact') {
+  // Accept both /contact (when Caddy uses handle_path to strip /api)
+  // and /api/contact (when Caddy uses handle without stripping).
+  if (req.url !== '/contact' && req.url !== '/api/contact') {
     return json(res, 404, { error: 'Not found' });
   }
 
