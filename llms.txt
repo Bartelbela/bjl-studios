@@ -15,7 +15,7 @@
 - [Kontaktformular](https://www.bjl-studios.de/#kontakt): Primary contact form with project details
 - Email: info@bjl-studios.de
 - Phone / WhatsApp: +49 176 81163100
-- Location: Mönchengladbach, 41179, Germany
+- Location: Aachener Straße 384, 41179 Mönchengladbach, Germany
 - Hours: Monday–Friday, 14:00–20:00 CET
 
 ## Optional
