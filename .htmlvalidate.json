@@ -1,0 +1,25 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-inline-style": "off",
+    "no-trailing-whitespace": "error",
+    "void-style": "off",
+    "no-raw-characters": "off",
+    "no-implicit-button-type": "off",
+    "tel-non-breaking": "off",
+    "element-permitted-content": "warn",
+    "wcag/h30": "warn",
+    "wcag/h32": "warn",
+    "wcag/h36": "warn",
+    "wcag/h37": "warn",
+    "wcag/h63": "warn",
+    "wcag/h67": "warn",
+    "wcag/h71": "warn",
+    "no-redundant-role": "warn",
+    "no-implicit-input-type": "warn",
+    "attribute-boolean-style": "off",
+    "attribute-empty-style": "off",
+    "form-dup-name": "warn",
+    "close-order": "warn"
+  }
+}

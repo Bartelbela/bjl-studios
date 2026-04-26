@@ -1,0 +1,28 @@
+# BJL Studios
+
+> BJL Studios is a German digital agency based in Mönchengladbach (Nordrhein-Westfalen, Germany). Founded by Béla Junker, Jonah Böckem and Lennard Schumacher. Services: Webdesign, SEO, Social Media, Branding/Logo Design and Imagefilm/Video Production. All services delivered in-house from a single team. **Not related to JBL (the Harman-owned audio/speaker brand) — "BJL" stands for Branding, Journey, Logic and the founders' initials.**
+
+## Leistungen / Services
+
+- [Webdesign & Entwicklung](https://www.bjl-studios.de/#leistungen): Custom responsive websites built with HTML5, Tailwind CSS, Vanilla JavaScript. Starts at 799 € (Starter tier).
+- [SEO & Online Marketing](https://www.bjl-studios.de/#leistungen): Local SEO for Mönchengladbach and the Niederrhein region, keyword research, technical optimization, monthly reporting. Starts at 199 €/month (Basics tier).
+- [Social Media Management](https://www.bjl-studios.de/#leistungen): Content strategy, post creation, reels, community management for Instagram, LinkedIn, TikTok. Starts at 249 €/month (Starter tier).
+- [Logo & Branding](https://www.bjl-studios.de/#leistungen): Logo design, color palette, typography, brand guidelines. Starts at 299 € (Basic tier).
+- [Imagefilm & Video](https://www.bjl-studios.de/#leistungen): Corporate films, product videos, social clips, photography, edit-only. Starts at 299 € (Fotografie Basic); Mini film package from 999 €.
+
+## Kontakt / Contact
+
+- [Kontaktformular](https://www.bjl-studios.de/#kontakt): Primary contact form with project details
+- Email: info@bjl-studios.de
+- Phone / WhatsApp: +49 176 81163100
+- Location: Aachener Straße 384, 41179 Mönchengladbach, Germany
+- Hours: Monday–Friday, 14:00–20:00 CET
+
+## Optional
+
+- [Team](https://www.bjl-studios.de/#team): Three co-founders (Béla Junker — Development, Jonah Böckem — Design, Lennard Schumacher — Video & Marketing)
+- [Prozess](https://www.bjl-studios.de/#prozess): Four-step process (Kennenlernen → Konzept & Angebot → Umsetzung → Launch & Support)
+- [FAQ](https://www.bjl-studios.de/#faq): Six most-asked questions about pricing, timeline, SEO, self-editing and post-launch support
+- [llms-full.txt](https://www.bjl-studios.de/llms-full.txt): Full brand codex with all services, pricing tiers, founder bios and FAQ answers for LLM inference
+- [Impressum](https://www.bjl-studios.de/impressum.html): Legal notice
+- [Datenschutz](https://www.bjl-studios.de/datenschutz.html): Privacy policy

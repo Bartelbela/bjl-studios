@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+out/
+
+# Vercel
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+.claude/settings.local.json
+
+# Test artifacts
+playwright-report/
+test-results/
+.lighthouseci/
+
+# Unused image variants — kamera-animation WebPs are larger than JPGs, not referenced
+assets/kamera-animation/*.webp

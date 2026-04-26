@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run *)",
+      "Bash(npm audit*)",
+      "Bash(npx tailwindcss *)",
+      "Bash(npx html-validate *)",
+      "Bash(npx prettier *)",
+      "Bash(npx playwright *)",
+      "Bash(npx @lhci/cli *)",
+      "Bash(docker compose *)",
+      "Bash(docker ps*)",
+      "Bash(docker logs*)",
+      "Bash(gh *)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push*)",
+      "Bash(git pull*)",
+      "Bash(node --test*)",
+      "WebFetch(domain:bjl-studios.de)",
+      "WebFetch(domain:validator.schema.org)",
+      "WebFetch(domain:developer.mozilla.org)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if (Test-Path package.json) { if ($env:CLAUDE_FILE_PATHS -match 'index\\.html|datenschutz\\.html|impressum\\.html') { npx --yes html-validate $env:CLAUDE_FILE_PATHS 2>&1 } }"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "claude-opus-4-7"
+}
